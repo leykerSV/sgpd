@@ -6,13 +6,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
 
-    <title>Digesto Santo Tomé</title>
+    <title>SGPD Cocyar</title>
 
     <link rel="stylesheet" href="<?php echo base_url('assets/css/redes.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/sticky.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/fontawesome.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     
     <script src="<?php echo base_url('assets/js/query.slim.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/popper.min.js'); ?>"></script>
