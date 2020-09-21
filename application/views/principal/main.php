@@ -35,7 +35,8 @@
   </div>
   <div class="row">
     <div class="col-md-9">
-      <?php echo $_view; ?>
+      <?php //echo $_view; ?>
+      <?php $this->load->view($_view); ?>
     </div>
   </div>
 

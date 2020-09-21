@@ -25,7 +25,7 @@ class Inicio extends CI_Controller {
 
         $this->load->view('template/header',$data);
 		$this->load->view('proveedores/menu');
-		$this->load->view('template/footer');
+		//$this->load->view('template/footer');
 	}
 
 	private function check_log(){
