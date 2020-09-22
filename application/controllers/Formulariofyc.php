@@ -87,8 +87,9 @@ class Formulariofyc extends CI_Controller{
         }
         else
         {            
-            $data['_view'] = 'formulariofyc/add';
-            $this->load->view('principal/main',$data);
+			$data['_view'] = 'formulariofyc/add';
+			$this->load->view('template/header',$data);
+            $this->load->view('principal/main');
         }
     }  
 
@@ -173,8 +174,9 @@ class Formulariofyc extends CI_Controller{
             }
             else
             {
-                $data['_view'] = 'formulariofyc/edit';
-                $this->load->view('principal/main',$data);
+				$data['_view'] = 'formulariofyc/edit';
+				$this->load->view('template/header',$data);
+                $this->load->view('principal/main');
             }
         }
         else

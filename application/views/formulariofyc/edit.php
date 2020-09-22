@@ -1,4 +1,116 @@
 <?php echo form_open('formulariofyc/edit/'.$formulariofyc['idformulariofyc'],array("class"=>"form-horizontal")); ?>
+<div class="container-fluid" align="center">
+	<div class="card text-white bg-info mb-3">
+		<div class="card-header">
+			INFORMACION FISCAL
+		</div>
+		<div class="card-body">
+			<div class="input-group mb-3">
+				
+
+			</div>
+		</div>
+  	</div>
+	<div class="card text-white bg-info mb-3">
+		<div class="card-header">
+			DATOS BANCARIOS	
+		</div>
+		<div class="card-body">
+			<div class="input-group mb-3">
+				
+
+			</div>
+		</div>
+  	</div>
+	<div class="card text-white bg-info mb-3">
+		<div class="card-header">
+			SITUACION IIBB	
+		</div>
+		<div class="card-body">
+			<div class="input-group mb-3">
+				
+
+			</div>
+		</div>
+  	</div>
+	<div class="card text-white bg-info mb-3">
+		<div class="card-header">
+			SITUACION FRENTE A GANACIAS	
+		</div>
+		<div class="card-body">
+			<div class="input-group mb-3">
+				
+
+			</div>
+		</div>
+  	</div>
+	<div class="card text-white bg-info mb-3">
+		<div class="card-header">
+			SITUACION FRENTE A SUSS	
+		</div>
+		<div class="card-body">
+			<div class="input-group mb-3">
+				
+
+			</div>
+		</div>
+  	</div>
+	<div class="card text-white bg-info mb-3">
+		<div class="card-header">
+			AGENTE DE PERCEPCION
+		</div>
+		<div class="card-body">
+			<div class="input-group mb-3">
+				
+
+			</div>
+		</div>
+  	</div>
+	<div class="card text-white bg-info mb-3">
+		<div class="card-header">
+			AGENTE DE RETENCION
+		</div>
+		<div class="card-body">
+			<div class="input-group mb-3">
+				
+
+			</div>
+		</div>
+  	</div>
+	<div class="card text-white bg-info mb-3">
+		<div class="card-header">
+			FACTURACION ANUAL
+		</div>
+		<div class="card-body">
+			<div class="input-group mb-3">
+				
+
+			</div>
+		</div>
+  	</div>
+	<div class="card text-white bg-info mb-3">
+		<div class="card-header">
+			REFERNCIAS COMERCIALES
+		</div>
+		<div class="card-body">
+			<div class="input-group mb-3">
+				
+
+			</div>
+		</div>
+  	</div>
+	  <div class="card text-white bg-info mb-3">
+		<div class="card-header">
+			CONTACTOS
+		</div>
+		<div class="card-body">
+			<div class="input-group mb-3">
+				
+
+			</div>
+		</div>
+  	</div>
+</div>
 
 	<div class="form-group">
 		<label for="categoriafiscal" class="col-md-4 control-label">Categoriafiscal</label>
@@ -7,7 +119,9 @@
 				<option value="">select</option>
 				<?php 
 				$categoriafiscal_values = array(
+					'RESP. INSCRIPTO'=>'RESP. INSCRIPTO',
 					'MONOTRIBUTO'=>'MONOTRIBUTO',
+					'CONS. FINAL'=>'CONS. FINAL',
 					'EXENTO'=>'EXENTO',
 				);
 
