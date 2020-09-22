@@ -32,13 +32,13 @@
 						<input class="form-styling" type="text" name="username" id="username" placeholder=""/>
 						<label for="password">Contraseña</label>
 						<input class="form-styling" type="password" name="password" id="password" placeholder=""/>
-						<input type="checkbox" id="checkbox"/>
-						<label for="checkbox" ><span class="ui"></span>Mantener logueado?</label>
+						
 						<div class="btn-animate">
 							<button class="btn-signin" type="submit">Ingresar</button>
 						</div>
 					<?php echo form_close(); ?>
 		</div>
+    <div align="center"><a href="<?php echo base_url().'index.php/proveedor/add'; ?>">Click aquí para darse de alta como proveedor</a></div>
 </div>
 
         
