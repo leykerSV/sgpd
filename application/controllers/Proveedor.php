@@ -34,7 +34,7 @@ class Proveedor extends CI_Controller{
         {   
             $params = array(
 				'rubro' => $this->input->post('rubro'),
-				'pass' => $this->input->post('pass'),
+				'pass' => MD5($this->input->post('pass')),
 				'empresa' => $this->input->post('empresa'),
 				'apellidos' => $this->input->post('apellidos'),
 				'nombres' => $this->input->post('nombres'),
@@ -49,8 +49,14 @@ class Proveedor extends CI_Controller{
 				'categoria' => $this->input->post('categoria'),
             );
             
-            $proveedor_id = $this->Proveedore_model->add_proveedor($params);
-            redirect('proveedor/index');
+			$proveedor_id = $this->Proveedore_model->add_proveedor($params);
+			
+			if ($proveedor_id=!NULL){
+				$formulariossale = $this->Proveedore_model->add_formularios($proveedor_id);
+			}
+			
+
+            redirect('default_controller');
         }
         else
         {            
@@ -104,7 +110,7 @@ class Proveedor extends CI_Controller{
                 );
 
                 $this->Proveedore_model->update_proveedor($idproveedor,$params);            
-                redirect('proveedor/index');
+                redirect('default_controller');
             }
             else
             {

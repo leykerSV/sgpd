@@ -75,8 +75,8 @@ class Formulariot extends CI_Controller{
             $data['_view'] = 'formulariot/add';
 			
 			$this->load->view('template/header',$data);
-			$this->load->view('principal/main');
-			$this->load->view('template/footer');
+			$this->load->view('layouts/main');
+			//$this->load->view('template/footer');
         }
     }  
 
@@ -148,7 +148,7 @@ class Formulariot extends CI_Controller{
             {
                 $data['_view'] = 'formulariot/edit';
 				$this->load->view('template/header',$data);
-				$this->load->view('principal/main');
+				$this->load->view('layouts/main');
 				//$this->load->view('template/footer');
             }
         }

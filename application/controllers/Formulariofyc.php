@@ -89,7 +89,7 @@ class Formulariofyc extends CI_Controller{
         {            
 			$data['_view'] = 'formulariofyc/add';
 			$this->load->view('template/header',$data);
-            $this->load->view('principal/main');
+            $this->load->view('layouts/main');
         }
     }  
 
@@ -176,7 +176,7 @@ class Formulariofyc extends CI_Controller{
             {
 				$data['_view'] = 'formulariofyc/edit';
 				$this->load->view('template/header',$data);
-                $this->load->view('principal/main');
+                $this->load->view('layouts/main');
             }
         }
         else

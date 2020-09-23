@@ -1,10 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="utf-8">
-	<title><?php echo $titulo; ?></title>
+	<title><?php //echo $titulo; ?></title>
 
 	<link rel="stylesheet" href="<?php base_url();?>assets/css/login.css">
 	<link rel="stylesheet" href="<?php base_url();?>assets/css/opensans.css">

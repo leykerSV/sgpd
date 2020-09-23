@@ -36,6 +36,14 @@ class Proveedore_model extends CI_Model
         $this->db->insert('proveedores',$params);
         return $this->db->insert_id();
     }
+
+    function add_formularios($idproveedor)
+    {
+        $a= 'insert into formulariofyc (idproveedor) values ('.$idproveedor.')';
+        $query = $this->db->query($a);
+        $a= 'insert into formulariot (idproveedor) values ('.$idproveedor.')';
+        $query = $this->db->query($a);
+    }
     
     /*
      * function to update proveedor

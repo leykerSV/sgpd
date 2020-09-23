@@ -2,7 +2,7 @@
 
 <div class="container-fluid" align="center">
 
-  	<div class="card text-white bg-info mb-3">
+  	<div class="card text-white bg-secondary mb-3">
 		<div class="card-header">
 			INFORMACION TECNICA
 		</div>
@@ -85,7 +85,7 @@
 		</div>
   	</div>
 
-	<div class="card text-white bg-info mb-3">
+	<div class="card text-white bg-secondary mb-3">
 		<div class="card-header">
 			REFERENCIAS
 		</div>
@@ -272,7 +272,7 @@
 		</div>
   	</div>
 
-	<div class="card text-white bg-info mb-3">
+	<div class="card text-white bg-secondary mb-3">
 		<div class="card-header">
 			REFERENCIAS MONETARIAS	
 		</div>
@@ -334,7 +334,7 @@
 		</div>
   	</div>
 
-	<div class="card text-white bg-info mb-3">
+	<div class="card text-white bg-secondary mb-3">
 		<div class="card-header">
 			FLOTA DE VEHICULOS
 		</div>
