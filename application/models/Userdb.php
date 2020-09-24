@@ -18,15 +18,15 @@ Class Userdb extends CI_Model
     function login($username, $password)
     {
         date_default_timezone_set('America/Argentina/Cordoba');
-        $this->load->database();    
-        $this->db->select('id, nombre, email, username, password, nivel, habilitado');
-        $this->db->from('users');
-        $this->db->where('username = ' . "'" . $username . "'");
-        $this->db->where('password = ' . "'" . MD5($password) . "'");
-        $this->db->where('habilitado = ' . "'" . 1 . "'");
-        $this->db->limit(1);
+        $db2 = $this->load->database('otradb',TRUE);    
+        $db2->select('id, nombre, email, username, password, nivel, habilitado');
+        $db2->from('users');
+        $db2->where('username = ' . "'" . $username . "'");
+        $db2->where('password = ' . "'" . MD5($password) . "'");
+        $db2->where('habilitado = ' . "'" . 1 . "'");
+        $db2->limit(1);
 
-        $query = $this->db->get();
+        $query = $db2->get();
         $a=$query->result();
 
         if($query->num_rows() == 1)

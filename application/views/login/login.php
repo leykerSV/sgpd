@@ -38,7 +38,10 @@
 						</div>
 					<?php echo form_close(); ?>
 		</div>
-    <div align="center"><a href="<?php echo base_url().'index.php/proveedor/add'; ?>">Click aquí para darse de alta como proveedor</a></div>
+    <div><a href="<?php echo base_url().'index.php/proveedor/add'; ?>">Click aquí para darse de alta como proveedor</a></div>
+    <br />
+    <div><a href="<?php echo base_url().'index.php/backoffice'; ?>">Click aquí para Acceder como Backoffice</a></div>
+    
 </div>
 
         

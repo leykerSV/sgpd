@@ -45,18 +45,18 @@ class Proveedor extends CI_Controller{
 				'web' => $this->input->post('web'),
 				'observaciones' => $this->input->post('observaciones'),
 				'contacto' => $this->input->post('contacto'),
-				'activo' => $this->input->post('activo'),
+				'activo' => 1,
 				'categoria' => $this->input->post('categoria'),
             );
             
 			$proveedor_id = $this->Proveedore_model->add_proveedor($params);
-			
+			$vv=$proveedor_id;
 			if ($proveedor_id=!NULL){
-				$formulariossale = $this->Proveedore_model->add_formularios($proveedor_id);
+				$formulariossale = $this->Proveedore_model->add_formularios($vv);
 			}
 			
 
-            redirect('default_controller');
+            redirect('login');
         }
         else
         {            

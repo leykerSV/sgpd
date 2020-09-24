@@ -53,3 +53,4 @@ $route['default_controller'] = 'login';
 $route['proveedores'] = 'inicio/menu';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['menubackoffice'] = 'inicio/menu_backoffice';
