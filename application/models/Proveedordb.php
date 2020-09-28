@@ -83,11 +83,11 @@ Class Proveedordb extends CI_Model
         }    
     }
 
-    function documentacion($idproveedor){
+    function doccomercial($idproveedor){
         date_default_timezone_set('America/Argentina/Cordoba');
         $this->load->database();    
         $this->db->select('*');
-        $this->db->from('documentacion');
+        $this->db->from('doccomercial');
         $this->db->where('idproveedor = ' . "'" . $idproveedor . "'");
         $this->db->limit(1);
 

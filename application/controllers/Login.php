@@ -60,15 +60,15 @@ class Login extends CI_Controller {
         foreach($result as $row)
         {
           $doc_array = array(); 
-          $resultdoc=$this->Proveedordb->documentacion($row->idproveedor); 
-          //$doc_array = $this->objectToArray($resultdoc);
-          $doc_array = json_decode(json_encode($resultdoc[0]), true);
 
           $resultdoc=$this->Proveedordb->formulariofyc($row->idproveedor); 
           $formfyc_array = json_decode(json_encode($resultdoc[0]), true);
 
           $resultdoc=$this->Proveedordb->formulariot($row->idproveedor); 
           $formt_array = json_decode(json_encode($resultdoc[0]), true);
+
+          $resultdoc=$this->Proveedordb->doccomercial($row->idproveedor); 
+          $doccom_array = json_decode(json_encode($resultdoc[0]), true);
 
         $sess_array = array(
             'idproveedor' => $row->idproveedor,
@@ -89,7 +89,7 @@ class Login extends CI_Controller {
             'logueado'=>TRUE,
             'formulariofyc'=>$formfyc_array,
             'formulariot'=>$formt_array,
-            'documentacion'=>$doc_array,
+            'doccomercial'=>$doccom_array,
           );
           $this->session->set_userdata($sess_array);
         }
