@@ -28,15 +28,7 @@ class Inicio extends CI_Controller {
 		//$this->load->view('template/footer');
 	}
 
-	public function menu_backoffice()
-	{
-		$this->check_log();
-        $data['_view'] = 'backoffice/menu_backoffice';
 
-        $this->load->view('template/header',$data);
-		$this->load->view('layouts/main');
-		//$this->load->view('template/footer');
-	}
 
 	private function check_log(){
         if($this->session->userdata('logueado') == FALSE){

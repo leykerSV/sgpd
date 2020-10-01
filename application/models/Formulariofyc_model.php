@@ -18,6 +18,25 @@ class Formulariofyc_model extends CI_Model
     {
         return $this->db->get_where('formulariofyc',array('idformulariofyc'=>$idformulariofyc))->row_array();
     }
+
+    /*
+     * Get formulariofyc by idformulariofyc
+     */
+    function get_formulariofyc_prov($idproveedor)
+    {
+        return $this->db->get_where('formulariofyc',array('idproveedor'=>$idproveedor))->row_array();
+    }
+
+    /*
+     * Get formulariofyc by idformulariofyc
+     */
+    function get_formulariofyc_completo_aprobado()
+    {
+        $this->db->select('idproveedor,completo,aprobado');
+        $this->db->order_by('idproveedor', 'desc');
+        return $this->db->get('formulariofyc')->result_array();  
+
+    }
         
     /*
      * Get all formulariofyc
