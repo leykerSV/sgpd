@@ -84,9 +84,9 @@ class Backoffice extends CI_Controller {
     {
       $this->check_log();
       $this->load->model('proveedore_model');        
-      $data['proveedor'] = $this->proveedore_model->get_all_proveedores();
+      $data['proveedor'] = $this->proveedore_model->get_all_proveedores_backoffice();
       $this->load->model('formulariofyc_model');   
-			$data['formfyc'] = $this->formulariofyc_model->get_formulariofyc_completo_aprobado();
+			//$data['formfyc'] = $this->formulariofyc_model->get_formulariofyc_completo_aprobado();
       $data['_view'] = 'backoffice/menu_backoffice';
   
       $this->load->view('template/header',$data);

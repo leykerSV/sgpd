@@ -27,6 +27,11 @@ class Proveedore_model extends CI_Model
         $this->db->order_by('idproveedor', 'desc');
         return $this->db->get('proveedores')->result_array();
     }
+
+    function get_all_proveedores_backoffice()
+    {
+        return $this->db->get('formularios_proveedores')->result_array();
+    }
         
     /*
      * function to add new proveedor
