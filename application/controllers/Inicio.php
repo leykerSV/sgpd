@@ -20,11 +20,13 @@ class Inicio extends CI_Controller {
 	 */
 	public function menu()
 	{
-		$this->check_log();
-        $data['_view'] = 'proveedores/menu';
-
+		$this->check_log();	
+		$this->load->model('proveedore_model');        
+		$data['proveedor'] = $this->proveedore_model->get_all_proveedores_backoffice_prov($this->session->userdata('idproveedor'));
+		$data['titulacion']="Listado de Tareas de ".$data['proveedor'][0]['empresa'];
+		$data['_view'] = 'proveedores/menu';
         $this->load->view('template/header',$data);
-		$this->load->view('proveedores/menu');
+		$this->load->view('layouts/main');
 		//$this->load->view('template/footer');
 	}
 

@@ -17,7 +17,7 @@
 				
 			</div>
 			<div class="col-md-8" align="center">
-				<h2>Listado de Proveedores</h2>
+				<h2><?php echo $titulacion; ?></h2>
 			</div>
 			<div class="col-md-2">
 

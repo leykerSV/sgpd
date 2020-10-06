@@ -60,9 +60,10 @@ class Proveedor extends CI_Controller{
         }
         else
         {            
+			$data['titulacion']="Alta Proveedor";
             $data['_view'] = 'proveedore/add';
             $this->load->view('template/header',$data);
-            $this->load->view('principal/main');
+            $this->load->view('layouts/main');
         }
     }  
 
@@ -114,9 +115,10 @@ class Proveedor extends CI_Controller{
             }
             else
             {
+				$data['titulacion']="Modificacion Proveedor";
                 $data['_view'] = 'proveedore/edit';
                 $this->load->view('template/header',$data);
-            	$this->load->view('principal/main');
+            	$this->load->view('layouts/main');
             }
         }
         else

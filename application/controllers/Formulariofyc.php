@@ -174,6 +174,7 @@ class Formulariofyc extends CI_Controller{
             }
             else
             {
+				$data['titulacion']="Formulario FyC";
 				$data['_view'] = 'formulariofyc/edit';
 				$this->load->view('template/header',$data);
                 $this->load->view('layouts/main');
@@ -264,6 +265,7 @@ class Formulariofyc extends CI_Controller{
             }
             else
             {
+				$data['titulacion']="Formulario FyC";
 				$data['_view'] = 'backoffice/edit_fyc';
 				$this->load->view('template/header',$data);
                 $this->load->view('layouts/main');

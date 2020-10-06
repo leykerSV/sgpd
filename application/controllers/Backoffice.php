@@ -83,9 +83,10 @@ class Backoffice extends CI_Controller {
     public function menu_backoffice()
     {
       $this->check_log();
+      $data['titulacion']="Listado de Proveedores";
       $this->load->model('proveedore_model');        
       $data['proveedor'] = $this->proveedore_model->get_all_proveedores_backoffice();
-      $this->load->model('formulariofyc_model');   
+      //$this->load->model('formulariofyc_model');   
 			//$data['formfyc'] = $this->formulariofyc_model->get_formulariofyc_completo_aprobado();
       $data['_view'] = 'backoffice/menu_backoffice';
   
