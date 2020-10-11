@@ -37,7 +37,6 @@ class Login extends CI_Controller {
         if($this->check_database() == TRUE)
         {
           redirect('proveedores', 'refresh');
-
         }else{
           $this->session->set_flashdata('error_msg', 'Error al loguearse. Verifique los datos.');
           redirect(base_url(), 'refresh');

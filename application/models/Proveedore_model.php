@@ -35,7 +35,7 @@ class Proveedore_model extends CI_Model
 
     function get_all_proveedores_backoffice_prov($idproveedor)
     {
-        return $this->db->query('call formularios_proveedor('.$idproveedor.')')->result_array();
+        return $this->db->query('select * from formularios_proveedor where idproveedor='.$idproveedor)->result_array();
 
     }
         

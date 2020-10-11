@@ -29,6 +29,15 @@ class Formulariot_model extends CI_Model
     }
         
     /*
+     * Get formulariofyc by idformulariofyc
+     */
+    function get_formulariot_prov($idproveedor)
+    {
+        return $this->db->get_where('formulariot',array('idproveedor'=>$idproveedor))->row_array();
+    }
+
+
+    /*
      * function to add new formulariot
      */
     function add_formulariot($params)

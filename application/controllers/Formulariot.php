@@ -73,7 +73,7 @@ class Formulariot extends CI_Controller{
         else
         {            
             $data['_view'] = 'formulariot/add';
-			
+			$data['titulacion']="Formulario Técnico";
 			$this->load->view('template/header',$data);
 			$this->load->view('layouts/main');
 			//$this->load->view('template/footer');
@@ -146,6 +146,84 @@ class Formulariot extends CI_Controller{
             }
             else
             {
+				$data['titulacion']="Formulario Técnico";
+                $data['_view'] = 'formulariot/edit';
+				$this->load->view('template/header',$data);
+				$this->load->view('layouts/main');
+				//$this->load->view('template/footer');
+            }
+        }
+        else
+            show_error('The formulariot you are trying to edit does not exist.');
+	}
+	
+	/*
+     * Editing a formulariot
+     */
+    function edit_prov($idproveedor)
+    {   
+        // check if the formulariot exists before trying to edit it
+        $data['formulariot'] = $this->Formulariot_model->get_formulariot_prov($idproveedor);
+        
+        if(isset($data['formulariot']['idformularioT']))
+        {
+            if(isset($_POST) && count($_POST) > 0)     
+            {   
+                $params = array(
+					'actividadpcipal' => $this->input->post('actividadpcipal'),
+					'obras1tipo' => $this->input->post('obras1tipo'),
+					'obras2tipo' => $this->input->post('obras2tipo'),
+					'obras3tipo' => $this->input->post('obras3tipo'),
+					'idproveedor' => $this->input->post('idproveedor'),
+					'lugarservicios' => $this->input->post('lugarservicios'),
+					'reptecnico' => $this->input->post('reptecnico'),
+					'profesion' => $this->input->post('profesion'),
+					'cantidadpersonal' => $this->input->post('cantidadpersonal'),
+					'cantpersonaladmin' => $this->input->post('cantpersonaladmin'),
+					'cantpersonalprof' => $this->input->post('cantpersonalprof'),
+					'cantpersonalobra' => $this->input->post('cantpersonalobra'),
+					'certificaciones' => $this->input->post('certificaciones'),
+					'obras1' => $this->input->post('obras1'),
+					'obras1empresa' => $this->input->post('obras1empresa'),
+					'obras1contacto' => $this->input->post('obras1contacto'),
+					'obras1telefono' => $this->input->post('obras1telefono'),
+					'obras2' => $this->input->post('obras2'),
+					'obras2empresa' => $this->input->post('obras2empresa'),
+					'obras2contacto' => $this->input->post('obras2contacto'),
+					'obras2telefono' => $this->input->post('obras2telefono'),
+					'obras3' => $this->input->post('obras3'),
+					'obras3empresa' => $this->input->post('obras3empresa'),
+					'obras3contacto' => $this->input->post('obras3contacto'),
+					'obras3telefono' => $this->input->post('obras3telefono'),
+					'ordenylimpiezaobra' => $this->input->post('ordenylimpiezaobra'),
+					'calidamaterialesequipos' => $this->input->post('calidamaterialesequipos'),
+					'cumplimientonormashys' => $this->input->post('cumplimientonormashys'),
+					'cumplimientoplazos' => $this->input->post('cumplimientoplazos'),
+					'atencionprofdurante' => $this->input->post('atencionprofdurante'),
+					'montoobras1' => $this->input->post('montoobras1'),
+					'montoempresa1' => $this->input->post('montoempresa1'),
+					'monto1' => $this->input->post('monto1'),
+					'montoobras2' => $this->input->post('montoobras2'),
+					'montoempresa2' => $this->input->post('montoempresa2'),
+					'monto2' => $this->input->post('monto2'),
+					'montoobras3' => $this->input->post('montoobras3'),
+					'montoempresa3' => $this->input->post('montoempresa3'),
+					'monto3' => $this->input->post('monto3'),
+					'flotavehiculosutilitarios' => $this->input->post('flotavehiculosutilitarios'),
+					'flotavehiculoscarga' => $this->input->post('flotavehiculoscarga'),
+					'flotavehiculostripulados' => $this->input->post('flotavehiculostripulados'),
+					'aprobado' => $this->input->post('aprobado'),
+					'completo' => $this->input->post('completo'),
+					'provinciasalcanzadas' => $this->input->post('provinciasalcanzadas'),
+					'fortalezas' => $this->input->post('fortalezas'),
+                );
+
+                $this->Formulariot_model->update_formulariot($idformularioT,$params);            
+                redirect('proveedores', 'refresh');
+            }
+            else
+            {
+				$data['titulacion']="Formulario Técnico";
                 $data['_view'] = 'formulariot/edit';
 				$this->load->view('template/header',$data);
 				$this->load->view('layouts/main');
