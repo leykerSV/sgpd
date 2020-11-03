@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.21, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.22, for Linux (x86_64)
 --
 -- Host: localhost    Database: cocyar_sgpd
 -- ------------------------------------------------------
@@ -510,4 +510,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-11 12:14:30
+-- Dump completed on 2020-11-03 15:24:52
