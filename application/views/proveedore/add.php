@@ -64,6 +64,86 @@
         </div>
     </div>
 
+    <div class="text-white mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
+                    <h4>INFORMACION</h4>
+                </div>
+                <div class="col-md-9">
+                    <div class="input-group mb-3">
+                        <div class="col">
+							<select name="condicion" class="form-control">
+								<option value="">CONDICION FRENTE IVA</option>
+								<?php 
+								$condicion_values = array(
+									'RESP INSC'=>'RESP INSC',
+									'MONOTRIBUTO'=>'MONOTRIBUTO',
+								);
+
+								foreach($condicion_values as $value => $display_text)
+								{
+									$selected = ($value == $this->input->post('condicion')) ? ' selected="selected"' : "";
+
+									echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+								} 
+								?>
+							</select>
+							<span class="text-danger"><?php echo form_error('condicion');?></span>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="col">
+							<select name="empleador" class="form-control">
+								<option value="">EMPLEADOR</option>
+								<?php 
+								$empleador_values = array(
+									'SI'=>'SI',
+									'NO'=>'NO',
+								);
+
+								foreach($empleador_values as $value => $display_text)
+								{
+									$selected = ($value == $this->input->post('empleador')) ? ' selected="selected"' : "";
+
+									echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+								} 
+								?>
+							</select>
+							<span class="text-danger"><?php echo form_error('empleador');?></span>
+                        </div>
+                    </div>
+                
+				<div class="input-group mb-3">
+                        <div class="col">
+							<select name="tipo" class="form-control">
+								<option value="">TIPO</option>
+								<?php 
+								$tipo_values = array(
+									'Empresa Contratista' => 'Empresa Contratista',
+									'Proveedor de Materiales' => 'Proveedor de Materiales',
+									'Profesional' => 'Profesional', 
+									'Consultora' => 'Consultora',
+									'Provisión de Servicios (Mano de Obra y/o Materiales)' => 'Provisión de Servicios (Mano de Obra y/o Materiales)'
+								);
+
+								foreach($tipo_values as $value => $display_text)
+								{
+									$selected = ($value == $this->input->post('tipo')) ? ' selected="selected"' : "";
+
+									echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+								} 
+								?>
+							</select>
+							<span class="text-danger"><?php echo form_error('tipo');?></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 	<div class="text-white mb-3">
         <div class="card-body">
             <div class="row">
@@ -143,3 +223,25 @@
 
 
 <?php echo form_close(); ?>
+
+<script>
+    $("#condicion").change(function() {
+        var condicion = $(this).children("option:selected").val();
+        $.ajax({
+            error: function() {
+                alert('error');
+            },
+            success: function(data) {
+                //console.log(data);
+                $('#tematican2').empty();
+                for (i of data) {
+                    //console.log(i.indice2 + ' ' + i.descripcion2);
+                    $('#tematican2').prepend('<option value="' + i.indice2 + '" >' + i
+                        .descripcion2 + '</option>');
+                }
+                $('#tematican2').prepend(
+                    '<option selected>Seleccionar Tematica de Nivel 2</option>');
+            }
+        });
+    });
+    </script>

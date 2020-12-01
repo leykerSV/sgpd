@@ -26,7 +26,6 @@ class Proveedor extends CI_Controller{
 		$this->form_validation->set_rules('rubro','Rubro','required');
 		$this->form_validation->set_rules('telefono','Telefono','required');
 		$this->form_validation->set_rules('ciudad','Ciudad','required');
-		$this->form_validation->set_rules('web','Web','required');
 		$this->form_validation->set_rules('contacto','Contacto','required');
 		$this->form_validation->set_rules('pass','Pass','required');
 		
@@ -47,6 +46,9 @@ class Proveedor extends CI_Controller{
 				'contacto' => $this->input->post('contacto'),
 				'activo' => 1,
 				'categoria' => $this->input->post('categoria'),
+				'condicion' => $this->input->post('condicion'),
+				'empleador' => $this->input->post('empleador'),
+				'tipo' => $this->input->post('tipo')
             );
             
 			$proveedor_id = $this->Proveedore_model->add_proveedor($params);
