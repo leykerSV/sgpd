@@ -8,17 +8,13 @@
 
     <title>SGPD Cocyar</title>
 
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/redes.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/sticky.css'); ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/fontawesome.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     
-    <script src="<?php echo base_url('assets/js/query.slim.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/popper.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/js/jquery.slim.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/jquery-3.4.1.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap.bundle.js'); ?>"></script>
+    
   
     
 

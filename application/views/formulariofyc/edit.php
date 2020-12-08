@@ -139,7 +139,9 @@
                 </div>
                 <div class="col-md-9">
                     <div class="input-group mb-3">
+                    <input type="checkbox" id="iibbnoaplica" name="iibbnoaplica" value="No Aplica">
                         <div class="col">
+                        
                             <select name="situacioniibb" class="form-control">
                                 <option value="">Seleccionar Situación IIBB</option>
                                 <?php 

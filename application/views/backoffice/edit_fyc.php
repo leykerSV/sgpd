@@ -136,12 +136,42 @@
             <div class="row">
                 <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
                     <h4>SITUACION IIBB</h4>
+                    <p> </p>
+                    <input type="checkbox" id="iibbnoaplica" name="iibbnoaplica" value="No Aplica" >NO APLICA</input>
+                    <script type="text/javascript">
+                        $(function () {
+                            $("#iibbnoaplica").click(function () {
+                                if ($(this).is(":checked")) {
+                                    $("#numinscripiibb").attr("readonly",true);
+                                    $("#numinscripiibb").attr("placeholder","NO APLICA");
+                                    $("#numinscripiibb").attr("value","NO APLICA");
+                                    $("#porcret").attr("readonly",true);
+                                    $("#porcret").attr("placeholder","NO APLICA");
+                                    $("#porcret").attr("value","NO APLICA");
+                                    $("#situacioniibb").attr('disabled', 'disabled');
+                                    $("#situacioniibb").attr('value',"NO APLICA");
+                                    $("#situacioniibb").append("<option value='NO APLICA' >NO APLICA</option>")
+                                    $("#situacioniibb option[value='NO APLICA']").attr("selected",true);
+                                } else {
+                                    $("#numinscripiibb").attr("readonly",false);
+                                    $("#numinscripiibb").attr("placeholder","Nro. Insc. IIBB");
+                                    $("#numinscripiibb").attr("value","");
+                                    $("#porcret").attr("readonly",false);
+                                    $("#porcret").attr("placeholder","Porcentaje de Retención");
+                                    $("#porcret").attr("value","");
+                                    $("#situacioniibb").removeAttr('disabled');
+                                    $("#situacioniibb option[value=0]").attr("selected",true);
+                                }
+                            });
+                        });
+                    </script>
                 </div>
                 <div class="col-md-9">
+                    
                     <div class="input-group mb-3">
                         <div class="col">
-                            <select name="situacioniibb" class="form-control">
-                                <option value="">Seleccionar Situación IIBB</option>
+                            <select name="situacioniibb" id="situacioniibb" class="form-control">
+                                <option value="0">Seleccionar Situación IIBB</option>
                                 <?php 
 						$situacioniibb_values = array(
 							'CONTRIBUYENTE LOCAL'=>'CONTRIBUYENTE LOCAL',
@@ -183,12 +213,27 @@
             <div class="row">
                 <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
                     <h4>SITUACION FRENTE A GANACIAS</h4>
+                    <input type="checkbox" id="gciasnoaplica" name="gciasnoaplica" value="No Aplica" >NO APLICA</input>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $('#gciasnoaplica').on('click', function () {
+                                if ($('#gciasnoaplica').is(":checked")) {
+                                    $("#ganancias").attr('disabled', 'disabled');
+                                    $("#ganancias").append("<option value='NO APLICA' >NO APLICA</option>")
+                                    $("#ganancias option[value='NO APLICA']").attr("selected",true);
+                                } else {
+                                    $("#ganancias").removeAttr('disabled');
+                                    $("#ganancias option[value=0]").attr("selected",true);
+                                }
+                            });
+                        });
+                    </script>
                 </div>
                 <div class="col-md-9">
                     <div class="input-group mb-3">
                         <div class="col">
-                            <select name="ganancias" class="form-control">
-                                <option value="">Seleccionar Ganancias</option>
+                            <select name="ganancias" id="ganancias" class="form-control">
+                                <option value="0">Seleccionar Ganancias</option>
                                 <?php 
 							$ganancias_values = array(
 								'INSCRIPTO'=>'INSCRIPTO',
@@ -214,11 +259,26 @@
             <div class="row">
                 <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
                     <h4>SITUACION FRENTE A SUSS</h4>
+                    <input type="checkbox" id="sussnoaplica" name="sussnoaplica" value="No Aplica">NO APLICA</input>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $('#sussnoaplica').on('click', function () {
+                                if ($('#sussnoaplica').is(":checked")) {
+                                    $("#suss").attr('disabled', 'disabled');
+                                    $("#suss").append("<option value='NO APLICA' >NO APLICA</option>")
+                                    $("#suss option[value='NO APLICA']").attr("selected",true);
+                                } else {
+                                    $("#suss").removeAttr('disabled');
+                                    $("#suss option[value=0]").attr("selected",true);
+                                }
+                            });
+                        });
+                    </script>
                 </div>
                 <div class="col-md-9">
                     <div class="input-group mb-3">
                         <div class="col">
-                            <select name="suss" class="form-control">
+                            <select name="suss" id="suss" class="form-control">
                                 <option value="">Seleccionar SUSS</option>
                                 <?php 
 							$suss_values = array(
@@ -246,6 +306,88 @@
             <div class="row">
                 <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
                     <h4>DESIGNADO AGENTE DE PERCEPCION</h4>
+                    <input type="checkbox" id="pernoaplica" name="pernoaplica" value="No Aplica">NO APLICA</input>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $('#pernoaplica').on('click', function () {
+                                if ($('#pernoaplica').is(":checked")) {
+                                    $("#agentepercepcioniva").attr("readonly",true);
+                                    $("#agentepercepcioniva").attr("placeholder","NO APLICA");
+                                    $("#agentepercepcioniva").attr("value","NO APLICA");
+                                    $("#agentepercepcionivares").attr("readonly",true);
+                                    $("#agentepercepcionivares").attr("placeholder","NO APLICA");
+                                    $("#agentepercepcionivares").attr("value","NO APLICA");
+                                    $("#agentepercepcionivaali").attr("readonly",true);
+                                    $("#agentepercepcionivaali").attr("placeholder","NO APLICA");
+                                    $("#agentepercepcionivaali").attr("value","NO APLICA");
+                                    $("#agentepercepcioniibb1").attr("readonly",true);
+                                    $("#agentepercepcioniibb1").attr("placeholder","NO APLICA");
+                                    $("#agentepercepcioniibb1").attr("value","NO APLICA");
+                                    $("#agentepercepcioniibb1pcia").attr("readonly",true);
+                                    $("#agentepercepcioniibb1pcia").attr("placeholder","NO APLICA");
+                                    $("#agentepercepcioniibb1pcia").attr("value","NO APLICA");
+                                    $("#agentepercepcioniibb1ali").attr("readonly",true);
+                                    $("#agentepercepcioniibb1ali").attr("placeholder","NO APLICA");
+                                    $("#agentepercepcioniibb1ali").attr("value","NO APLICA");
+                                    $("#agentepercepcioniibb2").attr("readonly",true);
+                                    $("#agentepercepcioniibb2").attr("placeholder","NO APLICA");
+                                    $("#agentepercepcioniibb2").attr("value","NO APLICA");
+                                    $("#agentepercepcioniibb2pcia").attr("readonly",true);
+                                    $("#agentepercepcioniibb2pcia").attr("placeholder","NO APLICA");
+                                    $("#agentepercepcioniibb2pcia").attr("value","NO APLICA");
+                                    $("#agentepercepcioniibb2ali").attr("readonly",true);
+                                    $("#agentepercepcioniibb2ali").attr("placeholder","NO APLICA");
+                                    $("#agentepercepcioniibb2ali").attr("value","NO APLICA"); 
+                                    $("#agentepercepcioniibb3").attr("readonly",true);
+                                    $("#agentepercepcioniibb3").attr("placeholder","NO APLICA");
+                                    $("#agentepercepcioniibb3").attr("value","NO APLICA");
+                                    $("#agentepercepcioniibb3pcia").attr("readonly",true);
+                                    $("#agentepercepcioniibb3pcia").attr("placeholder","NO APLICA");
+                                    $("#agentepercepcioniibb3pcia").attr("value","NO APLICA");
+                                    $("#agentepercepcioniibb3ali").attr("readonly",true);
+                                    $("#agentepercepcioniibb3ali").attr("placeholder","NO APLICA");
+                                    $("#agentepercepcioniibb3ali").attr("value","NO APLICA");
+                                } else {
+                                    $("#agentepercepcioniva").attr("readonly",false);
+                                    $("#agentepercepcioniva").attr("placeholder","I.V.A.");
+                                    $("#agentepercepcioniva").attr("value","");
+                                    $("#agentepercepcionivares").attr("readonly",false);
+                                    $("#agentepercepcionivares").attr("placeholder","Res. numero");
+                                    $("#agentepercepcionivares").attr("value","");
+                                    $("#agentepercepcionivaali").attr("readonly",false);
+                                    $("#agentepercepcionivaali").attr("placeholder","Alicuota");
+                                    $("#agentepercepcionivaali").attr("value","");
+                                    $("#agentepercepcioniibb1").attr("readonly",false);
+                                    $("#agentepercepcioniibb1").attr("placeholder","IIBB");
+                                    $("#agentepercepcioniibb1").attr("value","");
+                                    $("#agentepercepcioniibb1pcia").attr("readonly",false);
+                                    $("#agentepercepcioniibb1pcia").attr("placeholder","Provincia");
+                                    $("#agentepercepcioniibb1pcia").attr("value","");
+                                    $("#agentepercepcioniibb1ali").attr("readonly",false);
+                                    $("#agentepercepcioniibb1ali").attr("placeholder","Alicuota");
+                                    $("#agentepercepcioniibb1ali").attr("value","");
+                                    $("#agentepercepcioniibb2").attr("readonly",false);
+                                    $("#agentepercepcioniibb2").attr("placeholder","IIBB");
+                                    $("#agentepercepcioniibb2").attr("value","");
+                                    $("#agentepercepcioniibb2pcia").attr("readonly",false);
+                                    $("#agentepercepcioniibb2pcia").attr("placeholder","Provincia");
+                                    $("#agentepercepcioniibb2pcia").attr("value","");
+                                    $("#agentepercepcioniibb2ali").attr("readonly",false);
+                                    $("#agentepercepcioniibb2ali").attr("placeholder","Alicuota");
+                                    $("#agentepercepcioniibb2ali").attr("value",""); 
+                                    $("#agentepercepcioniibb3").attr("readonly",false);
+                                    $("#agentepercepcioniibb3").attr("placeholder","IIBB");
+                                    $("#agentepercepcioniibb3").attr("value","");
+                                    $("#agentepercepcioniibb3pcia").attr("readonly",false);
+                                    $("#agentepercepcioniibb3pcia").attr("placeholder","Provincia");
+                                    $("#agentepercepcioniibb3pcia").attr("value","");
+                                    $("#agentepercepcioniibb3ali").attr("readonly",false);
+                                    $("#agentepercepcioniibb3ali").attr("placeholder","Alicuota");
+                                    $("#agentepercepcioniibb3ali").attr("value","");
+                                }
+                            });
+                        });
+                    </script>
                 </div>
                 <div class="col-md-9">
                     <div class="input-group mb-3">
@@ -318,7 +460,60 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
-                    <h4>DESIGNADO AGENTE DE PERCEPCION</h4>
+                    <h4>DESIGNADO AGENTE DE RETENCION</h4>
+                    <input type="checkbox" id="retnoaplica" name="retnoaplica" value="No Aplica">NO APLICA</input>
+                    <script type="text/javascript"> 
+                        $(document).ready(function () {
+                            $('#retnoaplica').on('click', function () {
+                                if ($('#retnoaplica').is(":checked")) {
+                                    $("#agenteretgcias").attr("readonly",true);
+                                    $("#agenteretgcias").attr("placeholder","NO APLICA");
+                                    $("#agenteretgcias").attr("value","NO APLICA");
+                                    $("#agenteretgciasres").attr("readonly",true);
+                                    $("#agenteretgciasres").attr("placeholder","NO APLICA");
+                                    $("#agenteretgciasres").attr("value","NO APLICA");
+                                    $("#agenteretgciasiibb").attr("readonly",true);
+                                    $("#agenteretgciasiibb").attr("placeholder","NO APLICA");
+                                    $("#agenteretgciasiibb").attr("value","NO APLICA");
+                                    $("#agenteretgciasiibbres").attr("readonly",true);
+                                    $("#agenteretgciasiibbres").attr("placeholder","NO APLICA");
+                                    $("#agenteretgciasiibbres").attr("value","NO APLICA");
+                                    $("#agenteretgciassuss").attr("readonly",true);
+                                    $("#agenteretgciassuss").attr("placeholder","NO APLICA");
+                                    $("#agenteretgciassuss").attr("value","NO APLICA");
+                                    $("#agenteretgciassussres").attr("readonly",true);
+                                    $("#agenteretgciassussres").attr("placeholder","NO APLICA");
+                                    $("#agenteretgciassussres").attr("value","NO APLICA");
+                                    $("#agenteretgciasivares").attr("readonly",true);
+                                    $("#agenteretgciasivares").attr("placeholder","NO APLICA");
+                                    $("#agenteretgciasivares").attr("value","NO APLICA");
+                                } else {
+                                    $("#agenteretgcias").attr("readonly",false);
+                                    $("#agenteretgcias").attr("placeholder","Ganancias");
+                                    $("#agenteretgcias").attr("value","");
+                                    $("#agenteretgciasres").attr("readonly",false);
+                                    $("#agenteretgciasres").attr("placeholder","Resolucion Gcias.");
+                                    $("#agenteretgciasres").attr("value","");
+                                    $("#agenteretgciasiibb").attr("readonly",false);
+                                    $("#agenteretgciasiibb").attr("placeholder","IIBB");
+                                    $("#agenteretgciasiibb").attr("value","");
+                                    $("#agenteretgciasiibbres").attr("readonly",false);
+                                    $("#agenteretgciasiibbres").attr("placeholder","Resolucion IIBB");
+                                    $("#agenteretgciasiibbres").attr("value","");
+                                    $("#agenteretgciassuss").attr("readonly",false);
+                                    $("#agenteretgciassuss").attr("placeholder","SUSS");
+                                    $("#agenteretgciassuss").attr("value","");
+                                    $("#agenteretgciassussres").attr("readonly",false);
+                                    $("#agenteretgciassussres").attr("placeholder","Resolución SUSS");
+                                    $("#agenteretgciassussres").attr("value","");
+                                    $("#agenteretgciasivares").attr("readonly",false);
+                                    $("#agenteretgciasivares").attr("placeholder","Resolución IVA");
+                                    $("#agenteretgciasivares").attr("value","");
+                                }
+                            });
+                        });
+                    </script>
+                                
                 </div>
                 <div class="col-md-9">
                     <div class="input-group mb-3">
@@ -372,6 +567,34 @@
             <div class="row">
                 <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
                     <h4>FACTURACION ANUAL</h4>
+                    <input type="checkbox" id="factnoaplica" name="factnoaplica" value="No Aplica">NO APLICA</input>
+                    <script type="text/javascript"> 
+                        $(document).ready(function () {
+                            $('#factnoaplica').on('click', function () {
+                                if ($('#factnoaplica').is(":checked")) {
+                                    $("#factultimocierre").attr("readonly",true);
+                                    $("#factultimocierre").attr("placeholder","NO APLICA");
+                                    $("#factultimocierre").attr("value","NO APLICA");
+                                    $("#factanteultimocierre").attr("readonly",true);
+                                    $("#factanteultimocierre").attr("placeholder","NO APLICA");
+                                    $("#factanteultimocierre").attr("value","NO APLICA");
+                                    $("#factantepenultimocierre").attr("readonly",true);
+                                    $("#factantepenultimocierre").attr("placeholder","NO APLICA");
+                                    $("#factantepenultimocierre").attr("value","NO APLICA");
+                                } else {
+                                    $("#factultimocierre").attr("readonly",false);
+                                    $("#factultimocierre").attr("placeholder","Facturacion Ultimo Cierre");
+                                    $("#factultimocierre").attr("value","");
+                                    $("#factanteultimocierre").attr("readonly",false);
+                                    $("#factanteultimocierre").attr("placeholder","Facturacion Anteultimo Cierre");
+                                    $("#factanteultimocierre").attr("value","");
+                                    $("#factantepenultimocierre").attr("readonly",false);
+                                    $("#factantepenultimocierre").attr("placeholder","Facturacion Antepenultimo Cierre");
+                                    $("#factantepenultimocierre").attr("value","");  
+                                }
+                            });
+                        });
+                    </script>
                 </div>
                 <div class="col-md-9">
                     <div class="input-group mb-3">
@@ -404,7 +627,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
-                    <h4>FACTURACION ANUAL</h4>
+                    <h4>REFERENCIAS</h4>
                 </div>
                 <div class="col-md-9">
                     <div class="input-group mb-3">
@@ -512,7 +735,7 @@
         </div>
     </div>
 
-    <div class="text-white mb-3">
+    <div class="text-white mb-3" hidden>
         <div class="card-body">
             <div class="row">
                 <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
@@ -548,3 +771,15 @@
 </div>
 
 <?php echo form_close(); ?>
+
+<script>
+    function terminos_cambio(checkbox){ {
+        if(checkbox.checked){
+            alert('La casilla ha sido marcada!');
+        }
+        //Si se ha desmarcado se ejecuta el siguiente mensaje.
+        else{
+            alert('La casilla ha sido desmarcada!');
+        };
+    });
+</script>
