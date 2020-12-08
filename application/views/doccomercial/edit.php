@@ -2,7 +2,7 @@
 <div class="container-fluid" align="center">
 	<div class="row">
 		<div class="col-md-12">
-			<img src="<?php echo base_url('assets/imagenes/cabeza.png'); ?>" alt="">
+			
 		</div>
 	</div>
 	<p></p>
@@ -288,7 +288,7 @@
 		<div class="col-md-12">
 			<div class="card">
 				<h5 class="card-header">
-					CONTANCIA TITULO
+					CONSTANCIA TITULO
 				</h5>
 				<div class="card-body">
 					<p class="card-text">
@@ -337,7 +337,7 @@
 		<div class="col-md-12">
 			<div class="card">
 				<h5 class="card-header">
-					CONTANCIA TITULO
+					CONSTANCIA MATRICULA
 				</h5>
 				<div class="card-body">
 					<p class="card-text">

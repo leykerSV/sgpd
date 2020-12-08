@@ -21,8 +21,12 @@ class Inicio extends CI_Controller {
 	public function menu()
 	{
 		$this->check_log();	
-		$this->load->model('proveedore_model');        
+		$this->load->model('proveedore_model');  
+		$this->load->model('formulariofyc_model');
+		$this->load->model('formulariot_model');       
 		$data['proveedor'] = $this->proveedore_model->get_all_proveedores_backoffice_prov($this->session->userdata('idproveedor'));
+		$data['fyc'] = $this->formulariofyc_model->get_formulariofyc_prov($this->session->userdata('idproveedor'));
+		$data['ft'] = $this->formulariot_model->get_formulariot_prov($this->session->userdata('idproveedor'));
 		$data['titulacion']="Listado de Tareas de ".$data['proveedor'][0]['empresa'];
 		$data['_view'] = 'proveedores/menu';
         $this->load->view('template/header',$data);

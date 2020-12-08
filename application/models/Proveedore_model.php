@@ -45,7 +45,8 @@ class Proveedore_model extends CI_Model
     function add_proveedor($params)
     {
         $this->db->insert('proveedores',$params);
-        return $this->db->insert_id();
+        $vuelta = $this->db->insert_id();
+        return $vuelta;
     }
 
     function add_formularios($idproveedor)

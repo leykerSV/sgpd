@@ -56,6 +56,7 @@ class Doccomercial extends CI_Controller{
             else
             {
                 $data['_view'] = 'doccomercial/edit';
+                $data['titulacion'] = 'Documentación Comercial';
                 $this->load->view('template/header',$data);
                 $this->load->view('layouts/main');
             }
