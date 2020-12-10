@@ -69,6 +69,12 @@ class Login extends CI_Controller {
           $resultdoc=$this->Proveedordb->doccomercial($row->idproveedor); 
           $doccom_array = json_decode(json_encode($resultdoc[0]), true);
 
+          $resultdoc=$this->Proveedordb->docingresoobra($row->idproveedor); 
+          $docingresoobra_array = json_decode(json_encode($resultdoc[0]), true);
+
+          $resultdoc=$this->Proveedordb->docingresoobra($row->idproveedor); 
+          $docpagos_array = json_decode(json_encode($resultdoc[0]), true);
+
         $sess_array = array(
             'idproveedor' => $row->idproveedor,
             'empresa' => $row->empresa,
@@ -89,6 +95,8 @@ class Login extends CI_Controller {
             'formulariofyc'=>$formfyc_array,
             'formulariot'=>$formt_array,
             'doccomercial'=>$doccom_array,
+            'docingresoobra'=>$docingresoobra_array,
+            'docpagos'=>$docpagos_array,
           );
           $this->session->set_userdata($sess_array);
         }

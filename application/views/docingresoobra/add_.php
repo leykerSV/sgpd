@@ -1,4 +1,4 @@
-<?php echo form_open('doccomercial/add',array("class"=>"form-horizontal")); ?>
+<?php echo form_open('docingresoobra/add',array("class"=>"form-horizontal")); ?>
 
 	<div class="form-group">
 		<label for="inscripcion" class="col-md-4 control-label">Inscripcion</label>
@@ -291,7 +291,7 @@
 	
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-8">
-			<button type="submit" class="btn btn-success">Guardar</button>
+			<button type="submit" class="btn btn-success">Save</button>
         </div>
 	</div>
 

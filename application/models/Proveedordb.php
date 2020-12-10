@@ -104,4 +104,46 @@ Class Proveedordb extends CI_Model
         }    
     }
 
+    function docingresoobra($idproveedor){
+        date_default_timezone_set('America/Argentina/Cordoba');
+        $this->load->database();    
+        $this->db->select('*');
+        $this->db->from('docingresoobra');
+        $this->db->where('idproveedor = ' . "'" . $idproveedor . "'");
+        $this->db->limit(1);
+
+        $query = $this->db->get();
+        $a=$query->result();
+
+        if($query->num_rows() == 1)
+        {
+            return $query->result();
+        }
+        else
+        {
+                return false;
+        }    
+    }
+
+    function docpagos($idproveedor){
+        date_default_timezone_set('America/Argentina/Cordoba');
+        $this->load->database();    
+        $this->db->select('*');
+        $this->db->from('docpagos');
+        $this->db->where('idproveedor = ' . "'" . $idproveedor . "'");
+        $this->db->limit(1);
+
+        $query = $this->db->get();
+        $a=$query->result();
+
+        if($query->num_rows() == 1)
+        {
+            return $query->result();
+        }
+        else
+        {
+                return false;
+        }    
+    }
+
 }   

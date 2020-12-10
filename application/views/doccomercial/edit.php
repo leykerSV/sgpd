@@ -1,10 +1,5 @@
 <?php echo form_open_multipart('doccomercial/edit/'.$doccomercial['iddoccomercial'],array("class"=>"form-horizontal")); ?>
-<div class="container-fluid" align="center">
-	<div class="row">
-		<div class="col-md-12">
-			
-		</div>
-	</div>
+<div class="container text-center">
 	<p></p>
 	<div class="row">
 		<div class="col-md-12">

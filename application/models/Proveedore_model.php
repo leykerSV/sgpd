@@ -57,6 +57,8 @@ class Proveedore_model extends CI_Model
         $query = $this->db->query($a);
         $a= 'insert into doccomercial (idproveedor) values ('.$idproveedor.')';
         $query = $this->db->query($a);
+        $a= 'insert into docingresoobra (idproveedor) values ('.$idproveedor.')';
+        $query = $this->db->query($a);
     }
     
     /*
