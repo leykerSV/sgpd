@@ -32,351 +32,66 @@
 		</div>
 	</div>
 	<p></p>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="card">
-				<h5 class="card-header">
-					CONTRATO SOCIAL (sociedades)
-				</h5>
-				<div class="card-body">
-					<p class="card-text">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="contratosocial" class="col-md-4 control-label">Archivo Contrato Social</label>
-								<div class="col-md-8">
-									<input type="file" accept=".pdf" name="contratosocial" value="<?php echo ($this->input->post('contratosocial') ? $this->input->post('contratosocial') : $doccomercial['contratosocial']); ?>" class="form-control" id="contratosocial" />
-								</div>
-							</div>
+
+	<style>
+    .bg-info {
+        background-color: #4563ab !important;
+		
+    }
+</style>
+<div class="container text-center">
+    <!--<div class="col text-center">
+        <img src="COCYAR.png" class="img-fluid" alt="Responsive image">
+    </div>-->
+    <div class="mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
+                    <h4 class="text-white">SOCIEDADES</h4>
+                </div>
+                <div class="col-md-9">
+                    <div class="input-group mb-3">
+						<div class="col-md-9">
+							
+							<span class="label other">Contrato Social</span><input type="file" accept=".pdf" name="contratosocial" value="<?php echo ($this->input->post('contratosocial') ? $this->input->post('contratosocial') : $doccomercial['contratosocial']); ?>" class="form-control" id="contratosocial" />
 						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<div class="form-group">
-									<label for="contratosocialobs" class="col-md-4 control-label">Observaciones</label>
-									<div class="col-md-8">
-										<input type="text" size="150" name="contratosocialobs" value="<?php echo ($this->input->post('contratosocialobs') ? $this->input->post('contratosocialobs') : $doccomercial['contratosocialobs']); ?>" class="form-control" id="contratosocialobs" />
-									</div>
-								</div>	
-							</div>
+						<div class="col-md-9">
+							</span><span class="label other">Constancia de Inscripcion en AFIP</span><input type="file" accept=".pdf" name="inscripcion" value="<?php echo ($this->input->post('inscripcion') ? $this->input->post('inscripcion') : $doccomercial['inscripcion']); ?>" class="form-control" id="inscripcion" />
+                        </div>
+                        <div class="col-md-9">
+							<span class="label other">Balance</span><input type="file" accept=".pdf" name="balance" value="<?php echo ($this->input->post('balance') ? $this->input->post('balance') : $doccomercial['balance']); ?>" class="form-control" id="balance" />
+                        </div>
+                        <div class="col-md-9">
+							<span class="label other">Constancia IIBB</span><input type="file" accept=".pdf" value="<?php echo ($this->input->post('contastanciaiibb') ? $this->input->post('contastanciaiibb') : $doccomercial['contastanciaiibb']); ?>" class="form-control" id="contastanciaiibb" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div class="mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
+                    <h4 class="text-white">MONOTRIBUTO</h4>
+                </div>
+                <div class="col-md-9">
+				<div class="input-group mb-3">
+						<div class="col-md-9">
+							<span class="label other">Constancia Monotributo</span><input type="file" accept=".pdf" name="constmonotributo" value="<?php echo ($this->input->post('constmonotributo') ? $this->input->post('constmonotributo') : $doccomercial['constmonotirbuto']); ?>" class="form-control" id="constmonotirbuto" />
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<div class="col-md-8">
-									<?php if($this->input->post('contratosocialok'==0)){
-										echo '<input type="checkbox" name="aprobado" onclick="return false;" checked>APROBADO</label>';
-									}else{
-										echo '<input type="checkbox" name="aprobado" onclick="return false;">APROBADO</label>';
-									}			
-									?>
-								</div>
-							</div>
-						</div>
-					</div>
-					</p>
-				</div>
-				<div class="card-footer">
-					La documentación debe ser en formato PDF y no pesar mas de 2 mb.
-				</div>
-			</div>
-		</div>
-	</div>
-	<p></p>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="card">
-				<h5 class="card-header">
-					INSCRIPCION EN AFIP (sociedades)
-				</h5>
-				<div class="card-body">
-					<p class="card-text">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="inscripcion" class="col-md-4 control-label">Archivo Inscripcion AFIP</label>
-								<div class="col-md-8">
-									<input type="file" accept=".pdf" name="inscripcion" value="<?php echo ($this->input->post('inscripcion') ? $this->input->post('inscripcion') : $doccomercial['inscripcion']); ?>" class="form-control" id="inscripcion" />
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="inscripcionobs" class="col-md-4 control-label">Observaciones</label>
-								<div class="col-md-8">
-									<input type="text" name="inscripcionobs" value="<?php echo ($this->input->post('inscripcionobs') ? $this->input->post('inscripcionobs') : $doccomercial['inscripcionobs']); ?>" class="form-control" id="inscripcionobs" />
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<div class="col-md-8">
-									<?php if($this->input->post('inscripcionok'==0)){
-										echo '<input type="checkbox" name="aprobado" onclick="return false;" checked>APROBADO</label>';
-									}else{
-										echo '<input type="checkbox" name="aprobado" onclick="return false;">APROBADO</label>';
-									}			
-									?>
-								</div>
-							</div>
-						</div>
-					</div>
-					</p>
-				</div>
-				<div class="card-footer">
-					
-				</div>
-			</div>
-		</div>
-	</div>
-	<p></p>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="card">
-				<h5 class="card-header">
-					BALANCE (sociedades)
-				</h5>
-				<div class="card-body">
-					<p class="card-text">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="balance" class="col-md-4 control-label">Archivo Balance</label>
-								<div class="col-md-8">
-									<input type="file" accept=".pdf" name="balance" value="<?php echo ($this->input->post('balance') ? $this->input->post('balance') : $doccomercial['balance']); ?>" class="form-control" id="balance" />
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="balanceobs" class="col-md-4 control-label">Observaciones</label>
-								<div class="col-md-8">
-									<input type="text" name="balanceobs" value="<?php echo ($this->input->post('balanceobs') ? $this->input->post('balanceobs') : $doccomercial['balanceobs']); ?>" class="form-control" id="balanceobs" />
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<div class="col-md-8">
-									<?php if($this->input->post('balanceok'==0)){
-										echo '<input type="checkbox" name="aprobado" onclick="return false;" checked>APROBADO</label>';
-									}else{
-										echo '<input type="checkbox" name="aprobado" onclick="return false;">APROBADO</label>';
-									}			
-									?>
-								</div>
-							</div>
-						</div>
-					</div>
-					</p>
-				</div>
-				<div class="card-footer">
-					
-				</div>
-			</div>
-		</div>
-	</div>							
-	<p></p>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="card">
-				<h5 class="card-header">
-					CONSTANCIA IIBB (sociedades)
-				</h5>
-				<div class="card-body">
-					<p class="card-text">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="contastanciaiibb" class="col-md-4 control-label">Archivo Contastancia IIBB</label>
-								<div class="col-md-8">
-									<input type="file" accept=".pdf" value="<?php echo ($this->input->post('contastanciaiibb') ? $this->input->post('contastanciaiibb') : $doccomercial['contastanciaiibb']); ?>" class="form-control" id="contastanciaiibb" />
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="constanciaiibbobs" class="col-md-4 control-label">Observaciones</label>
-								<div class="col-md-8">
-									<input type="text" name="constanciaiibbobs" value="<?php echo ($this->input->post('constanciaiibbobs') ? $this->input->post('constanciaiibbobs') : $doccomercial['constanciaiibbobs']); ?>" class="form-control" id="constanciaiibbobs" />
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<div class="col-md-8">
-									<?php if($this->input->post('constanciaiibbok'==0)){
-										echo '<input type="checkbox" name="aprobado" onclick="return false;" checked>APROBADO</label>';
-									}else{
-										echo '<input type="checkbox" name="aprobado" onclick="return false;">APROBADO</label>';
-									}			
-									?>
-								</div>
-							</div>
-						</div>
-					</div>
-					</p>
-				</div>
-				<div class="card-footer">
-					
-				</div>
-			</div>
-		</div>
-	</div>							
-	<p></p>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="card">
-				<h5 class="card-header">
-					CONSTANCIA MONOTRIBUTO
-				</h5>
-				<div class="card-body">
-					<p class="card-text">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="constmonotirbuto" class="col-md-4 control-label">Archivo Constancia Monotributo</label>
-								<div class="col-md-8">
-									<input type="file" accept=".pdf" name="constmonotirbuto" value="<?php echo ($this->input->post('constmonotirbuto') ? $this->input->post('constmonotirbuto') : $doccomercial['constmonotirbuto']); ?>" class="form-control" id="constmonotirbuto" />
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="constmonotributoobs" class="col-md-4 control-label">Observaciones</label>
-								<div class="col-md-8">
-									<input type="text" name="constmonotributoobs" value="<?php echo ($this->input->post('constmonotributoobs') ? $this->input->post('constmonotributoobs') : $doccomercial['constmonotributoobs']); ?>" class="form-control" id="constmonotributoobs" />
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<div class="col-md-8">
-									<?php if($this->input->post('constmonotributook'==0)){
-										echo '<input type="checkbox" name="aprobado" onclick="return false;" checked>APROBADO</label>';
-									}else{
-										echo '<input type="checkbox" name="aprobado" onclick="return false;">APROBADO</label>';
-									}			
-									?>
-								</div>
-							</div>
-						</div>
-					</div>
-					</p>
-				</div>
-				<div class="card-footer">
-					
-				</div>
-			</div>
-		</div>
-	</div>							
-	<p></p>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="card">
-				<h5 class="card-header">
-					CONSTANCIA TITULO
-				</h5>
-				<div class="card-body">
-					<p class="card-text">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="titutlo" class="col-md-4 control-label">Archivo Titulo</label>
-								<div class="col-md-8">
-									<input type="file" accept=".pdf" value="<?php echo ($this->input->post('titutlo') ? $this->input->post('titutlo') : $doccomercial['titutlo']); ?>" class="form-control" id="titutlo" />
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="tituloobs" class="col-md-4 control-label">Observaciones</label>
-								<div class="col-md-8">
-									<input type="text" name="tituloobs" value="<?php echo ($this->input->post('tituloobs') ? $this->input->post('tituloobs') : $doccomercial['tituloobs']); ?>" class="form-control" id="tituloobs" />
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<div class="col-md-8">
-									<?php if($this->input->post('titulook'==0)){
-										echo '<input type="checkbox" name="aprobado" onclick="return false;" checked>APROBADO</label>';
-									}else{
-										echo '<input type="checkbox" name="aprobado" onclick="return false;">APROBADO</label>';
-									}			
-									?>
-								</div>
-							</div>
-						</div>
-					</div>
-					</p>
-				</div>
-				<div class="card-footer">
-					
-				</div>
-			</div>
-		</div>
-	</div>							
-	<p></p>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="card">
-				<h5 class="card-header">
-					CONSTANCIA MATRICULA
-				</h5>
-				<div class="card-body">
-					<p class="card-text">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="matricula" class="col-md-4 control-label">Archivo Matricula</label>
-								<div class="col-md-8">
-									<input type="file" accept=".pdf" name="matricula" value="<?php echo ($this->input->post('matricula') ? $this->input->post('matricula') : $doccomercial['matricula']); ?>" class="form-control" id="matricula" />
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="matriculaobs" class="col-md-4 control-label">Observaciones</label>
-								<div class="col-md-8">
-									<input type="text" name="matriculaobs" value="<?php echo ($this->input->post('matriculaobs') ? $this->input->post('matriculaobs') : $doccomercial['matriculaobs']); ?>" class="form-control" id="matriculaobs" />
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<div class="col-md-8">
-									<?php if($this->input->post('matriculaok'==0)){
-										echo '<input type="checkbox" name="aprobado" onclick="return false;" checked>APROBADO</label>';
-									}else{
-										echo '<input type="checkbox" name="aprobado" onclick="return false;">APROBADO</label>';
-									}			
-									?>
-								</div>
-							</div>
-						</div>
-					</div>
-					</p>
-				</div>
-				<div class="card-footer">
-					
-				</div>
-			</div>
-		</div>
-	</div>							
-	<p></p>
+						<div class="col-md-9">
+							<span class="label other">Constancia Título</span><input type="file" accept=".pdf" value="<?php echo ($this->input->post('titutlo') ? $this->input->post('titutlo') : $doccomercial['titutlo']); ?>" class="form-control" id="titutlo" />
+                        </div>
+                        <div class="col-md-9">
+							<span class="label other">Matrícula</span><input type="file" accept=".pdf" name="matricula" value="<?php echo ($this->input->post('matricula') ? $this->input->post('matricula') : $doccomercial['matricula']); ?>" class="form-control" id="matricula" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 	<div class="row">
 		<div class="col-md-12">
@@ -401,7 +116,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div>SOCIEDADES
 					</p>
 				</div>
 				<div class="card-footer">
