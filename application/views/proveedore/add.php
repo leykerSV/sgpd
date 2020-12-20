@@ -14,11 +14,17 @@
                 <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
                     <h4>EMPRESA</h4>
                 </div>
-                <div class="col-md-9">
+				<div class="col-md-9">
+                    <div class="input-group mb-3">
+                        <div class="col">
+						<input type="text" name="empresa" value="<?php echo $this->input->post('empresa'); ?>" class="form-control" id="empresa" placeholder="Razón Social" />
+                        </div>
+                    </div>
 					<div class="input-group mb-3">
+
 						<div class="col-md-6">
-							<input type="text" name="empresa" value="<?php echo $this->input->post('empresa'); ?>" class="form-control" id="empresa" placeholder="Nombre empresa (este dato será su usuario)" />
-							<span class="text-danger"><?php echo form_error('empresa');?></span>	
+							<input type="text" name="usuario" value="<?php echo $this->input->post('usuario'); ?>" class="form-control" id="usuario" placeholder="Usuario (Max. 8 caracteres)" />
+							<span class="text-danger"><?php echo form_error('usuario');?></span>	
                         </div>
                         <div class="col-md-6">
 							<input type="password" name="pass" value="<?php echo $this->input->post('pass'); ?>" class="form-control" id="pass" placeholder="Password"/>
@@ -55,6 +61,7 @@
 								?>
 							</select>
 							<span class="text-danger"><?php echo form_error('rubro');?></span>
+							</p></p>
 							<input type="text" name="subrubro" value="<?php echo $this->input->post('subrubro'); ?>" class="form-control" id="subrubro" placeholder="Sub Rubro" />
 							<span class="text-danger"><?php echo form_error('subrubro');?></span> 
                         </div>
@@ -77,8 +84,9 @@
 								<option value="">CONDICION FRENTE IVA</option>
 								<?php 
 								$condicion_values = array(
-									'RESP INSC'=>'RESP INSC',
+									'RESPONSABLE INSCRIPTO'=>'RESPONSABLE INSCRIPTO',
 									'MONOTRIBUTO'=>'MONOTRIBUTO',
+									'EXENTO'=>'EXENTO'
 								);
 
 								foreach($condicion_values as $value => $display_text)

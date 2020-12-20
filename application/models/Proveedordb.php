@@ -21,7 +21,7 @@ Class Proveedordb extends CI_Model
         $this->load->database();    
         $this->db->select('*');
         $this->db->from('proveedores');
-        $this->db->where('empresa = ' . "'" . $username . "'");
+        $this->db->where('usuario = ' . "'" . $username . "'");
         $this->db->where('pass = ' . "'" . MD5($password) . "'");
         $this->db->where('activo = ' . "'" . 1 . "'");
         $this->db->limit(1);

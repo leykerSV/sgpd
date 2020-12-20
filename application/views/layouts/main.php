@@ -18,6 +18,7 @@
 			</div>
 			<div class="col-md-8" align="center">
 				<h2><?php echo $titulacion; ?></h2>
+				<h4><?php echo $mensaje; ?></h4>
 			</div>
 			<div class="col-md-2">
 

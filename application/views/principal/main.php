@@ -4,7 +4,7 @@
 
       <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;;">
       <a class="navbar-brand" href="#">
-          <img src="<?php echo base_url('assets/imagenes/concejo.png'); ?>" alt="" height=150 width=400>
+          <img src="<?php echo base_url('assets/imagenes/concejo.png'); ?>" alt="" />
           
         </a>
 

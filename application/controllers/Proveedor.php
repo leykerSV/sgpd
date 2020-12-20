@@ -35,6 +35,7 @@ class Proveedor extends CI_Controller{
 				'rubro' => $this->input->post('rubro'),
 				'pass' => MD5($this->input->post('pass')),
 				'empresa' => $this->input->post('empresa'),
+				'usuario' => $this->input->post('usuario'),
 				'apellidos' => $this->input->post('apellidos'),
 				'nombres' => $this->input->post('nombres'),
 				'telefono' => $this->input->post('telefono'),
@@ -63,6 +64,7 @@ class Proveedor extends CI_Controller{
         else
         {            
 			$data['titulacion']="Alta Proveedor";
+			$data['mensaje']="";
             $data['_view'] = 'proveedore/add';
             $this->load->view('template/header',$data);
             $this->load->view('layouts/main');
@@ -118,6 +120,7 @@ class Proveedor extends CI_Controller{
             else
             {
 				$data['titulacion']="Modificacion Proveedor";
+				$data['mensaje']="";
                 $data['_view'] = 'proveedore/edit';
                 $this->load->view('template/header',$data);
             	$this->load->view('layouts/main');

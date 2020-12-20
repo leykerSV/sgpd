@@ -265,8 +265,9 @@ class Formulariofyc extends CI_Controller{
             }
             else
             {
-				$data['titulacion']="Formulario FyC";
-				$data['_view'] = 'backoffice/edit_fyc';
+				$data['titulacion']="Formulario Fiscal y Comercial.";
+				$data['mensaje']="";
+				$data['_view'] = 'formulariofyc/edit_fyc';
 				$this->load->view('template/header',$data);
                 $this->load->view('layouts/main');
             }

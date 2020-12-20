@@ -28,6 +28,7 @@ class Inicio extends CI_Controller {
 		$data['fyc'] = $this->formulariofyc_model->get_formulariofyc_prov($this->session->userdata('idproveedor'));
 		$data['ft'] = $this->formulariot_model->get_formulariot_prov($this->session->userdata('idproveedor'));
 		$data['titulacion']="Listado de Tareas de ".$data['proveedor'][0]['empresa'];
+		$data['mensaje']="";
 		$data['_view'] = 'proveedores/menu';
         $this->load->view('template/header',$data);
 		$this->load->view('layouts/main');
@@ -37,6 +38,12 @@ class Inicio extends CI_Controller {
 
 
 	private function check_log(){
+        if($this->session->userdata('logueado') == FALSE){
+            redirect(base_url(), 'refresh');    
+        }
+	}
+	
+	public function logout(){
         if($this->session->userdata('logueado') == FALSE){
             redirect(base_url(), 'refresh');    
         }

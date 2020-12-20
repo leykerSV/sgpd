@@ -57,6 +57,7 @@ class Doccomercial extends CI_Controller{
             {
                 $data['_view'] = 'doccomercial/edit';
                 $data['titulacion'] = 'Documentación Comercial';
+                $data['mensaje']="La documentacion debe ser en PDF y pesar menos de 2 mb cada archivo";
                 $this->load->view('template/header',$data);
                 $this->load->view('layouts/main');
             }

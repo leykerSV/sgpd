@@ -12,7 +12,7 @@
             <tbody>
             <?php foreach($proveedor as $renglon){?>
                 <tr>
-                    <th scope="col">Formulario Finaciero y Comercial</th>
+                    <th scope="col">Formulario Fiscal y Comercial</th>
                     <th scope="col">
                         <?php 
                          if ($fyc['completo']=='1') { ?>

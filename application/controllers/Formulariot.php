@@ -224,6 +224,7 @@ class Formulariot extends CI_Controller{
             else
             {
 				$data['titulacion']="Formulario Técnico";
+				$data['mensaje']="";
                 $data['_view'] = 'formulariot/edit';
 				$this->load->view('template/header',$data);
 				$this->load->view('layouts/main');

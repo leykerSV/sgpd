@@ -78,6 +78,7 @@ class Login extends CI_Controller {
         $sess_array = array(
             'idproveedor' => $row->idproveedor,
             'empresa' => $row->empresa,
+            'usuario' => $row->usuario,
             'apellidos' => $row->apellidos,
             'nombres' => $row->nombres,
             'telefono'=> $row->telefono,
