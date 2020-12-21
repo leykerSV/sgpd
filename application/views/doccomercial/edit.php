@@ -1,37 +1,6 @@
 <?php echo form_open_multipart('doccomercial/edit/'.$doccomercial['iddoccomercial'],array("class"=>"form-horizontal")); ?>
 <div class="container text-center">
-	<p></p>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="card">
-				<h5 class="card-header">
-					EMPRESA O CONTRATISTA
-				</h5>
-				<div class="card-body">
-					<p class="card-text">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-							<?php 
-								echo 'Empresa: '.$this->session->userdata('idproveedor').' - '.$this->session->userdata('empresa');
-								echo '<br />';
-								echo 'Contacto: '.$this->session->userdata('nombres').' '.$this->session->userdata('apellidos');
-								echo '<br />';
-								echo 'Rubro: '.$this->session->userdata('rubro').'   -   '.'SubRubro: '.$this->session->userdata('subrubro') ;
-								echo '<br />';
-        					?>
-							</div>
-						</div>
-					</div>
-					</p>
-				</div>
-				<div class="card-footer">
 
-				</div>
-			</div>
-		</div>
-	</div>
-	<p></p>
 
 	<style>
     .bg-info {

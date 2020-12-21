@@ -339,7 +339,7 @@
             <div class="row">
                 <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
                     <h4>DESIGNADO AGENTE DE PERCEPCION</h4>
-                    <input type="checkbox" id="pernoaplica" name="pernoaplica" value="No Aplica">NO APLICA</input>
+                    <input hidden type="checkbox" id="pernoaplica" name="pernoaplica" value="No Aplica"></input>
                     <script type="text/javascript">
                         $(document).ready(function () {
                             $('#pernoaplica').on('click', function () {
@@ -506,7 +506,7 @@
             <div class="row">
                 <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
                     <h4>DESIGNADO AGENTE DE RETENCION</h4>
-                    <input type="checkbox" id="retnoaplica" name="retnoaplica" value="No Aplica">NO APLICA</input>
+                    <input hidden type="checkbox" id="retnoaplica" name="retnoaplica" value="No Aplica"></input>
                     <script type="text/javascript"> 
                         $(document).ready(function () {
                             $('#retnoaplica').on('click', function () {
@@ -619,7 +619,7 @@
             <div class="row">
                 <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
                     <h4>FACTURACION ANUAL</h4>
-                    <input type="checkbox" id="factnoaplica" name="factnoaplica" value="No Aplica">NO APLICA</input>
+                    <input hidden type="checkbox" id="factnoaplica" name="factnoaplica" value="No Aplica"></input>
                     <script type="text/javascript"> 
                         $(document).ready(function () {
                             $('#factnoaplica').on('click', function () {
