@@ -1,8 +1,9 @@
-<?php echo form_open('formulariot/edit/'.$formulariot['idformularioT'],array("class"=>"form-horizontal")); ?>
+<?php echo form_open_multipart('formulariot/edit/'.$formulariot['idformularioT'],array("class"=>"form-horizontal")); ?>
 
 <style>
     .bg-info {
         background-color: #4563ab !important;
+        font: Arial 12pt;
     }
 </style>
 
@@ -113,10 +114,33 @@
                     </div>
                     <div class="input-group mb-3">
                         <div class="col">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Certificaciones</label>
-                            <input type="text" name="certificaciones"
-                                value="<?php echo ($this->input->post('certificaciones') ? $this->input->post('certificaciones') : $formulariot['certificaciones']); ?>"
-                                class="form-control" id="certificaciones" placeholder="Certificaciones" />
+                            <label class="control-label bg-info d-flex justify-content-center align-items-left">Certificaciones</label>
+                            <select name="certificaciones" class="form-control">
+                                <option value="">Certificados</option>
+                                <?php 
+								$certificados_values = array(
+									'ISO 9001'=>'ISO 9001',
+									'ISO 14001'=>'ISO 14001',
+                                    'ISO 45001'=>'ISO 45001',
+                                    'OTRO'=>'OTRO',
+                                    'NINGUNO'=>'NINGUNO'
+								);
+
+								foreach($certificados_values as $value => $display_text)
+								{
+									$selected = ($value == $formulariot['certificaciones']) ? ' selected="selected"' : "";
+									echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+								} 
+							?>
+                            </select>
+                        </div>
+                            
+                            
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="col">
+                            <label class="control-label bg-info d-flex justify-content-center align-items-left">Documentación Certificado</label>
+                            <input type="file" accept=".pdf" name="certificadosdocumento" value="<?php echo ($this->input->post('certificadosdocumento') ? $this->input->post('certificadosdocumento') : $formulariot['certificadosdocumento']); ?>" class="form-control" id="certificadosdocumento" />
                         </div>
                     </div>
                 </div>
@@ -160,7 +184,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <div class="col">
+                        <div class="col-md-6">
                         <label class="control-label bg-info d-flex justify-content-center align-items-left">Tipo de Obra 1</label>
                             <select name="obras1tipo" class="form-control">
                                 <option value="">Seleccionar Tipo de Obra 1</option>
@@ -177,6 +201,12 @@
 						} 
 						?>
                             </select>
+                        </div>
+                        <div class="col-md-6">
+                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Monto 1</label>
+                            <input type="text" name="monto1"
+                                value="<?php echo ($this->input->post('monto1') ? $this->input->post('monto1') : $formulariot['monto1']); ?>"
+                                class="form-control" id="monto1" placeholder="Monto Obra 1" />
                         </div>
                     </div>
                     <div class="input-group mb-3">
@@ -208,7 +238,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <div class="col">
+                        <div class="col-md-6">
                         <label class="control-label bg-info d-flex justify-content-center align-items-left">Tipo de Obra 2</label>
                             <select name="obras2tipo" class="form-control">
                                 <option value="">Seleccionar Tipo de Obra 2</option>
@@ -227,6 +257,12 @@
 						} 
 						?>
                             </select>
+                        </div>
+                        <div class="col-md-6">
+                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Monto Obra 2</label>
+                            <input type="text" name="monto2"
+                                value="<?php echo ($this->input->post('monto2') ? $this->input->post('monto2') : $formulariot['monto2']); ?>"
+                                class="form-control" id="monto2" placeholder="Monto Obra " />
                         </div>
                     </div>
                     <div class="input-group mb-3">
@@ -258,7 +294,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <div class="col">
+                        <div class="col-md-6">
                         <label class="control-label bg-info d-flex justify-content-center align-items-left">Tipo de Obra 3</label>
                             <select name="obras3tipo" class="form-control">
                                 <option value="">Seleccionar Tipo de Obra 3</option>
@@ -277,6 +313,12 @@
 							} 
 						?>
                             </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label bg-info d-flex justify-content-center align-items-left">Monto Obra 3</label>
+                            <input type="text" name="monto3"
+                                value="<?php echo ($this->input->post('monto3') ? $this->input->post('monto3') : $formulariot['monto3']); ?>"
+                                class="form-control" id="monto3" placeholder="Monto Obra 3" />
                         </div>
                     </div>
                 </div>
@@ -341,117 +383,7 @@
         </div>
     </div>
 
-    <div class="text-white mb-3">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
-                    <h4>REFERENCIAS MONETARIAS</h4>
-                </div>
-                <div class="col-md-9">
-                    <div class="input-group mb-3">
-                        <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Obra 1</label>
-                            <input type="text" name="montoobras1"
-                                value="<?php echo ($this->input->post('montoobras1') ? $this->input->post('montoobras1') : $formulariot['montoobras1']); ?>"
-                                class="form-control" id="montoobras1" placeholder="Obra 1" />
-                        </div>
-                        <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Empresa Obra 1</label>
-                            <input type="text" name="montoempresa1"
-                                value="<?php echo ($this->input->post('montoempresa1') ? $this->input->post('montoempresa1') : $formulariot['montoempresa1']); ?>"
-                                class="form-control" id="montoempresa1" placeholder="Empresa Obra 1" />
-                        </div>
-                        <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Monto 1</label>
-                            <input type="text" name="monto1"
-                                value="<?php echo ($this->input->post('monto1') ? $this->input->post('monto1') : $formulariot['monto1']); ?>"
-                                class="form-control" id="monto1" placeholder="Monto Obra 1" />
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Obra 2</label>
-                            <input type="text" name="montoobras2"
-                                value="<?php echo ($this->input->post('montoobras2') ? $this->input->post('montoobras2') : $formulariot['montoobras2']); ?>"
-                                class="form-control" id="montoobras2" placeholder="Obra 2" />
-                        </div>
-                        <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Empresa Obra 2</label>
-                            <input type="text" name="montoempresa2"
-                                value="<?php echo ($this->input->post('montoempresa2') ? $this->input->post('montoempresa2') : $formulariot['montoempresa2']); ?>"
-                                class="form-control" id="montoempresa2" placeholder="Empresa Obra 2" />
-                        </div>
-                        <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Monto Obra 2</label>
-                            <input type="text" name="monto2"
-                                value="<?php echo ($this->input->post('monto2') ? $this->input->post('monto2') : $formulariot['monto2']); ?>"
-                                class="form-control" id="monto2" placeholder="Monto Obra " />
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Obra 3</label>
-                            <input type="text" name="montoobras3"
-                                value="<?php echo ($this->input->post('montoobras3') ? $this->input->post('montoobras3') : $formulariot['montoobras3']); ?>"
-                                class="form-control" id="montoobras3" placeholder="Obra 3" />
-                        </div>
-                        <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Empresa Obra 3</label>
-                            <input type="text" name="montoempresa3"
-                                value="<?php echo ($this->input->post('montoempresa3') ? $this->input->post('montoempresa3') : $formulariot['montoempresa3']); ?>"
-                                class="form-control" id="montoempresa3" placeholder="Empresa Obra 3" />
-                        </div>
-                        <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Monto Obra 3</label>
-                            <input type="text" name="monto3"
-                                value="<?php echo ($this->input->post('monto3') ? $this->input->post('monto3') : $formulariot['monto3']); ?>"
-                                class="form-control" id="monto3" placeholder="Monto Obra 3" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="text-white mb-3">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
-                    <h4>FLOTA DE VEHICULOS</h4>
-                </div>
-                <div class="col-md-9">
-                    <div class="input-group mb-3">
-                        <div class="col">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Flota de vehículos Utilitarios</label>
-                            <input type="text" name="flotavehiculosutilitarios"
-                                value="<?php echo ($this->input->post('flotavehiculosutilitarios') ? $this->input->post('flotavehiculosutilitarios') : $formulariot['flotavehiculosutilitarios']); ?>"
-                                class="form-control" id="flotavehiculosutilitarios"
-                                placeholder="Flota de vehículos utilitarios" />
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="col">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Flota de Vehículos de Carga</label>
-                            <input type="text" name="flotavehiculoscarga"
-                                value="<?php echo ($this->input->post('flotavehiculoscarga') ? $this->input->post('flotavehiculoscarga') : $formulariot['flotavehiculoscarga']); ?>"
-                                class="form-control" id="flotavehiculoscarga"
-                                placeholder="Flota de vehículos de carga" />
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="col">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Flota de Vehículos Tripulados</label>
-                            <input type="text" name="flotavehiculostripulados"
-                                value="<?php echo ($this->input->post('flotavehiculostripulados') ? $this->input->post('flotavehiculostripulados') : $formulariot['flotavehiculostripulados']); ?>"
-                                class="form-control" id="flotavehiculostripulados"
-                                placeholder="Flota de vehículos tripulados" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    
     <div class="row">
         <div class="form-group col-md-4" hidden>
             <input type="text" name="idproveedor"

@@ -200,14 +200,8 @@ class Formulariot extends CI_Controller{
 					'cumplimientonormashys' => $this->input->post('cumplimientonormashys'),
 					'cumplimientoplazos' => $this->input->post('cumplimientoplazos'),
 					'atencionprofdurante' => $this->input->post('atencionprofdurante'),
-					'montoobras1' => $this->input->post('montoobras1'),
-					'montoempresa1' => $this->input->post('montoempresa1'),
 					'monto1' => $this->input->post('monto1'),
-					'montoobras2' => $this->input->post('montoobras2'),
-					'montoempresa2' => $this->input->post('montoempresa2'),
 					'monto2' => $this->input->post('monto2'),
-					'montoobras3' => $this->input->post('montoobras3'),
-					'montoempresa3' => $this->input->post('montoempresa3'),
 					'monto3' => $this->input->post('monto3'),
 					'flotavehiculosutilitarios' => $this->input->post('flotavehiculosutilitarios'),
 					'flotavehiculoscarga' => $this->input->post('flotavehiculoscarga'),
@@ -216,6 +210,7 @@ class Formulariot extends CI_Controller{
 					'completo' => $this->input->post('completo'),
 					'provinciasalcanzadas' => $this->input->post('provinciasalcanzadas'),
 					'fortalezas' => $this->input->post('fortalezas'),
+					'certificadosdocumento' => $this->input->post('certificadosdocumento'),
                 );
 
                 $this->Formulariot_model->update_formulariot($idformularioT,$params);            
