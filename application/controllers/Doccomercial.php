@@ -18,37 +18,109 @@ class Doccomercial extends CI_Controller{
     {   
         // check if the doccomercial exists before trying to edit it
         $data['doccomercial'] = $this->Doccomercial_model->get_doccomercial($iddoccomercial);
-        
+
         if(isset($data['doccomercial']['iddoccomercial']))
         {
+
+            
             if(isset($_POST) && count($_POST) > 0)     
             {   
+                //chdir('..');
+                chdir('archivos');
+                $directorio=getcwd()."/";
+                
+                $fecha = date_create();
+
+                if ($_FILES['contratosocial']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['contratosocial'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['contratosocial']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['contratosocial']['name']);
+                    move_uploaded_file($_FILES['contratosocial']['tmp_name'], $fichero_subido);
+                }
+                $contratosocialar=$nombrearchivo;
+
+                if ($_FILES['inscripcion']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['inscripcion'];        
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['inscripcion']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['inscripcion']['name']);
+                    move_uploaded_file($_FILES['inscripcion']['tmp_name'], $fichero_subido);
+                }
+                $inscripcionar=$nombrearchivo;
+
+                if ($_FILES['balance']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['inscripcion'];        
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['balance']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['balance']['name']);
+                    move_uploaded_file($_FILES['balance']['tmp_name'], $fichero_subido);
+                }
+                $balancear=$nombrearchivo;
+
+                if ($_FILES['constanciaiibb']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['constanciaiibb'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['constanciaiibb']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['constanciaiibb']['name']);
+                    move_uploaded_file($_FILES['constanciaiibb']['tmp_name'], $fichero_subido);
+                }
+                $constanciaiibbar=$nombrearchivo;
+
+                if ($_FILES['constmonotributo']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['constmonotributo'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['constmonotributo']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['constmonotributo']['name']);
+                    move_uploaded_file($_FILES['constmonotributo']['tmp_name'], $fichero_subido);
+                }
+                $constmonotributoar=$nombrearchivo;
+
+                if ($_FILES['constmonotributoiibb']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['constmonotributoiibb'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['constmonotributoiibb']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['constmonotributoiibb']['name']);
+                    move_uploaded_file($_FILES['constmonotributoiibb']['tmp_name'], $fichero_subido);
+                }
+                $constmonotributoiibbar=$nombrearchivo;
+
+                if ($_FILES['formulariocm01']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['formulariocm01'];        
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['formulariocm01']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['formulariocm01']['name']);
+                    move_uploaded_file($_FILES['formulariocm01']['tmp_name'], $fichero_subido);
+                }
+                $formulariocm01ar=$nombrearchivo;
+
                 $params = array(
 					'idproveedor' => $this->input->post('idproveedor'),
-					'contratosocial' => $this->input->post('contratosocial'),
-					'contratosocialobs' => $this->input->post('contratosocialobs'),
-					'contratosocialok' => $this->input->post('contratosocialok'),
-					'inscripcion' => $this->input->post('inscripcion'),
-					'inscripcionobs' => $this->input->post('inscripcionobs'),
-					'inscripcionok' => $this->input->post('inscripcionok'),
-					'balance' => $this->input->post('balance'),
-					'balanceobs' => $this->input->post('balanceobs'),
-					'balanceok' => $this->input->post('balanceok'),
-					'contastanciaiibb' => $this->input->post('contastanciaiibb'),
-					'constanciaiibbobs' => $this->input->post('constanciaiibbobs'),
-					'constanciaiibbok' => $this->input->post('constanciaiibbok'),
-					'constmonotirbuto' => $this->input->post('constmonotirbuto'),
-					'constmonotributoobs' => $this->input->post('constmonotributoobs'),
-					'constmonotributook' => $this->input->post('constmonotributook'),
-					'titutlo' => $this->input->post('titutlo'),
-					'tituloobs' => $this->input->post('tituloobs'),
-					'titulook' => $this->input->post('titulook'),
-					'matricula' => $this->input->post('matricula'),
-					'matriculaobs' => $this->input->post('matriculaobs'),
-					'matriculaok' => $this->input->post('matriculaok'),
-					'completo' => $this->input->post('completo'),
-					'aprobado' => $this->input->post('aprobado'),
+					'contratosocial' => $contratosocialar,
+					'inscripcion' => $inscripcionar,
+					'balance' => $balancear,
+					'constanciaiibb' => $constanciaiibbar,
+					'constmonotributo' => $constmonotributoar,
+                    'constmonotributoiibb' => $constmonotributoiibbar,
+                    'formulariocm01' => $formulariocm01ar,
+                    'completo' => $this->input->post('completo'),
+                    'aprobado' => $this->input->post('aprobado'),
                 );
+
 
                 $this->Doccomercial_model->update_doccomercial($iddoccomercial,$params);            
                 redirect('proveedores', 'refresh');
@@ -65,4 +137,129 @@ class Doccomercial extends CI_Controller{
         else
             show_error('The doccomercial you are trying to edit does not exist.');
     }
+
+    function edit_prov($idproveedor)
+    {   
+        // check if the doccomercial exists before trying to edit it
+        $data['doccomercial'] = $this->Doccomercial_model->get_doccomercial_idusuario($idproveedor);
+
+        if(isset($data['doccomercial']['iddoccomercial']))
+        {
+
+            
+            if(isset($_POST) && count($_POST) > 0)     
+            {   
+                //chdir('..');
+                chdir('archivos');
+                $directorio=getcwd()."/";
+                
+                $fecha = date_create();
+
+                if ($_FILES['contratosocial']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['contratosocial'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['contratosocial']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['contratosocial']['name']);
+                    move_uploaded_file($_FILES['contratosocial']['tmp_name'], $fichero_subido);
+                }
+                $contratosocialar=$nombrearchivo;
+
+                if ($_FILES['inscripcion']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['inscripcion'];        
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['inscripcion']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['inscripcion']['name']);
+                    move_uploaded_file($_FILES['inscripcion']['tmp_name'], $fichero_subido);
+                }
+                $inscripcionar=$nombrearchivo;
+
+                if ($_FILES['balance']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['inscripcion'];        
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['balance']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['balance']['name']);
+                    move_uploaded_file($_FILES['balance']['tmp_name'], $fichero_subido);
+                }
+                $balancear=$nombrearchivo;
+
+                if ($_FILES['constanciaiibb']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['constanciaiibb'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['constanciaiibb']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['constanciaiibb']['name']);
+                    move_uploaded_file($_FILES['constanciaiibb']['tmp_name'], $fichero_subido);
+                }
+                $constanciaiibbar=$nombrearchivo;
+
+                if ($_FILES['constmonotributo']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['constmonotributo'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['constmonotributo']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['constmonotributo']['name']);
+                    move_uploaded_file($_FILES['constmonotributo']['tmp_name'], $fichero_subido);
+                }
+                $constmonotributoar=$nombrearchivo;
+
+                if ($_FILES['constmonotributoiibb']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['constmonotributoiibb'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['constmonotributoiibb']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['constmonotributoiibb']['name']);
+                    move_uploaded_file($_FILES['constmonotributoiibb']['tmp_name'], $fichero_subido);
+                }
+                $constmonotributoiibbar=$nombrearchivo;
+
+                if ($_FILES['formulariocm01']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['formulariocm01'];        
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['formulariocm01']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['formulariocm01']['name']);
+                    move_uploaded_file($_FILES['formulariocm01']['tmp_name'], $fichero_subido);
+                }
+                $formulariocm01ar=$nombrearchivo;
+
+                $params = array(
+					'idproveedor' => $this->input->post('idproveedor'),
+					'contratosocial' => $contratosocialar,
+					'inscripcion' => $inscripcionar,
+					'balance' => $balancear,
+					'constanciaiibb' => $constanciaiibbar,
+					'constmonotributo' => $constmonotributoar,
+                    'constmonotributoiibb' => $constmonotributoiibbar,
+                    'formulariocm01' => $formulariocm01ar,
+                    'completo' => $this->input->post('completo'),
+                    'aprobado' => $this->input->post('aprobado'),
+                );
+
+
+                $this->Doccomercial_model->update_doccomercial($iddoccomercial,$params);            
+                redirect('proveedores', 'refresh');
+            }
+            else
+            {
+                $data['_view'] = 'doccomercial/edit';
+                $data['titulacion'] = 'Documentación Comercial';
+                $data['mensaje']="La documentacion debe ser en PDF y pesar menos de 2 mb cada archivo";
+                $this->load->view('template/header',$data);
+                $this->load->view('layouts/main');
+            }
+        }
+        else
+            show_error('The doccomercial you are trying to edit does not exist.');
+    }
+    
 }

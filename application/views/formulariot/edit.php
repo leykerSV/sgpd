@@ -1,5 +1,4 @@
 <?php echo form_open_multipart('formulariot/edit/'.$formulariot['idformularioT'],array("class"=>"form-horizontal")); ?>
-
 <style>
     .bg-info {
         background-color: #4563ab !important;
@@ -60,9 +59,20 @@
                     </div>
                     <div class="input-group mb-3">
                         <div class="col">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Provincias Alcanzadas</label>
+                            <label class="control-label bg-info d-flex justify-content-center align-items-left">Provincias Alcanzadas</label>
+                            <select name="provinciasalcanzadascmb[]" class="form-control" multiple>
+                                <?php 
+                                    var_dump($provincias);
+                                    foreach($provincias as $valor)
+                                    {
+                                        echo '<option value="'.$valor['provincia_nombre'].'">'.$valor['provincia_nombre'].'</option>';
+                                    } 
+                            ?>
+                            </select>
+                            <label class="control-label bg-info d-flex justify-content-center align-items-left">Mantenga presionado Ctrl para multiple selección</label>
+                            <p></p> 
                             <textarea name="provinciasalcanzadas" class="form-control" id="provinciasalcanzadas"
-                                placeholder="Provincias Alcanzadas"><?php echo ($this->input->post('provinciasalcanzadas') ? $this->input->post('provinciasalcanzadas') : $formulariot['provinciasalcanzadas']); ?></textarea>
+                                    placeholder="Provincias Alcanzadas"><?php echo ($this->input->post('provinciasalcanzadas') ? $this->input->post('provinciasalcanzadas') : $formulariot['provinciasalcanzadas']); ?></textarea>
                         </div>
                     </div>
                     <div class="input-group mb-3">

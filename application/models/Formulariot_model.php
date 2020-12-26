@@ -62,4 +62,12 @@ class Formulariot_model extends CI_Model
     {
         return $this->db->delete('formulariot',array('idformularioT'=>$idformularioT));
     }
+
+    function get_all_provincias()
+    {
+        $this->db->order_by('id', 'asc');
+        return $this->db->get('provincia')->result_array();
+    }
+
+
 }

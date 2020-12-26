@@ -21,18 +21,25 @@
                 <div class="col-md-9">
                     <div class="input-group mb-3">
 						<div class="col-md-9">
-							
-							<span class="label other">Contrato Social</span><input type="file" accept=".pdf" name="contratosocial" value="<?php echo ($this->input->post('contratosocial') ? $this->input->post('contratosocial') : $doccomercial['contratosocial']); ?>" class="form-control" id="contratosocial" />
+							<span class="label other">Contrato Social</span><input type="file" accept=".pdf" name="contratosocial" value="<?php echo ($this->input->post('contratosocial') ? $this->input->post('contratosocial') : $doccomercial['contratosocial']); ?>" class="form-control" id="contratosocial">
+							<?php echo anchor_popup(base_url().'archivos/'.$doccomercial['contratosocial'], 'Ver Archivo en Linea', ''); ?>
 						</div>
 						<div class="col-md-9">
-							</span><span class="label other">Constancia de Inscripcion en AFIP</span><input type="file" accept=".pdf" name="inscripcion" value="<?php echo ($this->input->post('inscripcion') ? $this->input->post('inscripcion') : $doccomercial['inscripcion']); ?>" class="form-control" id="inscripcion" />
-                        </div>
+							</span><span class="label other">Constancia de Inscripcion en AFIP</span><input type="file" accept=".pdf" name="inscripcion" value="" class="form-control" id="inscripcion" />
+							<?php echo anchor_popup(base_url().'archivos/'.$doccomercial['inscripcion'], 'Ver Archivo en Linea', ''); ?>
+						</div>
                         <div class="col-md-9">
 							<span class="label other">Balance</span><input type="file" accept=".pdf" name="balance" value="<?php echo ($this->input->post('balance') ? $this->input->post('balance') : $doccomercial['balance']); ?>" class="form-control" id="balance" />
-                        </div>
+							<?php echo anchor_popup(base_url().'archivos/'.$doccomercial['balance'], 'Ver Archivo en Linea', ''); ?>
+						</div>
                         <div class="col-md-9">
-							<span class="label other">Constancia IIBB</span><input type="file" accept=".pdf" value="<?php echo ($this->input->post('contastanciaiibb') ? $this->input->post('contastanciaiibb') : $doccomercial['contastanciaiibb']); ?>" class="form-control" id="contastanciaiibb" />
-                        </div>
+							<span class="label other">Constancia IIBB</span><input type="file" name="constanciaiibb" accept=".pdf" value="<?php echo ($this->input->post('constanciaiibb') ? $this->input->post('constanciaiibb') : $doccomercial['constanciaiibb']); ?>" class="form-control" id="constanciaiibb" />
+							<?php echo anchor_popup(base_url().'archivos/'.$doccomercial['constanciaiibb'], 'Ver Archivo en Linea', ''); ?>
+						</div>
+						<div class="col-md-9">
+							<span class="label other">Formulario CM01</span><input type="file" name="formulariocm01" accept=".pdf" value="<?php echo ($this->input->post('formulariocm01') ? $this->input->post('formulariocm01') : $doccomercial['formulariocm01']); ?>" class="form-control" id="formulariocm01" />
+							<?php echo anchor_popup(base_url().'archivos/'.$doccomercial['formulariocm01'], 'Ver Archivo en Linea', ''); ?>
+						</div>
                     </div>
                 </div>
             </div>
@@ -48,14 +55,13 @@
                 <div class="col-md-9">
 				<div class="input-group mb-3">
 						<div class="col-md-9">
-							<span class="label other">Constancia Monotributo</span><input type="file" accept=".pdf" name="constmonotributo" value="<?php echo ($this->input->post('constmonotributo') ? $this->input->post('constmonotributo') : $doccomercial['constmonotirbuto']); ?>" class="form-control" id="constmonotirbuto" />
+							<span class="label other">Constancia Monotributo</span><input type="file" accept=".pdf" name="constmonotributo" value="<?php echo ($this->input->post('constmonotributo') ? $this->input->post('constmonotributo') : $doccomercial['constmonotributo']); ?>" class="form-control" id="constmonotributo" />
+							<?php echo anchor_popup(base_url().'archivos/'.$doccomercial['constmonotributo'], 'Ver Archivo en Linea', ''); ?>
 						</div>
 						<div class="col-md-9">
-							<span class="label other">Constancia Título</span><input type="file" accept=".pdf" value="<?php echo ($this->input->post('titutlo') ? $this->input->post('titutlo') : $doccomercial['titutlo']); ?>" class="form-control" id="titutlo" />
-                        </div>
-                        <div class="col-md-9">
-							<span class="label other">Matrícula</span><input type="file" accept=".pdf" name="matricula" value="<?php echo ($this->input->post('matricula') ? $this->input->post('matricula') : $doccomercial['matricula']); ?>" class="form-control" id="matricula" />
-                        </div>
+							<span class="label other">Constancia IIBB</span><input type="file" accept=".pdf" name="constmonotributoiibb" value="<?php echo ($this->input->post('constmonotributoiibb') ? $this->input->post('constmonotributoiibb') : $doccomercial['constmonotributoiibb']); ?>" class="form-control" id="constmonotributoiibb" />
+							<?php echo anchor_popup(base_url().'archivos/'.$doccomercial['constmonotributoiibb'], 'Ver Archivo en Linea', ''); ?>
+						</div>
                     </div>
                 </div>
             </div>
@@ -76,21 +82,18 @@
 								<label for="completo" class="col-md-4 control-label">Completo</label>
 								<div class="col-md-8">								
 									<?php if($this->input->post('completo'==0)){
-										echo '<input type="checkbox" name="completo">MARCAR SI EL PROCESO DE CARGA SE COMPLETÓ</label>';
+										echo '<input type="checkbox" name="completo">MARCAR SI EL PROCESO DE CARGA SE COMPLETÓ</input>';
 									}else{
-										echo '<input type="checkbox" name="completo">MARCAR SI EL PROCESO DE CARGA SE COMPLETÓ</label>';
+										echo '<input type="checkbox" name="completo" checked>MARCAR SI EL PROCESO DE CARGA SE COMPLETÓ</input>';
 									}			
 									?>
 								
 								</div>
 							</div>
 						</div>
-					</div>SOCIEDADES
-					</p>
+				
 				</div>
-				<div class="card-footer">
-					
-				</div>
+
 			</div>
 		</div>
 	</div>							

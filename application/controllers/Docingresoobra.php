@@ -65,4 +65,56 @@ class Docingresoobra extends CI_Controller{
         else
             show_error('The doccomercial you are trying to edit does not exist.');
     }
+
+    function edit_prov($idproveedor)
+    {   
+        // check if the doccomercial exists before trying to edit it
+        $data['docingresoobra'] = $this->Docingresoobra_model->get_docingresoobra($idproveedor);
+        
+        if(isset($data['docingresoobra']['iddocingresoobra']))
+        {
+            if(isset($_POST) && count($_POST) > 0)     
+            {   
+                $params = array(
+					'idproveedor' => $this->input->post('idproveedor'),
+					'contratosocial' => $this->input->post('contratosocial'),
+					'contratosocialobs' => $this->input->post('contratosocialobs'),
+					'contratosocialok' => $this->input->post('contratosocialok'),
+					'inscripcion' => $this->input->post('inscripcion'),
+					'inscripcionobs' => $this->input->post('inscripcionobs'),
+					'inscripcionok' => $this->input->post('inscripcionok'),
+					'balance' => $this->input->post('balance'),
+					'balanceobs' => $this->input->post('balanceobs'),
+					'balanceok' => $this->input->post('balanceok'),
+					'contastanciaiibb' => $this->input->post('contastanciaiibb'),
+					'constanciaiibbobs' => $this->input->post('constanciaiibbobs'),
+					'constanciaiibbok' => $this->input->post('constanciaiibbok'),
+					'constmonotirbuto' => $this->input->post('constmonotirbuto'),
+					'constmonotributoobs' => $this->input->post('constmonotributoobs'),
+					'constmonotributook' => $this->input->post('constmonotributook'),
+					'titutlo' => $this->input->post('titutlo'),
+					'tituloobs' => $this->input->post('tituloobs'),
+					'titulook' => $this->input->post('titulook'),
+					'matricula' => $this->input->post('matricula'),
+					'matriculaobs' => $this->input->post('matriculaobs'),
+					'matriculaok' => $this->input->post('matriculaok'),
+					'completo' => $this->input->post('completo'),
+					'aprobado' => $this->input->post('aprobado'),
+                );
+
+                $this->Docingresoobra_model->update_docingresoobra($iddocingresoobra,$params);            
+                redirect('proveedores', 'refresh');
+            }
+            else
+            {
+                $data['_view'] = 'docingresoobra/edit';
+                $data['titulacion'] = 'Documentación Ingreso a Obra';
+                $data['mensaje']="La documentacion debe ser en PDF y pesar menos de 2 mb cada archivo";
+                $this->load->view('template/header',$data);
+                $this->load->view('layouts/main');
+            }
+        }
+        else
+            show_error('The doccomercial you are trying to edit does not exist.');
+    }
 }

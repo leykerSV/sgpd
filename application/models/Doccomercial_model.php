@@ -28,6 +28,11 @@ class Doccomercial_model extends CI_Model
         return $this->db->get('doccomercial')->result_array();
     }
         
+    function get_doccomercial_idusuario($idproveedor)
+    {
+        return $this->db->get_where('doccomercial',array('idproveedor'=>$idproveedor))->row_array();;
+    }
+
     /*
      * function to add new doccomercial
      */

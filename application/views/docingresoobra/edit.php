@@ -174,6 +174,26 @@
         </div>
     </div>
 
+    <div class="mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
+                    <h4 class="text-white">HABILITACIONES</h4>
+                </div>
+                <div class="col-md-9">
+                    <div class="input-group mb-3">
+						<div class="col-md-9">
+							<span class="label other">Título</span><input type="file" accept=".pdf" name="tituloobra" value="<?php //echo ($this->input->post('tituloobra') ? $this->input->post('tituloobra') : $doccomercial['tituloobra']); ?>" class="form-control" id="tituloobra" />
+                        </div>
+						<div class="col-md-9">
+							<span class="label other">Matrícula</span><input type="file" accept=".pdf" name="matriculaobra" value="<?php //echo ($this->input->post('matriculaobra') ? $this->input->post('matriculaobra') : $doccomercial['matriculaobra']); ?>" class="form-control" id="matriculaobra" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="mb-3" hidden>
         <div class="card-body">
             <div class="row">

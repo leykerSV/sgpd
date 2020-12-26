@@ -63,8 +63,8 @@ class Formulariot extends CI_Controller{
 				'flotavehiculostripulados' => $this->input->post('flotavehiculostripulados'),
 				'aprobado' => $this->input->post('aprobado'),
 				'completo' => $this->input->post('completo'),
-				'provinciasalcanzadas' => $this->input->post('provinciasalcanzadas'),
 				'fortalezas' => $this->input->post('fortalezas'),
+				'certificadosdocumento' => $this->input->post('certificadosdocumento'),
             );
             
             $formulariot_id = $this->Formulariot_model->add_formulariot($params);
@@ -90,14 +90,20 @@ class Formulariot extends CI_Controller{
         
         if(isset($data['formulariot']['idformularioT']))
         {
-            if(isset($_POST) && count($_POST) > 0)     
+			$pcias='';
+            if(isset($_POST) && count($_POST) > 0)    
             {   
+				foreach ($this->input->post('provinciasalcanzadascmb') as $seleccion){
+					$pcias = $pcias.$seleccion.' , ';
+				}
+				 
                 $params = array(
 					'actividadpcipal' => $this->input->post('actividadpcipal'),
 					'obras1tipo' => $this->input->post('obras1tipo'),
 					'obras2tipo' => $this->input->post('obras2tipo'),
 					'obras3tipo' => $this->input->post('obras3tipo'),
 					'idproveedor' => $this->input->post('idproveedor'),
+					'provinciasalcanzadas' => $pcias,
 					'lugarservicios' => $this->input->post('lugarservicios'),
 					'reptecnico' => $this->input->post('reptecnico'),
 					'profesion' => $this->input->post('profesion'),
@@ -110,35 +116,29 @@ class Formulariot extends CI_Controller{
 					'obras1empresa' => $this->input->post('obras1empresa'),
 					'obras1contacto' => $this->input->post('obras1contacto'),
 					'obras1telefono' => $this->input->post('obras1telefono'),
+					'monto1' => $this->input->post('monto1'),
 					'obras2' => $this->input->post('obras2'),
 					'obras2empresa' => $this->input->post('obras2empresa'),
 					'obras2contacto' => $this->input->post('obras2contacto'),
 					'obras2telefono' => $this->input->post('obras2telefono'),
+					'monto2' => $this->input->post('monto2'),
 					'obras3' => $this->input->post('obras3'),
 					'obras3empresa' => $this->input->post('obras3empresa'),
 					'obras3contacto' => $this->input->post('obras3contacto'),
 					'obras3telefono' => $this->input->post('obras3telefono'),
+					'monto3' => $this->input->post('monto3'),
 					'ordenylimpiezaobra' => $this->input->post('ordenylimpiezaobra'),
 					'calidamaterialesequipos' => $this->input->post('calidamaterialesequipos'),
 					'cumplimientonormashys' => $this->input->post('cumplimientonormashys'),
 					'cumplimientoplazos' => $this->input->post('cumplimientoplazos'),
 					'atencionprofdurante' => $this->input->post('atencionprofdurante'),
-					'montoobras1' => $this->input->post('montoobras1'),
-					'montoempresa1' => $this->input->post('montoempresa1'),
-					'monto1' => $this->input->post('monto1'),
-					'montoobras2' => $this->input->post('montoobras2'),
-					'montoempresa2' => $this->input->post('montoempresa2'),
-					'monto2' => $this->input->post('monto2'),
-					'montoobras3' => $this->input->post('montoobras3'),
-					'montoempresa3' => $this->input->post('montoempresa3'),
-					'monto3' => $this->input->post('monto3'),
 					'flotavehiculosutilitarios' => $this->input->post('flotavehiculosutilitarios'),
 					'flotavehiculoscarga' => $this->input->post('flotavehiculoscarga'),
 					'flotavehiculostripulados' => $this->input->post('flotavehiculostripulados'),
 					'aprobado' => $this->input->post('aprobado'),
 					'completo' => $this->input->post('completo'),
-					'provinciasalcanzadas' => $this->input->post('provinciasalcanzadas'),
 					'fortalezas' => $this->input->post('fortalezas'),
+					'certificadosdocumento' => $this->input->post('certificadosdocumento'),
                 );
 
                 $this->Formulariot_model->update_formulariot($idformularioT,$params);            
@@ -164,18 +164,26 @@ class Formulariot extends CI_Controller{
     {   
         // check if the formulariot exists before trying to edit it
         $data['formulariot'] = $this->Formulariot_model->get_formulariot_prov($idproveedor);
-        
+		$data['provincias'] = $this->Formulariot_model->get_all_provincias();
+
         if(isset($data['formulariot']['idformularioT']))
         {
+			$pcias='';
             if(isset($_POST) && count($_POST) > 0)     
             {   
-                $params = array(
+
+				foreach ($this->input->post('provinciasalcanzadascmb') as $seleccion){
+					$pcias = $pcias.$seleccion.' , ';
+				}
+
+               	$params = array(
 					'actividadpcipal' => $this->input->post('actividadpcipal'),
 					'obras1tipo' => $this->input->post('obras1tipo'),
 					'obras2tipo' => $this->input->post('obras2tipo'),
 					'obras3tipo' => $this->input->post('obras3tipo'),
 					'idproveedor' => $this->input->post('idproveedor'),
 					'lugarservicios' => $this->input->post('lugarservicios'),
+					'provinciasalcanzadas' => $pcias,
 					'reptecnico' => $this->input->post('reptecnico'),
 					'profesion' => $this->input->post('profesion'),
 					'cantidadpersonal' => $this->input->post('cantidadpersonal'),

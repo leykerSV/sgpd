@@ -72,7 +72,7 @@ class Login extends CI_Controller {
           $resultdoc=$this->Proveedordb->docingresoobra($row->idproveedor); 
           $docingresoobra_array = json_decode(json_encode($resultdoc[0]), true);
 
-          $resultdoc=$this->Proveedordb->docingresoobra($row->idproveedor); 
+          $resultdoc=$this->Proveedordb->docpagos($row->idproveedor); 
           $docpagos_array = json_decode(json_encode($resultdoc[0]), true);
 
         $sess_array = array(
