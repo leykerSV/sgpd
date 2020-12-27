@@ -1,4 +1,4 @@
-<?php echo form_open_multipart('docpagos/edit/'.$docpagos['iddocpagos'],array("class"=>"form-horizontal")); ?>
+<?php echo form_open_multipart('docpagos/edit/'.$docpagos['idproveedor'],array("class"=>"form-horizontal")); ?>
 
 <style>
     .bg-info {
@@ -19,34 +19,34 @@
                 <div class="col-md-9">
                     <div class="input-group mb-3">
 						<div class="col-md-9">
-							<span class="label other">Formulario 931 y presentación del mismo en AFIP</span><input type="file" accept=".pdf" name="pago1.1" value="<?php //echo ($this->input->post('pago1.1') ? $this->input->post('pago1.1') : $docpago['pago1.1']); ?>" class="form-control" id="pago1.1" />
+							<span class="label other">Formulario 931 y presentación del mismo en AFIP</span><input type="file" accept=".pdf" name="pago1_1" value="<?php //echo ($this->input->post('pago1_1') ? $this->input->post('pago1_1') : $docpago['pago1_1']); ?>" class="form-control" id="pago1_1" />
                         </div>
 						<div class="col-md-9">
-							<span class="label other">Pagos de los aportes y contribuciones a la Seguridad Social, Obra Social, ART. y SCVO, como así también nómina de los empleados según F. 931 de AFIP</span><input type="file" accept=".pdf" name="pago1.2" value="<?php //echo ($this->input->post('pago1.2') ? $this->input->post('pago1.2') : $docpago['pago1.1']); ?>" class="form-control" id="pago1.2" />
+							<span class="label other">Pagos de los aportes y contribuciones a la Seguridad Social, Obra Social, ART. y SCVO, como así también nómina de los empleados según F. 931 de AFIP</span><input type="file" accept=".pdf" name="pago1_2" value="<?php //echo ($this->input->post('pago1_2') ? $this->input->post('pago1_2') : $docpago['pago1_1']); ?>" class="form-control" id="pago1_2" />
                         </div>
                         <div class="col-md-9">
-							<span class="label other">Planilla entrada y salida del personal de obra</span><input type="file" accept=".pdf" name="pago1.3" value="<?php //echo ($this->input->post('pago1.3') ? $this->input->post('pago1.3') : $docpago['pago1.3']); ?>" class="form-control" id="pago1.3" />
+							<span class="label other">Planilla entrada y salida del personal de obra</span><input type="file" accept=".pdf" name="pago1_3" value="<?php //echo ($this->input->post('pago1_3') ? $this->input->post('pago1_3') : $docpago['pago1_3']); ?>" class="form-control" id="pago1_3" />
                         </div>
                         <div class="col-md-9">
-							<span class="label other">Fotocopia recibos de sueldo de los empleados, acreditación en cuenta bancaria o telegrama para cobrar en efectivo</span><input type="file" accept=".pdf" name="pago1.4" value="<?php //echo ($this->input->post('pago1.4') ? $this->input->post('pago1.4') : $docpago['pago1.4']); ?>" class="form-control" id="pago1.4" />
+							<span class="label other">Fotocopia recibos de sueldo de los empleados, acreditación en cuenta bancaria o telegrama para cobrar en efectivo</span><input type="file" accept=".pdf" name="pago1_4" value="<?php //echo ($this->input->post('pago1_4') ? $this->input->post('pago1_4') : $docpago['pago1_4']); ?>" class="form-control" id="pago1_4" />
                         </div>
                         <div class="col-md-9">
-							<span class="label other">Certificado de cobertura de ART, con nomina de personal a cubrir. Incluir Clausula de no repetición a favor del Comitente y de Cocyar S.A. CUIT 30-68697101-1</span><input type="file" accept=".pdf" name="pago1.5" value="<?php //echo ($this->input->post('pago1.5') ? $this->input->post('pago1.5') : $docpago['pago1.5']); ?>" class="form-control" id="pago1.5" />
+							<span class="label other">Certificado de cobertura de ART, con nomina de personal a cubrir. Incluir Clausula de no repetición a favor del Comitente y de Cocyar S.A. CUIT 30-68697101-1</span><input type="file" accept=".pdf" name="pago1_5" value="<?php //echo ($this->input->post('pago1_5') ? $this->input->post('pago1_5') : $docpago['pago1_5']); ?>" class="form-control" id="pago1_5" />
                         </div>
                         <div class="col-md-9">
-							<span class="label other">Certificado de cobertura de SCVO, con nomina de personal afecatado a obra</span><input type="file" accept=".pdf" name="pago1.6" value="<?php //echo ($this->input->post('pago1.6') ? $this->input->post('pago1.6') : $docpago['pago1.6']); ?>" class="form-control" id="pago1.6" />
+							<span class="label other">Certificado de cobertura de SCVO, con nomina de personal afecatado a obra</span><input type="file" accept=".pdf" name="pago1_6" value="<?php //echo ($this->input->post('pago1_6') ? $this->input->post('pago1_6') : $docpago['pago1_6']); ?>" class="form-control" id="pago1_6" />
                         </div>
                         <div class="col-md-9">
-							<span class="label other">Copia de Gestión de Higiene y Seguridad. Constancia de visitas a obra y cumplimiento de horas profesionales semanales del responsable de Higiene y Seguridad. Copia de las capacitaciones dictadas.</span><input type="file" accept=".pdf" name="pago1.7" value="<?php //echo ($this->input->post('pago1.7') ? $this->input->post('pago1.7') : $docpago['pago1.7']); ?>" class="form-control" id="pago1.7" />
+							<span class="label other">Copia de Gestión de Higiene y Seguridad. Constancia de visitas a obra y cumplimiento de horas profesionales semanales del responsable de Higiene y Seguridad. Copia de las capacitaciones dictadas.</span><input type="file" accept=".pdf" name="pago1_7" value="<?php //echo ($this->input->post('pago1_7') ? $this->input->post('pago1_7') : $docpago['pago1_7']); ?>" class="form-control" id="pago1_7" />
                         </div>
                         <div class="col-md-9">
-							<span class="label other">Pago de fondo de desempleo</span><input type="file" accept=".pdf" name="pago1.8" value="<?php //echo ($this->input->post('pago1.8') ? $this->input->post('pago1.8') : $docpago['pago1.8']); ?>" class="form-control" id="pago1.8" />
+							<span class="label other">Pago de fondo de desempleo</span><input type="file" accept=".pdf" name="pago1_8" value="<?php //echo ($this->input->post('pago1_8') ? $this->input->post('pago1_8') : $docpago['pago1_8']); ?>" class="form-control" id="pago1_8" />
                         </div>
                         <div class="col-md-9">
-							<span class="label other">Pago de cuota sindical</span><input type="file" accept=".pdf" name="pago1.9" value="<?php //echo ($this->input->post('pago1.9') ? $this->input->post('pago1.9') : $docpago['pago1.9']); ?>" class="form-control" id="pago1.9" />
+							<span class="label other">Pago de cuota sindical</span><input type="file" accept=".pdf" name="pago1_9" value="<?php //echo ($this->input->post('pago1_9') ? $this->input->post('pago1_9') : $docpago['pago1_9']); ?>" class="form-control" id="pago1_9" />
                         </div>
                         <div class="col-md-9">
-							<span class="label other">Pago mensual al I.E.R.I.C</span><input type="file" accept=".pdf" name="pago1.10" value="<?php //echo ($this->input->post('pago1.10') ? $this->input->post('pago1.10') : $docpago['pago1.10']); ?>" class="form-control" id="pago1.10" />
+							<span class="label other">Pago mensual al I.E.R.I.C</span><input type="file" accept=".pdf" name="pago1_10" value="<?php //echo ($this->input->post('pago1_10') ? $this->input->post('pago1_10') : $docpago['pago1_10']); ?>" class="form-control" id="pago1_10" />
                         </div>
                     </div>
                 </div>
@@ -65,16 +65,16 @@
                 <div class="col-md-9">
                     <div class="input-group mb-3">
                     <div class="col-md-9">
-							<span class="label other">Pago de autónomo o de monotributo</span><input type="file" accept=".pdf" name="pago2.1" value="<?php //echo ($this->input->post('pago2.1') ? $this->input->post('pago2.1') : $docpago['pago2.1']); ?>" class="form-control" id="pago2.1" />
+							<span class="label other">Pago de autónomo o de monotributo</span><input type="file" accept=".pdf" name="pago2_1" value="<?php //echo ($this->input->post('pago2_1') ? $this->input->post('pago2_1') : $docpago['pago2_1']); ?>" class="form-control" id="pago2_1" />
                         </div>
                         <div class="col-md-9">
-							<span class="label other">Pago de seguro de accidente personales</span><input type="file" accept=".pdf" name="pago2.2" value="<?php //echo ($this->input->post('pago2.2') ? $this->input->post('pago2.2') : $docpago['pago2.2']); ?>" class="form-control" id="pago2.2" />
+							<span class="label other">Pago de seguro de accidente personales</span><input type="file" accept=".pdf" name="pago2_2" value="<?php //echo ($this->input->post('pago2_2') ? $this->input->post('pago2_2') : $docpago['pago2_2']); ?>" class="form-control" id="pago2_2" />
                         </div>
                         <div class="col-md-9">
-							<span class="label other">Pago de seguro de vehículos incorporados a la obra</span><input type="file" accept=".pdf" name="pago2.3" value="<?php //echo ($this->input->post('pago2.3') ? $this->input->post('pago2.3') : $docpago['pago2.3']); ?>" class="form-control" id="pago2.3" />
+							<span class="label other">Pago de seguro de vehículos incorporados a la obra</span><input type="file" accept=".pdf" name="pago2_3" value="<?php //echo ($this->input->post('pago2_3') ? $this->input->post('pago2_3') : $docpago['pago2_3']); ?>" class="form-control" id="pago2_3" />
                         </div>
                         <div class="col-md-9">
-							<span class="label other">Copia de la Gestión de Seguridad e Higiene. Constancias de Visitas a obra y cumplimiento de horas profesionales del resp. De HyS.  Copia de capacitaciones dictadas en el proyecto.</span><input type="file" accept=".pdf" name="pago2.4" value="<?php //echo ($this->input->post('pago2.4') ? $this->input->post('pago2.4') : $docpago['pago2.4']); ?>" class="form-control" id="pago2.4" />
+							<span class="label other">Copia de la Gestión de Seguridad e Higiene. Constancias de Visitas a obra y cumplimiento de horas profesionales del resp. De HyS.  Copia de capacitaciones dictadas en el proyecto.</span><input type="file" accept=".pdf" name="pago2_4" value="<?php //echo ($this->input->post('pago2_4') ? $this->input->post('pago2_4') : $docpago['pago2_4']); ?>" class="form-control" id="pago2_4" />
                         </div>
                     </div>
                 </div>
@@ -91,10 +91,10 @@
                 <div class="col-md-9">
                     <div class="input-group mb-3">
                         <div class="col-md-9">
-							<span class="label other">Pago del Seguro de RC de vehículos y maquinas incorporadas a obra</span><input type="file" accept=".pdf" name="pago3.1" value="<?php //echo ($this->input->post('pago3.1') ? $this->input->post('pago3.1') : $docpago['pago3.1']); ?>" class="form-control" id="pago3.1" />
+							<span class="label other">Pago del Seguro de RC de vehículos y maquinas incorporadas a obra</span><input type="file" accept=".pdf" name="pago3_1" value="<?php //echo ($this->input->post('pago3_1') ? $this->input->post('pago3_1') : $docpago['pago3_1']); ?>" class="form-control" id="pago3_1" />
                         </div>
                         <div class="col-md-9">
-							<span class="label other">Pago del Seguro Tecnico de maquinas pesadas</span><input type="file" accept=".pdf" name="pago3.2" value="<?php //echo ($this->input->post('pago3.2') ? $this->input->post('pago3.2') : $docpago['pago3.2']); ?>" class="form-control" id="pago3.2" />
+							<span class="label other">Pago del Seguro Tecnico de maquinas pesadas</span><input type="file" accept=".pdf" name="pago3_2" value="<?php //echo ($this->input->post('pago3_2') ? $this->input->post('pago3_2') : $docpago['pago3_2']); ?>" class="form-control" id="pago3_2" />
                         </div>
                     </div>
                 </div>
@@ -113,13 +113,13 @@
                 <div class="col-md-9">
                     <div class="input-group mb-3">
                     <div class="col-md-9">
-							<span class="label other">Pedir autorización a la empresa para efectuar la subcontratación. Enviar datos y actividad a realizar por el subcontratado</span><input type="file" accept=".pdf" name="pago4.1" value="<?php //echo ($this->input->post('pago4.1') ? $this->input->post('pago4.1') : $docpago['pago4.1']); ?>" class="form-control" id="pago4.1" />
+							<span class="label other">Pedir autorización a la empresa para efectuar la subcontratación. Enviar datos y actividad a realizar por el subcontratado</span><input type="file" accept=".pdf" name="pago4_1" value="<?php //echo ($this->input->post('pago4_1') ? $this->input->post('pago4_1') : $docpago['pago4_1']); ?>" class="form-control" id="pago4_1" />
                         </div>
                         <div class="col-md-9">
-							<span class="label other">Demostrar a través de un contrato, solicitud de servicio o nota en carácter de declaración jurada, la relación vinculante entre las partes</span><input type="file" accept=".pdf" name="pago4.2" value="<?php //echo ($this->input->post('pago4.2') ? $this->input->post('pago4.2') : $docpago['pago4.2']); ?>" class="form-control" id="pago4.2" />
+							<span class="label other">Demostrar a través de un contrato, solicitud de servicio o nota en carácter de declaración jurada, la relación vinculante entre las partes</span><input type="file" accept=".pdf" name="pago4_2" value="<?php //echo ($this->input->post('pago4_2') ? $this->input->post('pago4_2') : $docpago['pago4_2']); ?>" class="form-control" id="pago4_2" />
                         </div>
                         <div class="col-md-9">
-							<span class="label other">Presentar documentación en iguales terminos y condiciones que la empresa que lo contrata.</span><input type="file" accept=".pdf" name="pago4.3" value="<?php //echo ($this->input->post('pago4.3') ? $this->input->post('pago4.3') : $docpago['pago4.3']); ?>" class="form-control" id="pago4.3" />
+							<span class="label other">Presentar documentación en iguales terminos y condiciones que la empresa que lo contrata.</span><input type="file" accept=".pdf" name="pago4_3" value="<?php //echo ($this->input->post('pago4_3') ? $this->input->post('pago4_3') : $docpago['pago4_3']); ?>" class="form-control" id="pago4_3" />
                         </div>
                     </div>
                 </div>

@@ -43,7 +43,7 @@ class Docingresoobra_model extends CI_Model
     function update_docingresoobra($iddocingresoobra,$params)
     {
         $this->db->where('iddocingresoobra',$iddocingresoobra);
-        return $this->db->update('doccomercial',$params);
+        return $this->db->update('docingresoobra',$params);
     }
     
     /*

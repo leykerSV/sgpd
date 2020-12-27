@@ -18,6 +18,11 @@ class Docpagos_model extends CI_Model
     {
         return $this->db->get_where('docpagos',array('idproveedor'=>$idproveedor))->row_array();
     }
+
+    function get_docpagos_idpagos($iddocpagos)
+    {
+        return $this->db->get_where('docpagos',array('iddocpagos'=>$iddocpagos))->row_array();
+    }
         
     /*
      * Get all doccomercial
@@ -42,8 +47,8 @@ class Docpagos_model extends CI_Model
      */
     function update_Docpagos($iddocpagos,$params)
     {
-        $this->db->where('iddocpagos',$iddocpagos);
-        return $this->db->update('doccomercial',$params);
+        $this->db->where('iddocpagos = '.$iddocpagos);
+        return $this->db->update('docpagos',$params);
     }
     
     /*
