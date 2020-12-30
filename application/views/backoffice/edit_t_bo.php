@@ -1,4 +1,4 @@
-<?php echo form_open_multipart('formulariot/edit/'.$formulariot['idformularioT'],array("class"=>"form-horizontal")); ?>
+<?php echo form_open_multipart('backoffice/formulariot/'.$formulariot['idproveedor'],array("class"=>"form-horizontal")); ?>
 <style>
     .bg-info {
         background-color: #4563ab !important;
@@ -418,12 +418,12 @@
                         <?php if ($formulariot['aprobado']==1){ ?>
                             <div class="form-group col-md-4" >
                             <label class="control-label bg-info d-flex justify-content-center align-items-left">APROBADO</label>  
-                            <input type="checkbox" name="completado" value="1" checked class="form-control bg-info " id="completado" onclick="return false;"></input>
+                            <input type="checkbox" name="completado" value="1" checked class="form-control bg-info " id="completado" ></input>
                             </div>
                         <?php }else{ ?>
                             <div class="form-group col-md-4" >
                             <label class="control-label bg-info d-flex justify-content-center align-items-left">APROBADO</label>  
-                            <input type="checkbox" name="completado" value="0" class="form-control bg-info " id="completado" onclick="return false;"></input>
+                            <input type="checkbox" name="completado" value="0" class="form-control bg-info " id="completado" ></input>
                             </div>
                         <?php } ?>
                     </div>
@@ -431,20 +431,18 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="form-group col">
             <button type="submit" class="btn bg-info text-white">Guardar Cambios</button>
         </div>
     </div>
-    
     <div class="row">
         <div class="form-group col-md-4" hidden>
             <input type="text" name="idproveedor"
                     value="<?php echo ($this->input->post('idproveedor') ? $this->input->post('idproveedor') : $formulariot['idproveedor']); ?>"
                     class="form-control" id="idproveedor" placeholder="Idproveedor" />
         </div>
-    </div>
+    
     </div>
 </div>
 

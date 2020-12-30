@@ -104,7 +104,19 @@ class Formulariofyc extends CI_Controller{
         if(isset($data['formulariofyc']['idformulariofyc']))
         {
             if(isset($_POST) && count($_POST) > 0)     
-            {   
+            {  
+				 
+				if(isset($_POST['completado'])){
+					$completado=1;
+				} else {
+					$completado=0;
+				}
+				if(isset($_POST['aprobado'])){
+					$aprobado=1;
+				} else {
+					$aprobado=0;
+				}
+
                 $params = array(
 					'categoriafiscal' => $this->input->post('categoriafiscal'),
 					'idproveedor' => $this->input->post('idproveedor'),
@@ -165,8 +177,8 @@ class Formulariofyc extends CI_Controller{
 					'otrasareastel' => $this->input->post('otrasareastel'),
 					'otrasareasmail' => $this->input->post('otrasareasmail'),
 					'otrasareashorario' => $this->input->post('otrasareashorario'),
-					'aprobado' => $this->input->post('aprobado'),
-					'completo' => $this->input->post('completo'),
+					'aprobado' => 0,
+					'completo' => $completado
                 );
 
                 $this->Formulariofyc_model->update_formulariofyc($idformulariofyc,$params);            
@@ -174,6 +186,7 @@ class Formulariofyc extends CI_Controller{
             }
             else
             {
+				$data['esproveedor'] = 'SI';
 				$data['titulacion']="Formulario FyC";
 				$data['_view'] = 'formulariofyc/edit';
 				$this->load->view('template/header',$data);
@@ -196,6 +209,16 @@ class Formulariofyc extends CI_Controller{
         {
             if(isset($_POST) && count($_POST) > 0)     
             {   
+				if(isset($_POST['completado'])){
+					$completado=1;
+				} else {
+					$completado=0;
+				}
+				if(isset($_POST['aprobado'])){
+					$aprobado=1;
+				} else {
+					$aprobado=0;
+				}
                 $params = array(
 					'categoriafiscal' => $this->input->post('categoriafiscal'),
 					'idproveedor' => $this->input->post('idproveedor'),
@@ -256,7 +279,7 @@ class Formulariofyc extends CI_Controller{
 					'otrasareastel' => $this->input->post('otrasareastel'),
 					'otrasareasmail' => $this->input->post('otrasareasmail'),
 					'otrasareashorario' => $this->input->post('otrasareashorario'),
-					'aprobado' => $this->input->post('aprobado'),
+					'aprobado' => 0,
 					'completo' => $this->input->post('completo'),
                 );
 
@@ -267,6 +290,7 @@ class Formulariofyc extends CI_Controller{
             {
 				$data['titulacion']="Formulario Fiscal y Comercial.";
 				$data['mensaje']="";
+				$data['esproveedor'] = 'SI';
 				$data['_view'] = 'formulariofyc/edit_fyc';
 				$this->load->view('template/header',$data);
                 $this->load->view('layouts/main');

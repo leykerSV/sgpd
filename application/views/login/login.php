@@ -4,7 +4,7 @@
       <ul class"links">
         <li class="signin-active"><img src=<?php echo base_url("/assets/imagenes/cocyar.jpg"); ?>></li>
         <br>
-        <li class ="signin-active"><small>Sistema de Gestión de Proveedores - SGCp</small></li>      
+        <li class ="signin-active"><small>Sistema de Gestión de Proveedores - SGPD</small></li>      
       </ul>
 		</div>
 		<?php

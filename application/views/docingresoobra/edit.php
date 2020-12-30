@@ -226,31 +226,42 @@
         </div>
     </div>
 
-    <div class="mb-3" hidden>
+    <div class="text-white mb-3">
         <div class="card-body">
             <div class="row">
                 <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
-                    <h4 class="text-white">ESTADO FORMULARIO</h4>
+                    <h4>ESTADO FORMULARIO</h4>
                 </div>
                 <div class="col-md-9">
                     <div class="input-group mb-3">
-                        <div class="form-group col-md-4" >
-                            <input type="text" name="idproveedor" value="<?php echo ($this->input->post('idproveedor') ? $this->input->post('idproveedor') : $formulariofyc['idproveedor']); ?>"
-                                class="form-control" id="idproveedor" placeholder="Id Proveedor" />
-                        </div>
-                        <div class="form-group col-md-4" >
-                            <input type="text" name="aprobado" value="<?php echo ($this->input->post('aprobado') ? $this->input->post('aprobado') : $formulariofyc['aprobado']); ?>"
-                                class="form-control" id="aprobado" placeholder="Aprobado" />
-                        </div>
-                        <div class="form-group col-md-4" >
-                            <input type="text" name="completo" value="<?php echo ($this->input->post('completo') ? $this->input->post('completo') : $formulariofyc['completo']); ?>"
-                                class="form-control" id="completo" placeholder="Completo" />
-                        </div>
+                        <?php if ($docingresoobra['completo']==1){ ?>
+                            <div class="form-group col-md-4" >
+                            <label class="control-label bg-info d-flex justify-content-center align-items-left">COMPLETO</label>  
+                            <input type="checkbox" name="completado" value="1" checked class="form-control bg-info " id="completado"></input>
+                            </div>
+                        <?php }else{ ?>
+                            <div class="form-group col-md-4" >
+                            <label class="control-label bg-info d-flex justify-content-center align-items-left">COMPLETO</label>  
+                            <input type="checkbox" name="completado" value="0" class="form-control bg-info " id="completado"></input>
+                            </div>
+                        <?php } ?>
+                        <?php if ($docingresoobra['aprobado']==1){ ?>
+                            <div class="form-group col-md-4" >
+                            <label class="control-label bg-info d-flex justify-content-center align-items-left">APROBADO</label>  
+                            <input type="checkbox" name="completado" value="1" checked class="form-control bg-info " id="completado" ></input>
+                            </div>
+                        <?php }else{ ?>
+                            <div class="form-group col-md-4" >
+                            <label class="control-label bg-info d-flex justify-content-center align-items-left">APROBADO</label>  
+                            <input type="checkbox" name="completado" value="0" class="form-control bg-info " id="completado" ></input>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>							
+	<p></p>
 
     <div class="row">
         <div class="form-group col">

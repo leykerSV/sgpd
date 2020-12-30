@@ -93,10 +93,25 @@ class Formulariot extends CI_Controller{
 			$pcias='';
             if(isset($_POST) && count($_POST) > 0)    
             {   
-				foreach ($this->input->post('provinciasalcanzadascmb') as $seleccion){
-					$pcias = $pcias.$seleccion.' , ';
+				if (null!==$this->input->post('provinciasalcanzadascmb')){
+					foreach ($this->input->post('provinciasalcanzadascmb') as $seleccion){
+						$pcias = $pcias.$seleccion.' , ';
+					}
+				}else{
+					$pcias = $this->input->post('provinciasalcanzadas');	
 				}
+				
 				 
+				if(isset($_POST['completado'])){
+					$completado=1;
+				} else {
+					$completado=0;
+				}
+				if(isset($_POST['aprobado'])){
+					$aprobado=1;
+				} else {
+					$aprobado=0;
+				}
                 $params = array(
 					'actividadpcipal' => $this->input->post('actividadpcipal'),
 					'obras1tipo' => $this->input->post('obras1tipo'),
@@ -135,12 +150,11 @@ class Formulariot extends CI_Controller{
 					'flotavehiculosutilitarios' => $this->input->post('flotavehiculosutilitarios'),
 					'flotavehiculoscarga' => $this->input->post('flotavehiculoscarga'),
 					'flotavehiculostripulados' => $this->input->post('flotavehiculostripulados'),
-					'aprobado' => $this->input->post('aprobado'),
-					'completo' => $this->input->post('completo'),
+					'aprobado' => $aprobado,
+					'completo' => $completado,
 					'fortalezas' => $this->input->post('fortalezas'),
 					'certificadosdocumento' => $this->input->post('certificadosdocumento'),
                 );
-
                 $this->Formulariot_model->update_formulariot($idformularioT,$params);            
                 redirect('proveedores', 'refresh');
             }
@@ -154,7 +168,7 @@ class Formulariot extends CI_Controller{
             }
         }
         else
-            show_error('The formulariot you are trying to edit does not exist.');
+            show_error('Error en el Formulario');
 	}
 	
 	/*
@@ -175,7 +189,16 @@ class Formulariot extends CI_Controller{
 				foreach ($this->input->post('provinciasalcanzadascmb') as $seleccion){
 					$pcias = $pcias.$seleccion.' , ';
 				}
-
+				if(isset($_POST['completado'])){
+					$completado=1;
+				} else {
+					$completado=0;
+				}
+				if(isset($_POST['aprobado'])){
+					$aprobado=1;
+				} else {
+					$aprobado=0;
+				}
                	$params = array(
 					'actividadpcipal' => $this->input->post('actividadpcipal'),
 					'obras1tipo' => $this->input->post('obras1tipo'),
@@ -214,13 +237,12 @@ class Formulariot extends CI_Controller{
 					'flotavehiculosutilitarios' => $this->input->post('flotavehiculosutilitarios'),
 					'flotavehiculoscarga' => $this->input->post('flotavehiculoscarga'),
 					'flotavehiculostripulados' => $this->input->post('flotavehiculostripulados'),
-					'aprobado' => $this->input->post('aprobado'),
-					'completo' => $this->input->post('completo'),
+					'aprobado' => $aprobado,
+					'completo' => $completado,
 					'provinciasalcanzadas' => $this->input->post('provinciasalcanzadas'),
 					'fortalezas' => $this->input->post('fortalezas'),
 					'certificadosdocumento' => $this->input->post('certificadosdocumento'),
                 );
-
                 $this->Formulariot_model->update_formulariot($idformularioT,$params);            
                 redirect('proveedores', 'refresh');
             }
@@ -234,7 +256,8 @@ class Formulariot extends CI_Controller{
 				//$this->load->view('template/footer');
             }
         }
-        else
-            show_error('The formulariot you are trying to edit does not exist.');
+		else
+		
+            show_error('Error en el Formulario');
     }
 }

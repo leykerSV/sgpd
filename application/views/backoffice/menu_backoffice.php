@@ -14,8 +14,8 @@
 				<th scope="col">Nombre y Apellido</th>
 				<th scope="col">Email</th>
 				<th scope="col">Contacto</th>
-				<th scope="col">Formulario FYC</th>
-				<th scope="col">Formulario T</th>
+				<th scope="col">Fiscal y Comercial</th>
+				<th scope="col">Técnico</th>
 				<th scope="col">Doc Comercial</th>
 				<th scope="col">Doc Ingreso Obra</th>
 				<th scope="col">Doc Para Pagos</th>
@@ -40,7 +40,7 @@
 									//echo'<th align="center">Desaprobado - incompleto<th>';
 									?>
 										<th align="center">
-											<a href="<?php echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/formulariofyc/'.$item['idproveedor']); ?>" target="_blank">
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x-octagon" fill="red" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1L1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
 												<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -56,7 +56,7 @@
 								if ($item['fyccom']==1 and $item['fycap']==0){
 									?>
 										<th align="center">
-											<a href="<?php echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('index.php/backoffice/formulariofyc/'.$item['idproveedor']); ?>" target="_blank">
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="green" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
 												<path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
@@ -73,7 +73,7 @@
 								if ($item['fyccom']==0 and $item['fycap']==1){
 									?>
 										<th align="center">
-											<a href="<?php echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('index.php/backoffice/formulariofyc/'.$item['idproveedor']); ?>" target="_blank">
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x-octagon" fill="red" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1L1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
 												<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -90,7 +90,7 @@
 								if ($item['fyccom']==1 and $item['fycap']==1){
 									?>
 										<th align="center">
-											<a href="<?php echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('index.php/backoffice/formulariofyc/'.$item['idproveedor']); ?>" target="_blank">
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="green" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
 												<path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
@@ -110,7 +110,7 @@
 									//echo'<th align="center">Desaprobado - incompleto<th>';
 									?>
 										<th align="center">
-											<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/formulariot/'.$item['idproveedor']); ?>" target="_blank">
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x-octagon" fill="red" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1L1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
 												<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -126,7 +126,7 @@
 								if ($item['ftcom']==1 and $item['ftap']==0){
 									?>
 										<th align="center">
-											<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/formulariot/'.$item['idproveedor']); ?>" target="_blank">
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="green" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
 												<path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
@@ -143,7 +143,7 @@
 								if ($item['ftcom']==0 and $item['ftap']==1){
 									?>
 										<th align="center">
-											<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/formulariot/'.$item['idproveedor']); ?>" target="_blank">
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x-octagon" fill="red" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1L1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
 												<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -160,7 +160,7 @@
 								if ($item['ftcom']==1 and $item['ftap']==1){
 									?>
 										<th align="center">
-											<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php //echo base_url('/index.php/backoffice/formulariot/'.$item['idproveedor']); ?>" target="_blank">
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="green" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
 												<path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
