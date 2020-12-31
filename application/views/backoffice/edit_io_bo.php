@@ -1,4 +1,4 @@
-<?php echo form_open_multipart('docingresoobra/edit/'.$docingresoobra['idproveedor'],array("class"=>"form-horizontal")); ?>
+<?php echo form_open_multipart('backoffice/docingreasoaobra/'.$docingresoobra['idproveedor'],array("class"=>"form-horizontal")); ?>
 
 <style>
     .bg-info {
@@ -255,12 +255,12 @@
                         <?php if ($docingresoobra['aprobado']==1){ ?>
                             <div class="form-group col-md-4" >
                             <label class="control-label bg-info d-flex justify-content-center align-items-left">APROBADO</label>  
-                            <input type="checkbox" name="aprobado" value="1" checked class="form-control bg-info " id="aprobado" onclick="return false;"></input>
+                            <input type="checkbox" name="aprobado" value="1" checked class="form-control bg-info " id="aprobado" ></input>
                             </div>
                         <?php }else{ ?>
                             <div class="form-group col-md-4" >
                             <label class="control-label bg-info d-flex justify-content-center align-items-left">APROBADO</label>  
-                            <input type="checkbox" name="aprobado" value="0" class="form-control bg-info " id="aprobado" onclick="return false;"></input>
+                            <input type="checkbox" name="aprobado" value="0" class="form-control bg-info " id="aprobado" ></input>
                             </div>
                         <?php } ?>
                     </div>
@@ -275,7 +275,6 @@
             <button type="submit" class="btn bg-info text-white">Guardar Cambios</button>
         </div>
     </div>
-
 </div>
 
 <?php echo form_close(); ?>

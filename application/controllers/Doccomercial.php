@@ -108,6 +108,17 @@ class Doccomercial extends CI_Controller{
                 }
                 $formulariocm01ar=$nombrearchivo;
 
+                if(isset($_POST['completado'])){
+					$completado=1;
+				} else {
+					$completado=0;
+				}
+				if(isset($_POST['aprobado'])){
+					$aprobado=1;
+				} else {
+					$aprobado=0;
+				}
+
                 $params = array(
 					'idproveedor' => $this->input->post('idproveedor'),
 					'contratosocial' => $contratosocialar,
@@ -117,8 +128,8 @@ class Doccomercial extends CI_Controller{
 					'constmonotributo' => $constmonotributoar,
                     'constmonotributoiibb' => $constmonotributoiibbar,
                     'formulariocm01' => $formulariocm01ar,
-                    'completo' => $this->input->post('completo'),
-                    'aprobado' => $this->input->post('aprobado'),
+                    'completo' => $completado,
+                    'aprobado' => 0
                 );
 
 
@@ -165,7 +176,7 @@ class Doccomercial extends CI_Controller{
                     move_uploaded_file($_FILES['contratosocial']['tmp_name'], $fichero_subido);
                 }
                 $contratosocialar=$nombrearchivo;
-
+                $fecha = date_create();
                 if ($_FILES['inscripcion']['name']==null){
                     $nombrearchivo=$data['doccomercial']['inscripcion'];        
                 }else{
@@ -176,7 +187,7 @@ class Doccomercial extends CI_Controller{
                     move_uploaded_file($_FILES['inscripcion']['tmp_name'], $fichero_subido);
                 }
                 $inscripcionar=$nombrearchivo;
-
+                $fecha = date_create();
                 if ($_FILES['balance']['name']==null){
                     $nombrearchivo=$data['doccomercial']['inscripcion'];        
                 }else{
@@ -187,7 +198,7 @@ class Doccomercial extends CI_Controller{
                     move_uploaded_file($_FILES['balance']['tmp_name'], $fichero_subido);
                 }
                 $balancear=$nombrearchivo;
-
+                $fecha = date_create();
                 if ($_FILES['constanciaiibb']['name']==null){
                     $nombrearchivo=$data['doccomercial']['constanciaiibb'];         
                 }else{
@@ -198,7 +209,7 @@ class Doccomercial extends CI_Controller{
                     move_uploaded_file($_FILES['constanciaiibb']['tmp_name'], $fichero_subido);
                 }
                 $constanciaiibbar=$nombrearchivo;
-
+                $fecha = date_create();
                 if ($_FILES['constmonotributo']['name']==null){
                     $nombrearchivo=$data['doccomercial']['constmonotributo'];         
                 }else{
@@ -209,7 +220,7 @@ class Doccomercial extends CI_Controller{
                     move_uploaded_file($_FILES['constmonotributo']['tmp_name'], $fichero_subido);
                 }
                 $constmonotributoar=$nombrearchivo;
-
+                $fecha = date_create();
                 if ($_FILES['constmonotributoiibb']['name']==null){
                     $nombrearchivo=$data['doccomercial']['constmonotributoiibb'];         
                 }else{
@@ -220,7 +231,7 @@ class Doccomercial extends CI_Controller{
                     move_uploaded_file($_FILES['constmonotributoiibb']['tmp_name'], $fichero_subido);
                 }
                 $constmonotributoiibbar=$nombrearchivo;
-
+                $fecha = date_create();
                 if ($_FILES['formulariocm01']['name']==null){
                     $nombrearchivo=$data['doccomercial']['formulariocm01'];        
                 }else{
@@ -232,6 +243,17 @@ class Doccomercial extends CI_Controller{
                 }
                 $formulariocm01ar=$nombrearchivo;
 
+                if(isset($_POST['completado'])){
+					$completado=1;
+				} else {
+					$completado=0;
+				}
+				if(isset($_POST['aprobado'])){
+					$aprobado=1;
+				} else {
+					$aprobado=0;
+                }
+                
                 $params = array(
 					'idproveedor' => $this->input->post('idproveedor'),
 					'contratosocial' => $contratosocialar,
@@ -241,8 +263,8 @@ class Doccomercial extends CI_Controller{
 					'constmonotributo' => $constmonotributoar,
                     'constmonotributoiibb' => $constmonotributoiibbar,
                     'formulariocm01' => $formulariocm01ar,
-                    'completo' => $this->input->post('completo'),
-                    'aprobado' => $this->input->post('aprobado'),
+                    'completo' => $completado,
+                    'aprobado' => 0
                 );
 
 

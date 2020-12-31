@@ -129,6 +129,7 @@ class Backoffice extends CI_Controller {
 					'sucursalbanco' => $this->input->post('sucursalbanco'),
 					'tipocuenta' => $this->input->post('tipocuenta'),
 					'cbu' => $this->input->post('cbu'),
+					'cuit' => $this->input->post('cuit'),
 					'beneficiariochq' => $this->input->post('beneficiariochq'),
 					'situacioniibb' => $this->input->post('situacioniibb'),
 					'numinscripiibb' => $this->input->post('numinscripiibb'),
@@ -210,19 +211,25 @@ class Backoffice extends CI_Controller {
 		  if(isset($_POST) && count($_POST) > 0)     
 		  {   
 
-			  foreach ($this->input->post('provinciasalcanzadascmb') as $seleccion){
-				  $pcias = $pcias.$seleccion.' , ';
-			  }
-			  if(isset($_POST['completado'])){
-				  $completado=1;
-			  } else {
-				  $completado=0;
-			  }
-			  if(isset($_POST['aprobado'])){
-				  $aprobado=1;
-			  } else {
-				  $aprobado=0;
-			  }
+			if (null!==$this->input->post('provinciasalcanzadascmb')){
+				foreach ($this->input->post('provinciasalcanzadascmb') as $seleccion){
+					$pcias = $pcias.$seleccion.' , ';
+				}
+			}else{
+				$pcias = $this->input->post('provinciasalcanzadas');	
+			}
+
+				if(isset($_POST['completado'])){
+					$completado=1;
+				} else {
+					$completado=0;
+				}
+				if(isset($_POST['aprobado'])){
+					$aprobado=1;
+				} else {
+					$aprobado=0;
+				}
+				
 				 $params = array(
 				  'actividadpcipal' => $this->input->post('actividadpcipal'),
 				  'obras1tipo' => $this->input->post('obras1tipo'),
@@ -275,7 +282,7 @@ class Backoffice extends CI_Controller {
 		  {
 			  $data['titulacion']="Formulario Técnico";
 			  $data['mensaje']="";
-			  $data['_view'] = 'formulariot/edit';
+			  $data['_view'] = 'backoffice/edit_t_bo';
 			  $this->load->view('template/header',$data);
 			  $this->load->view('layouts/main');
 			  //$this->load->view('template/footer');
@@ -283,23 +290,827 @@ class Backoffice extends CI_Controller {
 	  	}
 		else
 		{
-			show_error('The formulariot you are trying to edit does not exist.');
+			show_error('Error en el procesamiento.');
 		}
     }
 
     public function doccomercial($idproveedor){
-      $this->check_log();
+	  	$this->check_log();
+	  	$this->load->model('Doccomercial_model');
+		// check if the doccomercial exists before trying to edit it
+        $data['doccomercial'] = $this->Doccomercial_model->get_doccomercial_idusuario($idproveedor);
 
+        if(isset($data['doccomercial']['iddoccomercial']))
+        {
+
+            
+            if(isset($_POST) && count($_POST) > 0)     
+            {   
+                //chdir('..');
+                chdir('archivos');
+                $directorio=getcwd()."/";
+                
+                $fecha = date_create();
+
+                if ($_FILES['contratosocial']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['contratosocial'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['contratosocial']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['contratosocial']['name']);
+                    move_uploaded_file($_FILES['contratosocial']['tmp_name'], $fichero_subido);
+                }
+                $contratosocialar=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['inscripcion']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['inscripcion'];        
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['inscripcion']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['inscripcion']['name']);
+                    move_uploaded_file($_FILES['inscripcion']['tmp_name'], $fichero_subido);
+                }
+                $inscripcionar=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['balance']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['inscripcion'];        
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['balance']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['balance']['name']);
+                    move_uploaded_file($_FILES['balance']['tmp_name'], $fichero_subido);
+                }
+                $balancear=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['constanciaiibb']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['constanciaiibb'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['constanciaiibb']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['constanciaiibb']['name']);
+                    move_uploaded_file($_FILES['constanciaiibb']['tmp_name'], $fichero_subido);
+                }
+                $constanciaiibbar=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['constmonotributo']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['constmonotributo'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['constmonotributo']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['constmonotributo']['name']);
+                    move_uploaded_file($_FILES['constmonotributo']['tmp_name'], $fichero_subido);
+                }
+                $constmonotributoar=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['constmonotributoiibb']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['constmonotributoiibb'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['constmonotributoiibb']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['constmonotributoiibb']['name']);
+                    move_uploaded_file($_FILES['constmonotributoiibb']['tmp_name'], $fichero_subido);
+                }
+                $constmonotributoiibbar=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['formulariocm01']['name']==null){
+                    $nombrearchivo=$data['doccomercial']['formulariocm01'];        
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['formulariocm01']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['formulariocm01']['name']);
+                    move_uploaded_file($_FILES['formulariocm01']['tmp_name'], $fichero_subido);
+                }
+                $formulariocm01ar=$nombrearchivo;
+
+                if(isset($_POST['completado'])){
+					$completado=1;
+				} else {
+					$completado=0;
+				}
+				if(isset($_POST['aprobado'])){
+					$aprobado=1;
+				} else {
+					$aprobado=0;
+                }
+                
+                $params = array(
+					'idproveedor' => $this->input->post('idproveedor'),
+					'contratosocial' => $contratosocialar,
+					'inscripcion' => $inscripcionar,
+					'balance' => $balancear,
+					'constanciaiibb' => $constanciaiibbar,
+					'constmonotributo' => $constmonotributoar,
+                    'constmonotributoiibb' => $constmonotributoiibbar,
+                    'formulariocm01' => $formulariocm01ar,
+                    'completo' => $completado,
+                    'aprobado' => $aprobado
+                );
+                $this->Doccomercial_model->update_doccomercial($data['doccomercial']['iddoccomercial'],$params);            
+                redirect('backoffice/menu_backoffice', 'refresh');
+            }
+            else
+            {
+                $data['_view'] = 'backoffice/edit_doccom_bo';
+                $data['titulacion'] = 'Documentación Comercial';
+                $data['mensaje']="La documentacion debe ser en PDF y pesar menos de 2 mb cada archivo";
+                $this->load->view('template/header',$data);
+                $this->load->view('layouts/main');
+            }
+        }
+        else
+            show_error('Error en el procesamiento.');
+    }
+
+
+    public function docingreasoaobra($idproveedor){
+	  $this->check_log();
+	  $this->load->model('Docingresoobra_model');
+	  // check if the doccomercial exists before trying to edit it
+	  $data['docingresoobra'] = $this->Docingresoobra_model->get_docingresoobra($idproveedor);
+	  $iddocingresoobra=$data['docingresoobra']['iddocingresoobra'];
+	  if(isset($data['docingresoobra']['iddocingresoobra']))
+	  {
+		  if(isset($_POST) && count($_POST) > 0)  
+		  {   
+			  //chdir('..');
+			  chdir('archivos');
+			  $directorio=getcwd()."/";
+			  
+			  $fecha = date_create();
+			  if ($_FILES['io1_1']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io1_1'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io1_1']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io1_1']['name']);
+				  move_uploaded_file($_FILES['io1_1']['tmp_name'], $fichero_subido);
+			  }
+			  $io1_1=$nombrearchivo;
+			  if ($_FILES['io1_2']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io1_2'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io1_2']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io1_2']['name']);
+				  move_uploaded_file($_FILES['io1_2']['tmp_name'], $fichero_subido);
+			  }
+			  $io1_2=$nombrearchivo;
+			  if ($_FILES['io1_3']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io1_3'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io1_3']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io1_3']['name']);
+				  move_uploaded_file($_FILES['io1_3']['tmp_name'], $fichero_subido);
+			  }
+			  $io1_3=$nombrearchivo;
+			  if ($_FILES['io1_4']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io1_4'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io1_4']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io1_4']['name']);
+				  move_uploaded_file($_FILES['io1_4']['tmp_name'], $fichero_subido);
+			  }
+			  $io1_4=$nombrearchivo;
+			  if ($_FILES['io1_5']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io1_5'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io1_5']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io1_5']['name']);
+				  move_uploaded_file($_FILES['io1_5']['tmp_name'], $fichero_subido);
+			  }
+			  $io1_5=$nombrearchivo;
+			  if ($_FILES['io1_6']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io1_6'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io1_6']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io1_6']['name']);
+				  move_uploaded_file($_FILES['io1_6']['tmp_name'], $fichero_subido);
+			  }
+			  $io1_6=$nombrearchivo;
+			  if ($_FILES['io1_7']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io1_7'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io1_7']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io1_7']['name']);
+				  move_uploaded_file($_FILES['io1_7']['tmp_name'], $fichero_subido);
+			  }
+			  $io1_7=$nombrearchivo;
+
+			  if ($_FILES['io2_1']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io2_1'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io2_1']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io2_1']['name']);
+				  move_uploaded_file($_FILES['io2_1']['tmp_name'], $fichero_subido);
+			  }
+			  $io2_1=$nombrearchivo;
+			  if ($_FILES['io2_2']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io2_2'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io2_2']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io2_2']['name']);
+				  move_uploaded_file($_FILES['io2_2']['tmp_name'], $fichero_subido);
+			  }
+			  $io2_2=$nombrearchivo;
+			  if ($_FILES['io2_3']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io2_3'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io2_3']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io2_3']['name']);
+				  move_uploaded_file($_FILES['io2_3']['tmp_name'], $fichero_subido);
+			  }
+			  $io2_3=$nombrearchivo;
+
+			  if ($_FILES['io3_1']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io3_1'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io3_1']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io3_1']['name']);
+				  move_uploaded_file($_FILES['io3_1']['tmp_name'], $fichero_subido);
+			  }
+			  $io3_1=$nombrearchivo;
+			  if ($_FILES['io3_2']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io3_2'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io3_2']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io3_2']['name']);
+				  move_uploaded_file($_FILES['io3_2']['tmp_name'], $fichero_subido);
+			  }
+			  $io3_2=$nombrearchivo;
+			  if ($_FILES['io3_3']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io3_3'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io3_3']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io3_3']['name']);
+				  move_uploaded_file($_FILES['io3_3']['tmp_name'], $fichero_subido);
+			  }
+			  $io3_3=$nombrearchivo;
+			  if ($_FILES['io3_4']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io3_4'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io3_4']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io3_4']['name']);
+				  move_uploaded_file($_FILES['io3_4']['tmp_name'], $fichero_subido);
+			  }
+			  $io3_4=$nombrearchivo;
+
+			  if ($_FILES['io4_1']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io4_1'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io4_1']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io4_1']['name']);
+				  move_uploaded_file($_FILES['io4_1']['tmp_name'], $fichero_subido);
+			  }
+			  $io4_1=$nombrearchivo;
+			  if ($_FILES['io4_2']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io4_2'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io4_2']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io4_2']['name']);
+				  move_uploaded_file($_FILES['io4_2']['tmp_name'], $fichero_subido);
+			  }
+			  $io4_2=$nombrearchivo;
+			  if ($_FILES['io4_3']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io4_3'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io4_3']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io4_3']['name']);
+				  move_uploaded_file($_FILES['io4_3']['tmp_name'], $fichero_subido);
+			  }
+			  $io4_3=$nombrearchivo;
+			  if ($_FILES['io4_4']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io4_4'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io4_4']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io4_4']['name']);
+				  move_uploaded_file($_FILES['io4_4']['tmp_name'], $fichero_subido);
+			  }
+			  $io4_4=$nombrearchivo;
+			  if ($_FILES['io4_5']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io4_5'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io4_5']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io4_5']['name']);
+				  move_uploaded_file($_FILES['io4_5']['tmp_name'], $fichero_subido);
+			  }
+			  $io4_5=$nombrearchivo;
+
+			  if ($_FILES['io5_1']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io5_1'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io5_1']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io5_1']['name']);
+				  move_uploaded_file($_FILES['io5_1']['tmp_name'], $fichero_subido);
+			  }
+			  $io5_1=$nombrearchivo;
+			  if ($_FILES['io5_2']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io5_2'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io5_2']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io5_2']['name']);
+				  move_uploaded_file($_FILES['io5_2']['tmp_name'], $fichero_subido);
+			  }
+			  $io5_2=$nombrearchivo;
+			  if ($_FILES['io5_3']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io5_3'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io5_3']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io5_3']['name']);
+				  move_uploaded_file($_FILES['io5_3']['tmp_name'], $fichero_subido);
+			  }
+			  $io5_3=$nombrearchivo;
+			  if ($_FILES['io5_4']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io5_4'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io5_4']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io5_4']['name']);
+				  move_uploaded_file($_FILES['io5_4']['tmp_name'], $fichero_subido);
+			  }
+			  $io5_4=$nombrearchivo;
+			  if ($_FILES['io5_5']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io5_5'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io5_5']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io5_5']['name']);
+				  move_uploaded_file($_FILES['io5_5']['tmp_name'], $fichero_subido);
+			  }
+			  $io5_5=$nombrearchivo;
+			  if ($_FILES['io5_6']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io5_6'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io5_6']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io5_6']['name']);
+				  move_uploaded_file($_FILES['io5_6']['tmp_name'], $fichero_subido);
+			  }
+			  $io5_6=$nombrearchivo;
+			  if ($_FILES['io5_7']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io5_7'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io5_7']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io5_7']['name']);
+				  move_uploaded_file($_FILES['io5_7']['tmp_name'], $fichero_subido);
+			  }
+			  $io5_7=$nombrearchivo;
+			  if ($_FILES['io5_8']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io5_8'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io5_8']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io5_8']['name']);
+				  move_uploaded_file($_FILES['io5_8']['tmp_name'], $fichero_subido);
+			  }
+			  $io5_8=$nombrearchivo;
+			  if ($_FILES['io5_9']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io5_9'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io5_9']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io5_9']['name']);
+				  move_uploaded_file($_FILES['io5_9']['tmp_name'], $fichero_subido);
+			  }
+			  $io5_9=$nombrearchivo;
+			  if ($_FILES['io5_10']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io5_10'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io5_10']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io5_10']['name']);
+				  move_uploaded_file($_FILES['io5_10']['tmp_name'], $fichero_subido);
+			  }
+			  $io5_10=$nombrearchivo;
+			  if ($_FILES['io5_11']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io5_11'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io5_11']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io5_11']['name']);
+				  move_uploaded_file($_FILES['io5_11']['tmp_name'], $fichero_subido);
+			  }
+			  $io5_11=$nombrearchivo;
+
+			  if ($_FILES['io6_1']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io6_1'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io6_1']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io6_1']['name']);
+				  move_uploaded_file($_FILES['io6_1']['tmp_name'], $fichero_subido);
+			  }
+			  $io6_1=$nombrearchivo;
+			  if ($_FILES['io6_2']['name']==null){
+				  $nombrearchivo=$data['docingresoobra']['io6_2'];         
+			  }else{
+				  $fecha = date_create();
+				  $extra=date_timestamp_get($fecha);
+				  $fichero_subido = $directorio . $extra . basename($_FILES['io6_2']['name']);
+				  $nombrearchivo = $extra . basename($_FILES['io6_2']['name']);
+				  move_uploaded_file($_FILES['io6_2']['tmp_name'], $fichero_subido);
+			  }
+			  $io6_2=$nombrearchivo;
+
+			  if(isset($_POST['completado'])){
+				  $completado=1;
+			  } else {
+				  $completado=0;
+			  }
+			  if(isset($_POST['aprobado'])){
+				  $aprobado=1;
+			  } else {
+				  $aprobado=0;
+			  }
+
+			  $params = array(
+				  'idproveedor' => $idproveedor,
+				  'io1_1' => $io1_1,
+				  'io1_2' => $io1_2,
+				  'io1_3' => $io1_3,
+				  'io1_4' => $io1_4,
+				  'io1_5' => $io1_5,
+				  'io1_6' => $io1_6,
+				  'io1_7' => $io1_7,
+
+				  'io2_1' => $io2_1,
+				  'io2_2' => $io2_2,
+				  'io2_3' => $io2_3,
+				  
+				  'io3_1' => $io3_1,
+				  'io3_2' => $io3_2,
+				  'io3_3' => $io3_3,
+				  'io3_4' => $io3_4,
+
+				  'io4_1' => $io4_1,
+				  'io4_2' => $io4_2,
+				  'io4_3' => $io4_3,
+				  'io4_4' => $io4_4,
+				  'io4_5' => $io4_5,
+
+				  'io5_1' => $io5_1,
+				  'io5_2' => $io5_2,
+				  'io5_3' => $io5_3,
+				  'io5_4' => $io5_4,
+				  'io5_5' => $io5_5,
+				  'io5_6' => $io5_6,
+				  'io5_7' => $io5_7,
+				  'io5_8' => $io5_8,
+				  'io5_9' => $io5_9,
+				  'io5_10' => $io5_10,
+				  'io5_11' => $io5_11,
+
+				  'io6_1' => $io6_1,
+				  'io6_2' => $io6_2,
+				  'completo' => $completado,
+				  'aprobado' => $aprobado
+
+			  );
+			  $this->Docingresoobra_model->update_docingresoobra($iddocingresoobra,$params);            
+			  redirect('backoffice/menu_backoffice', 'refresh');
+		  }
+		  else
+		  {
+			  $data['_view'] = 'backoffice/edit_io_bo';
+			  $data['titulacion'] = 'Documentación Ingreso a Obra';
+			  $data['mensaje']="La documentacion debe ser en PDF y pesar menos de 2 mb cada archivo";
+			  $this->load->view('template/header',$data);
+			  $this->load->view('layouts/main');
+		  }
+	  }
+	  else
+		  show_error('Error en el proceso.');
     }
 
     public function docparacobranza($idproveedor){
-      $this->check_log();
+      	$this->check_log();
+		$this->load->model('Docpagos_model');
+		$data['docpagos'] = $this->Docpagos_model->get_Docpagos($idproveedor);
+        $indiceguarda=$data['docpagos']['iddocpagos'];
+        if(isset($data['docpagos']['iddocpagos']))
+        {
+            if(isset($_POST) && count($_POST) > 0)     
+            {   if(isset($_POST['completado'])){
+                $completado=1;
+            } else {
+                $completado=0;
+            }
+            if(isset($_POST['aprobado'])){
+                $aprobado=1;
+            } else {
+                $aprobado=0;
+            }
 
-    }
+                //chdir('..');
+                chdir('archivos');
+                $directorio=getcwd()."/";
+                
+                $fecha = date_create();
+                if ($_FILES['pago1_1']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago1_1'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago1_1']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago1_1']['name']);
+                    move_uploaded_file($_FILES['pago1_1']['tmp_name'], $fichero_subido);
+                }
+                $pago1_1=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['pago1_2']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago1_2'];         
+                }else{        $indiceguardado=0;
+                    $indiceguardado=$data['docpagos']['iddocpagos'];
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago1_2']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago1_2']['name']);
+                    move_uploaded_file($_FILES['pago1_2']['tmp_name'], $fichero_subido);
+                }
+                $pago1_2=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['pago1_3']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago1_3'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago1_3']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago1_3']['name']);
+                    move_uploaded_file($_FILES['pago1_3']['tmp_name'], $fichero_subido);
+                }
+                $pago1_3=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['pago1_4']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago1_4'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago1_4']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago1_4']['name']);
+                    move_uploaded_file($_FILES['pago1_4']['tmp_name'], $fichero_subido);
+                }
+                $pago1_4=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['pago1_5']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago1_5'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago1_5']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago1_5']['name']);
+                    move_uploaded_file($_FILES['pago1_5']['tmp_name'], $fichero_subido);
+                }
+                $pago1_5=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['pago1_6']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago1_6'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago1_6']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago1_6']['name']);
+                    move_uploaded_file($_FILES['pago1_6']['tmp_name'], $fichero_subido);
+                }
+                $pago1_6=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['pago1_7']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago1_7'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago1_7']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago1_7']['name']);
+                    move_uploaded_file($_FILES['pago1_7']['tmp_name'], $fichero_subido);
+                }
+                $pago1_7=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['pago1_8']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago1_8'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago1_8']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago1_8']['name']);
+                    move_uploaded_file($_FILES['pago1_8']['tmp_name'], $fichero_subido);
+                }
+                $pago1_8=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['pago1_9']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago1_9'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago1_9']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago1_9']['name']);
+                    move_uploaded_file($_FILES['pago1_9']['tmp_name'], $fichero_subido);
+                }
+                $pago1_9=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['pago1_10']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago1_10'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago1_10']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago1_10']['name']);
+                    move_uploaded_file($_FILES['pago1_10']['tmp_name'], $fichero_subido);
+                }
+                $pago1_10=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['pago2_1']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago2_1'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago2_1']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago2_1']['name']);
+                    move_uploaded_file($_FILES['pago2_1']['tmp_name'], $fichero_subido);
+                }
+                $pago2_1=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['pago2_2']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago2_2'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago2_2']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago2_2']['name']);
+                    move_uploaded_file($_FILES['pago2_2']['tmp_name'], $fichero_subido);
+                }
+                $pago2_2=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['pago2_3']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago2_3'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago2_3']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago2_3']['name']);
+                    move_uploaded_file($_FILES['pago2_3']['tmp_name'], $fichero_subido);
+                }
+                $pago2_3=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['pago2_4']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago2_4'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago2_4']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago2_4']['name']);
+                    move_uploaded_file($_FILES['pago2_4']['tmp_name'], $fichero_subido);
+                }
+                $pago2_4=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['pago3_1']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago3_1'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago3_1']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago3_1']['name']);
+                    move_uploaded_file($_FILES['pago3_1']['tmp_name'], $fichero_subido);
+                }
+                $pago3_1=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['pago3_2']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago3_2'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago3_2']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago3_2']['name']);
+                    move_uploaded_file($_FILES['pago3_2']['tmp_name'], $fichero_subido);
+                }
+                $pago3_2=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['pago4_1']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago4_1'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago4_1']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago4_1']['name']);
+                    move_uploaded_file($_FILES['pago4_1']['tmp_name'], $fichero_subido);
+                }
+                $pago4_1=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['pago4_2']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago4_2'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago4_2']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago4_2']['name']);
+                    move_uploaded_file($_FILES['pago4_2']['tmp_name'], $fichero_subido);
+                }
+                $pago4_2=$nombrearchivo;
+                $fecha = date_create();
+                if ($_FILES['pago4_3']['name']==null){
+                    $nombrearchivo=$data['docpagos']['pago4_3'];         
+                }else{
+                    $fecha = date_create();
+                    $extra=date_timestamp_get($fecha);
+                    $fichero_subido = $directorio . $extra . basename($_FILES['pago4_3']['name']);
+                    $nombrearchivo = $extra . basename($_FILES['pago4_3']['name']);
+                    move_uploaded_file($_FILES['pago4_3']['tmp_name'], $fichero_subido);
+                }
+                $pago4_3=$nombrearchivo;
 
-    public function docingresobra($idproveedor){
-      $this->check_log();
-
+                $params = array(
+                    'idproveedor' => $idproveedor,
+                    'pago1_1' => $pago1_1,
+                    'pago1_2' => $pago1_2,
+                    'pago1_3' => $pago1_3,
+                    'pago1_4' => $pago1_4,
+                    'pago1_5' => $pago1_5,
+                    'pago1_6' => $pago1_6,
+                    'pago1_7' => $pago1_7,
+                    'pago1_8' => $pago1_8,
+                    'pago1_9' => $pago1_9,
+                    'pago1_10' => $pago1_10,
+                    'pago2_1' => $pago2_1,
+                    'pago2_2' => $pago2_2,
+                    'pago2_3' => $pago2_3,
+                    'pago2_4' => $pago2_4,
+                    'pago3_1' => $pago3_1,
+                    'pago3_2' => $pago3_2,
+                    'pago4_1' => $pago4_1,
+                    'pago4_2' => $pago4_2,
+                    'pago4_3' => $pago4_3,
+                    'aprobado' => $aprobado,
+                    'completo' => $completado
+                );
+                $this->Docpagos_model->update_Docpagos($indiceguarda,$params);            
+                redirect('backoffice/menu_backoffice', 'refresh');
+            }
+            else
+            {
+                $data['_view'] = 'backoffice/edit_dc_bo';
+                $data['titulacion'] = 'Documentación Para Pagos';
+                $data['mensaje']="La documentacion debe ser en PDF y pesar menos de 2 mb cada archivo";
+                $this->load->view('template/header',$data);
+                $this->load->view('layouts/main');
+            }
+        }
+        else
+            show_error('Error!');
     }
 
 }

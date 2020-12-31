@@ -21,7 +21,7 @@ class Docingresoobra extends CI_Controller{
         $iddocingresoobra=$data['docingresoobra']['iddocingresoobra'];
         if(isset($data['docingresoobra']['iddocingresoobra']))
         {
-            if(isset($_POST) && count($_POST) > 0)     
+            if(isset($_POST) && count($_POST) > 0)  
             {   
                 //chdir('..');
                 chdir('archivos');
@@ -354,6 +354,17 @@ class Docingresoobra extends CI_Controller{
                 }
                 $io6_2=$nombrearchivo;
 
+                if(isset($_POST['completado'])){
+					$completado=1;
+				} else {
+					$completado=0;
+				}
+				if(isset($_POST['aprobado'])){
+					$aprobado=1;
+				} else {
+					$aprobado=0;
+				}
+
                 $params = array(
 					'idproveedor' => $idproveedor,
                     'io1_1' => $io1_1,
@@ -392,7 +403,9 @@ class Docingresoobra extends CI_Controller{
                     'io5_11' => $io5_11,
 
                     'io6_1' => $io6_1,
-                    'io6_2' => $io6_2
+                    'io6_2' => $io6_2,
+                    'completo' => $completado,
+                    'aprobado' => 0
 
                 );
                 $this->Docingresoobra_model->update_docingresoobra($iddocingresoobra,$params);            
@@ -408,7 +421,7 @@ class Docingresoobra extends CI_Controller{
             }
         }
         else
-            show_error('The doccomercial you are trying to edit does not exist.');
+            show_error('Error en el proceso.');
     }
 
     function edit_prov($idproveedor)
@@ -420,31 +433,59 @@ class Docingresoobra extends CI_Controller{
         {
             if(isset($_POST) && count($_POST) > 0)     
             {   
+                
+
+                if(isset($_POST['completado'])){
+					$completado=1;
+				} else {
+					$completado=0;
+				}
+				if(isset($_POST['aprobado'])){
+					$aprobado=1;
+				} else {
+					$aprobado=0;
+				}
                 $params = array(
-					'idproveedor' => $this->input->post('idproveedor'),
-					'contratosocial' => $this->input->post('contratosocial'),
-					'contratosocialobs' => $this->input->post('contratosocialobs'),
-					'contratosocialok' => $this->input->post('contratosocialok'),
-					'inscripcion' => $this->input->post('inscripcion'),
-					'inscripcionobs' => $this->input->post('inscripcionobs'),
-					'inscripcionok' => $this->input->post('inscripcionok'),
-					'balance' => $this->input->post('balance'),
-					'balanceobs' => $this->input->post('balanceobs'),
-					'balanceok' => $this->input->post('balanceok'),
-					'contastanciaiibb' => $this->input->post('contastanciaiibb'),
-					'constanciaiibbobs' => $this->input->post('constanciaiibbobs'),
-					'constanciaiibbok' => $this->input->post('constanciaiibbok'),
-					'constmonotirbuto' => $this->input->post('constmonotirbuto'),
-					'constmonotributoobs' => $this->input->post('constmonotributoobs'),
-					'constmonotributook' => $this->input->post('constmonotributook'),
-					'titutlo' => $this->input->post('titutlo'),
-					'tituloobs' => $this->input->post('tituloobs'),
-					'titulook' => $this->input->post('titulook'),
-					'matricula' => $this->input->post('matricula'),
-					'matriculaobs' => $this->input->post('matriculaobs'),
-					'matriculaok' => $this->input->post('matriculaok'),
-					'completo' => $this->input->post('completo'),
-					'aprobado' => $this->input->post('aprobado'),
+                    'idproveedor' => $idproveedor,
+                    'io1_1' => $io1_1,
+                    'io1_2' => $io1_2,
+                    'io1_3' => $io1_3,
+                    'io1_4' => $io1_4,
+                    'io1_5' => $io1_5,
+                    'io1_6' => $io1_6,
+                    'io1_7' => $io1_7,
+
+                    'io2_1' => $io2_1,
+                    'io2_2' => $io2_2,
+                    'io2_3' => $io2_3,
+                    
+                    'io3_1' => $io3_1,
+                    'io3_2' => $io3_2,
+                    'io3_3' => $io3_3,
+                    'io3_4' => $io3_4,
+
+                    'io4_1' => $io4_1,
+                    'io4_2' => $io4_2,
+                    'io4_3' => $io4_3,
+                    'io4_4' => $io4_4,
+                    'io4_5' => $io4_5,
+
+                    'io5_1' => $io5_1,
+                    'io5_2' => $io5_2,
+                    'io5_3' => $io5_3,
+                    'io5_4' => $io5_4,
+                    'io5_5' => $io5_5,
+                    'io5_6' => $io5_6,
+                    'io5_7' => $io5_7,
+                    'io5_8' => $io5_8,
+                    'io5_9' => $io5_9,
+                    'io5_10' => $io5_10,
+                    'io5_11' => $io5_11,
+
+                    'io6_1' => $io6_1,
+                    'io6_2' => $io6_2,
+                    'completo' => $completado,
+                    'aprobado' => 0
                 );
 
                 $this->Docingresoobra_model->update_docingresoobra($iddocingresoobra,$params);            
@@ -460,6 +501,6 @@ class Docingresoobra extends CI_Controller{
             }
         }
         else
-            show_error('The doccomercial you are trying to edit does not exist.');
+            show_error('Error en el proceso.');
     }
 }

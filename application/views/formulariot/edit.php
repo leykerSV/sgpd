@@ -16,10 +16,10 @@
                 </div>
                 <div class="col-md-9">
                     <div class="input-group mb-3">
-                        <div class="col">
+                        <div class="col" hidden>
                         <label class="control-label bg-info d-flex justify-content-center align-items-left">Actividad de la Empresa</label>
                             <select name="actividadpcipal" class="form-control">
-                                <option value="">Seleccionar Actividad de la Empresa</option>
+                                <option value="VER FICHA PROVEEDOR">Seleccionar Actividad de la Empresa</option>
                                 <?php 
 								$actividadpcipal_values = array(
 									'ARQUITECTURA'=>'ARQUITECTURA',
@@ -194,7 +194,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <div class="col-md-6">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Tipo de Obra 1</label>
+                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Tipo de Comitente 1</label>
                             <select name="obras1tipo" class="form-control">
                                 <option value="">Seleccionar Tipo de Obra 1</option>
                                 <?php 
@@ -248,7 +248,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <div class="col-md-6">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Tipo de Obra 2</label>
+                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Tipo de Comitente 2</label>
                             <select name="obras2tipo" class="form-control">
                                 <option value="">Seleccionar Tipo de Obra 2</option>
                                 <?php 
@@ -304,7 +304,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <div class="col-md-6">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Tipo de Obra 3</label>
+                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Tipo de Comitente 3</label>
                             <select name="obras3tipo" class="form-control">
                                 <option value="">Seleccionar Tipo de Obra 3</option>
                                 <?php 
@@ -334,6 +334,55 @@
             </div>
         </div>
     </div>
+
+    <div class="text-white mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
+                    <h4>FLOTA DE VEHICULOS</h4>
+                </div>
+                <div class="col-md-9">
+                    <div class="input-group mb-3">
+                        <div class="col">
+                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Flota de vehículos Utilitarios</label>
+                            <input type="text" name="flotavehiculosutilitarios"
+                                value="<?php echo ($this->input->post('flotavehiculosutilitarios') ? $this->input->post('flotavehiculosutilitarios') : $formulariot['flotavehiculosutilitarios']); ?>"
+                                class="form-control" id="flotavehiculosutilitarios"
+                                placeholder="Flota de vehículos utilitarios" />
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="col">
+                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Flota de Vehículos de Carga</label>
+                            <input type="text" name="flotavehiculoscarga"
+                                value="<?php echo ($this->input->post('flotavehiculoscarga') ? $this->input->post('flotavehiculoscarga') : $formulariot['flotavehiculoscarga']); ?>"
+                                class="form-control" id="flotavehiculoscarga"
+                                placeholder="Flota de vehículos de carga" />
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="col">
+                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Flota de Vehículos Tripulados</label>
+                            <input type="text" name="flotavehiculostripulados"
+                                value="<?php echo ($this->input->post('flotavehiculostripulados') ? $this->input->post('flotavehiculostripulados') : $formulariot['flotavehiculostripulados']); ?>"
+                                class="form-control" id="flotavehiculostripulados"
+                                placeholder="Flota de vehículos tripulados" />
+                        </div>
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <div class="col">
+                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Observaciones de Flota de vehículos</label>
+                            <textarea name="flotavehiculosnotas" class="form-control" id="flotavehiculosnotas"
+                                placeholder="Observaciones de Flota de vehículos"><?php echo ($this->input->post('flotavehiculosnotas') ? $this->input->post('flotavehiculosnotas') : $formulariot['flotavehiculosnotas']); ?></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="text-white mb-3">
         <div class="card-body">
             <div class="row">

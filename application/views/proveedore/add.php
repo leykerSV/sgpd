@@ -21,7 +21,6 @@
                         </div>
                     </div>
 					<div class="input-group mb-3">
-
 						<div class="col-md-6">
 							<input type="text" name="usuario" value="<?php echo $this->input->post('usuario'); ?>" class="form-control" id="usuario" placeholder="Usuario (Max. 8 caracteres)" />
 							<span class="text-danger"><?php echo form_error('usuario');?></span>	
@@ -32,6 +31,12 @@
                         </div>
                     </div>
 					<div class="input-group mb-3">
+						<div class="col">
+							<input type="text" name="direccion" value="<?php echo $this->input->post('direccion'); ?>" class="form-control" id="direccion" placeholder="Direccion" />
+							<span class="text-danger"><?php echo form_error('direccion');?></span>		
+                        </div>
+                    </div>
+					<div class="input-group mb-3" hidden>
 						<div class="col-md-6">
 							<input type="text" name="nombres" value="<?php echo $this->input->post('nombres'); ?>" class="form-control" id="nombres" placeholder="Nombre Contacto" />
 							<span class="text-danger"><?php echo form_error('nombres');?></span>		
@@ -43,13 +48,12 @@
                     </div>
                     <div class="input-group mb-3">
                         <div class="col">
+						<label class="control-label bg-info d-flex justify-content-center align-items-left">RUBRO</label>
 							<select name="rubro" class="form-control">
-								<option value="">RUBRO</option>
 								<?php 
 								$rubro_values = array(
-									'ARQUITECTURA'=>'ARQUITECTURA',
-									'CIVILES'=>'CIVILES',
-									'ELECTROMECANICO'=>'ELECTROMECANICO',
+									'CIVILES E INFRAESTRUCTURA'=>'CIVILES E INFRAESTRUCTURA',
+									'ELECTROMECANICO'=>'ELECTROMECANICO'
 								);
 
 								foreach($rubro_values as $value => $display_text)
@@ -62,7 +66,18 @@
 							</select>
 							<span class="text-danger"><?php echo form_error('rubro');?></span>
 							</p></p>
-							<input type="text" name="subrubro" value="<?php echo $this->input->post('subrubro'); ?>" class="form-control" id="subrubro" placeholder="Sub Rubro" />
+							
+							<label class="control-label bg-info d-flex justify-content-center align-items-left">subrubros</label>
+                            <select name="subrubrocmb[]" class="form-control" multiple>
+                                <?php 
+                                    foreach($subrubros as $valor)
+                                    {
+                                        echo '<option value="'.$valor['subrubro'].'">'.$valor['subrubro'].'</option>';
+                                    } 
+                            ?>
+                            </select>
+							<p></p>
+							<input type="text" name="subrubro" hidden value="<?php echo $this->input->post('subrubro'); ?>" class="form-control" id="subrubro" placeholder="Sub Rubro" />
 							<span class="text-danger"><?php echo form_error('subrubro');?></span> 
                         </div>
                     </div>
@@ -80,8 +95,8 @@
                 <div class="col-md-9">
                     <div class="input-group mb-3">
                         <div class="col">
+						<label class="control-label bg-info d-flex justify-content-center align-items-left">CONDICION FRENTE AL IVA</label>
 							<select name="condicion" class="form-control">
-								<option value="">CONDICION FRENTE IVA</option>
 								<?php 
 								$condicion_values = array(
 									'RESPONSABLE INSCRIPTO'=>'RESPONSABLE INSCRIPTO',
@@ -102,8 +117,8 @@
                     </div>
                     <div class="input-group mb-3">
                         <div class="col">
+						<label class="control-label bg-info d-flex justify-content-center align-items-left">EMPLEADOR</label>
 							<select name="empleador" class="form-control">
-								<option value="">EMPLEADOR</option>
 								<?php 
 								$empleador_values = array(
 									'SI'=>'SI',
@@ -124,8 +139,8 @@
                 
 				<div class="input-group mb-3">
                         <div class="col">
+						<label class="control-label bg-info d-flex justify-content-center align-items-left">TIPO EMPRESA</label>
 							<select name="tipo" class="form-control">
-								<option value="">TIPO</option>
 								<?php 
 								$tipo_values = array(
 									'Empresa Contratista' => 'Empresa Contratista',
@@ -165,8 +180,8 @@
 							<span class="text-danger"><?php echo form_error('contacto');?></span>
                         </div>
                         <div class="col-md-6">
-							<input type="text" name="ciudad" value="<?php echo $this->input->post('ciudad'); ?>" class="form-control" id="ciudad" placeholder="Ciudad" />
-							<span class="text-danger"><?php echo form_error('ciudad');?></span>
+							<input type="text" name="cargo" value="<?php echo $this->input->post('cargo'); ?>" class="form-control" id="cargo" placeholder="Cargo" />
+							<span class="text-danger"><?php echo form_error('cargo');?></span>
                         </div>
                     </div>
 					<div class="input-group mb-3">

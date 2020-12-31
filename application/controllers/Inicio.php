@@ -50,9 +50,8 @@ class Inicio extends CI_Controller {
 	}
 	
 	public function logout(){
-        if($this->session->userdata('logueado') == FALSE){
-            redirect(base_url(), 'refresh');    
-        }
+		$this->session->sess_destroy();
+        redirect(base_url(), 'refresh');
     }
 
 

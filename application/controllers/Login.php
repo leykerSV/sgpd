@@ -81,6 +81,7 @@ class Login extends CI_Controller {
             'usuario' => $row->usuario,
             'apellidos' => $row->apellidos,
             'nombres' => $row->nombres,
+            'direccion' => $row->direccion,
             'telefono'=> $row->telefono,
             'mail'=> $row->mail,
             'rubro'=> $row->rubro,
@@ -99,6 +100,7 @@ class Login extends CI_Controller {
             'docingresoobra'=>$docingresoobra_array,
             'docpagos'=>$docpagos_array,
           );
+          
           $this->session->set_userdata($sess_array);
         }
         return TRUE;

@@ -22,7 +22,17 @@ class Docpagos extends CI_Controller{
         if(isset($data['docpagos']['iddocpagos']))
         {
             if(isset($_POST) && count($_POST) > 0)     
-            {   
+            {   if(isset($_POST['completado'])){
+                $completado=1;
+            } else {
+                $completado=0;
+            }
+            if(isset($_POST['aprobado'])){
+                $aprobado=1;
+            } else {
+                $aprobado=0;
+            }
+
                 //chdir('..');
                 chdir('archivos');
                 $directorio=getcwd()."/";
@@ -257,7 +267,9 @@ class Docpagos extends CI_Controller{
                     'pago3_2' => $pago3_2,
                     'pago4_1' => $pago4_1,
                     'pago4_2' => $pago4_2,
-                    'pago4_3' => $pago4_3
+                    'pago4_3' => $pago4_3,
+                    'aprobado' => 0,
+                    'completo' => $completado
                 );
                 $this->Docpagos_model->update_Docpagos($indiceguarda,$params);            
                 redirect('proveedores', 'refresh');

@@ -28,6 +28,12 @@ class Proveedore_model extends CI_Model
         return $this->db->get('proveedores')->result_array();
     }
 
+    function get_all_subrubros()
+    {
+        $this->db->order_by('subrubro', 'asc');
+        return $this->db->get('subrubros')->result_array();
+    }
+
     function get_all_proveedores_backoffice()
     {
         return $this->db->get('formularios_proveedores')->result_array();

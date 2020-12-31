@@ -2,12 +2,27 @@
 	if(isset($proveedor)) {
 
 ?>
-  <nav aria-label="Page navigation example">
+	
+  	<nav aria-label="Page navigation example">
     <div class="table-responsive">
           <table class="table table-striped">
           <thead  class="thead-dark">
 		  	Primer icono: Completo -- 
 			Segundo Icono: Aprobado
+
+			<div class="text-white mb-3">
+        	<div class="card-body">
+			<div class="row">
+        		<div class="form-group col">
+					<div class="col-md-4">
+						<span class="label other">Buscar Proveedor</span>
+						<input type="text" accept=".pdf" name="pago1_1" value="" class="form-control" id="pago1_1" />
+						<button type="submit" class="btn bg-info text-white">Buscar</button>
+					</div>
+				</div>
+			</div>
+			</div>
+			</div>
           	<tr>
 		  		<th scope="col" width=90>Categorizar</th>
 				<th scope="col" width=90>Empresa</th>
@@ -23,9 +38,10 @@
           </thead>
           <tbody>
               <?php foreach ($proveedor as $item): ?>
+					<?php //var_dump($item); ?>
                       <tr>
 					  		<th align="center">
-								<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+								<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" >
 									<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-diagram-3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 									<path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/>
 									</svg>
@@ -40,7 +56,7 @@
 									//echo'<th align="center">Desaprobado - incompleto<th>';
 									?>
 										<th align="center">
-											<a href="<?php echo base_url('/index.php/backoffice/formulariofyc/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/formulariofyc/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x-octagon" fill="red" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1L1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
 												<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -56,7 +72,7 @@
 								if ($item['fyccom']==1 and $item['fycap']==0){
 									?>
 										<th align="center">
-											<a href="<?php echo base_url('index.php/backoffice/formulariofyc/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('index.php/backoffice/formulariofyc/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="green" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
 												<path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
@@ -73,7 +89,7 @@
 								if ($item['fyccom']==0 and $item['fycap']==1){
 									?>
 										<th align="center">
-											<a href="<?php echo base_url('index.php/backoffice/formulariofyc/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('index.php/backoffice/formulariofyc/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x-octagon" fill="red" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1L1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
 												<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -90,7 +106,7 @@
 								if ($item['fyccom']==1 and $item['fycap']==1){
 									?>
 										<th align="center">
-											<a href="<?php echo base_url('index.php/backoffice/formulariofyc/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('index.php/backoffice/formulariofyc/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="green" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
 												<path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
@@ -110,7 +126,7 @@
 									//echo'<th align="center">Desaprobado - incompleto<th>';
 									?>
 										<th align="center">
-											<a href="<?php echo base_url('/index.php/backoffice/formulariot/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/formulariot/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x-octagon" fill="red" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1L1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
 												<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -126,7 +142,7 @@
 								if ($item['ftcom']==1 and $item['ftap']==0){
 									?>
 										<th align="center">
-											<a href="<?php echo base_url('/index.php/backoffice/formulariot/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/formulariot/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="green" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
 												<path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
@@ -143,7 +159,7 @@
 								if ($item['ftcom']==0 and $item['ftap']==1){
 									?>
 										<th align="center">
-											<a href="<?php echo base_url('/index.php/backoffice/formulariot/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/formulariot/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x-octagon" fill="red" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1L1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
 												<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -160,7 +176,7 @@
 								if ($item['ftcom']==1 and $item['ftap']==1){
 									?>
 										<th align="center">
-											<a href="<?php //echo base_url('/index.php/backoffice/formulariot/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php //echo base_url('/index.php/backoffice/formulariot/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="green" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
 												<path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
@@ -180,7 +196,7 @@
 									//echo'<th align="center">Desaprobado - incompleto<th>';
 									?>
 										<th align="center">
-											<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/doccomercial/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x-octagon" fill="red" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1L1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
 												<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -196,7 +212,7 @@
 								if ($item['dccom']==1 and $item['dcap']==0){
 									?>
 										<th align="center">
-											<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/doccomercial/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="green" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
 												<path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
@@ -213,7 +229,7 @@
 								if ($item['dccom']==0 and $item['dcap']==1){
 									?>
 										<th align="center">
-											<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/doccomercial/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x-octagon" fill="red" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1L1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
 												<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -230,7 +246,7 @@
 								if ($item['dccom']==1 and $item['dcap']==1){
 									?>
 										<th align="center">
-											<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/doccomercial/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="green" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
 												<path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
@@ -249,11 +265,11 @@
 
 							<!--COMPLETAR DESDE ACA-->
 							<?php
-								if ($item['dccom']==0 and $item['dcap']==0){
+								if ($item['iocom']==0 and $item['ioap']==0){
 									//echo'<th align="center">Desaprobado - incompleto<th>';
 									?>
 										<th align="center">
-											<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/docingreasoaobra/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x-octagon" fill="red" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1L1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
 												<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -266,10 +282,10 @@
 										</th>
 									<?php
 								}
-								if ($item['dccom']==1 and $item['dcap']==0){
+								if ($item['iocom']==1 and $item['ioap']==0){
 									?>
 										<th align="center">
-											<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/docingreasoaobra/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="green" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
 												<path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
@@ -283,10 +299,10 @@
 										</th>
 									<?php
 								}
-								if ($item['dccom']==0 and $item['dcap']==1){
+								if ($item['iocom']==0 and $item['ioap']==1){
 									?>
 										<th align="center">
-											<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/docingreasoaobra/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x-octagon" fill="red" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1L1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
 												<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -300,10 +316,10 @@
 										</th>
 									<?php	
 								}
-								if ($item['dccom']==1 and $item['dcap']==1){
+								if ($item['iocom']==1 and $item['ioap']==1){
 									?>
 										<th align="center">
-											<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/docingreasoaobra/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="green" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
 												<path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
@@ -319,11 +335,11 @@
 								}
 							?>
 							<?php
-								if ($item['dccom']==0 and $item['dcap']==0){
+								if ($item['dpcom']==0 and $item['dpap']==0){
 									//echo'<th align="center">Desaprobado - incompleto<th>';
 									?>
 										<th align="center">
-											<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/docparacobranza/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x-octagon" fill="red" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1L1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
 												<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -336,10 +352,10 @@
 										</th>
 									<?php
 								}
-								if ($item['dccom']==1 and $item['dcap']==0){
+								if ($item['dpcom']==1 and $item['dpap']==0){
 									?>
 										<th align="center">
-											<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/docparacobranza/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="green" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
 												<path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
@@ -353,10 +369,10 @@
 										</th>
 									<?php
 								}
-								if ($item['dccom']==0 and $item['dcap']==1){
+								if ($item['dpcom']==0 and $item['dpap']==1){
 									?>
 										<th align="center">
-											<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/docparacobranza/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x-octagon" fill="red" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1L1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
 												<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -370,10 +386,10 @@
 										</th>
 									<?php	
 								}
-								if ($item['dccom']==1 and $item['dcap']==1){
+								if ($item['dpcom']==1 and $item['dpap']==1){
 									?>
 										<th align="center">
-											<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
+											<a href="<?php echo base_url('/index.php/backoffice/docparacobranza/'.$item['idproveedor']); ?>" >
 												<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="green" xmlns="http://www.w3.org/2000/svg">
 												<path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
 												<path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
@@ -401,60 +417,3 @@
 	<?php } ?>
 
 </small>
-
-
-
-
-
-
-<!--<?php if($fyccompleto==0){ ?>
-								<th align="center">
-									<a href="<?php //echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
-									<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-box-arrow-down" fill="red" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 0 0 7.5 2.5v11a.5.5 0 0 0 .854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 0 0-.799-.34 12.96 12.96 0 0 0-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0 1 15 2.82z"/>
-									<path fill-rule="evenodd" d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 0 1 8.5 2.5v11a.5.5 0 0 1-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 0 1 0 13.5v-11a.5.5 0 0 1 .276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 0 1 .22-.103 12.958 12.958 0 0 1 2.7-.869z"/>
-									</svg>
-									</a>
-								</th>
-                                <?php }else{ ?>
-								<th align="center">
-									<a href="<?php echo base_url('/index.php/formulariofyc/edit_prov/'.$item['idproveedor']); ?>" target="_blank">
-									<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-box-arrow-down" fill="green" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 0 0 7.5 2.5v11a.5.5 0 0 0 .854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 0 0-.799-.34 12.96 12.96 0 0 0-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0 1 15 2.82z"/>
-									<path fill-rule="evenodd" d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 0 1 8.5 2.5v11a.5.5 0 0 1-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 0 1 0 13.5v-11a.5.5 0 0 1 .276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 0 1 .22-.103 12.958 12.958 0 0 1 2.7-.869z"/>
-									</svg>
-									</a>
-								</th>
-							<?php } ?>
-							<th>
-								<a href="<?php echo base_url('index.php/backoffice/formulariot/'.$item['idproveedor']); ?>" target="_blank">
-                            	<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-book-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                              	<path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 0 0 7.5 2.5v11a.5.5 0 0 0 .854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 0 0-.799-.34 12.96 12.96 0 0 0-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0 1 15 2.82z"/>
-                              	<path fill-rule="evenodd" d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 0 1 8.5 2.5v11a.5.5 0 0 1-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 0 1 0 13.5v-11a.5.5 0 0 1 .276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 0 1 .22-.103 12.958 12.958 0 0 1 2.7-.869z"/>
-                            	</svg>
-                            	</a>
-                            </th>
-							<th>
-								<a href="<?php echo base_url('index.php/backoffice/doccomercial/'.$item['idproveedor']); ?>" target="_blank">
-                            	<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-book-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                              	<path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 0 0 7.5 2.5v11a.5.5 0 0 0 .854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 0 0-.799-.34 12.96 12.96 0 0 0-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0 1 15 2.82z"/>
-                              	<path fill-rule="evenodd" d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 0 1 8.5 2.5v11a.5.5 0 0 1-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 0 1 0 13.5v-11a.5.5 0 0 1 .276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 0 1 .22-.103 12.958 12.958 0 0 1 2.7-.869z"/>
-                            	</svg>
-                            	</a>
-                            </th>
-							<th>
-								<a href="<?php echo base_url('index.php/backoffice/docingresobra/'.$item['idproveedor']); ?>" target="_blank">
-                            	<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-book-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                              	<path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 0 0 7.5 2.5v11a.5.5 0 0 0 .854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 0 0-.799-.34 12.96 12.96 0 0 0-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0 1 15 2.82z"/>
-                              	<path fill-rule="evenodd" d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 0 1 8.5 2.5v11a.5.5 0 0 1-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 0 1 0 13.5v-11a.5.5 0 0 1 .276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 0 1 .22-.103 12.958 12.958 0 0 1 2.7-.869z"/>
-                            	</svg>
-                            	</a>
-                            </th>
-							<th>
-								<a href="<?php echo base_url('index.php/backoffice/docparacobranza/'.$item['idproveedor']); ?>" target="_blank">
-                            	<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-book-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                              	<path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 0 0 7.5 2.5v11a.5.5 0 0 0 .854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 0 0-.799-.34 12.96 12.96 0 0 0-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0 1 15 2.82z"/>
-                              	<path fill-rule="evenodd" d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 0 1 8.5 2.5v11a.5.5 0 0 1-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 0 1 0 13.5v-11a.5.5 0 0 1 .276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 0 1 .22-.103 12.958 12.958 0 0 1 2.7-.869z"/>
-                            	</svg>
-                            	</a>
-                            </th>-->

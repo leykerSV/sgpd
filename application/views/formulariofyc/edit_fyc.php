@@ -28,29 +28,29 @@
                 </div>
                 <div class="col-md-9">
                     <div class="input-group mb-3">
-                        <div class="col">
+                        <div class="col" hidden>
                             <label class="col-md-12 control-label bg-info d-flex justify-content-center align-items-center">Categoría Fiscal</label>
                             <select name="categoriafiscal" class="form-control">
-                                <option value="">Seleccionar Categoria Fiscal</option>
+                                <option value="VER FICHA PROVEEDOR">Seleccionar Categoria Fiscal</option>
                                 <?php 
-						$categoriafiscal_values = array(
-							'RESPONSABLE INSCRIPTO'=>'RESPONSABLE INSCRIPTO',
-							'MONOTRIBUTO'=>'MONOTRIBUTO',
-							'CONSUMIDOR FINAL'=>'CONSUMIDOR FINAL',
-							'EXENTO'=>'EXENTO',
-						);
+                                $categoriafiscal_values = array(
+                                    'RESPONSABLE INSCRIPTO'=>'RESPONSABLE INSCRIPTO',
+                                    'MONOTRIBUTO'=>'MONOTRIBUTO',
+                                    'CONSUMIDOR FINAL'=>'CONSUMIDOR FINAL',
+                                    'EXENTO'=>'EXENTO',
+                                );
 
-						foreach($categoriafiscal_values as $value => $display_text)
-						{
-							$selected = ($value == $formulariofyc['categoriafiscal']) ? ' selected="selected"' : "";
+                                foreach($categoriafiscal_values as $value => $display_text)
+                                {
+                                    $selected = ($value == $formulariofyc['categoriafiscal']) ? ' selected="selected"' : "";
 
-							echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
-						} 
-						?>
+                                    echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+                                } 
+                                ?>
                             </select>
                         </div>
                     </div>
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-3" hidden>
                         <div class="col-md-6">
                             <label class="control-label bg-info d-flex justify-content-center align-items-left">Identificación Tribuitaria</label>
                             <input type="text" name="identificaciontributaria" value="<?php echo ($this->input->post('identificaciontributaria') ? $this->input->post('identificaciontributaria') : $formulariofyc['identificaciontributaria']); ?>"
@@ -60,6 +60,14 @@
                             <label class="control-label bg-info d-flex justify-content-center align-items-left">Nº Identificación Tribuitaria</label>
                             <input type="text" name="numidentificacion" value="<?php echo ($this->input->post('numidentificacion') ? $this->input->post('numidentificacion') : $formulariofyc['numidentificacion']); ?>"
                                 class="form-control" id="numidentificacion" placeholder="Num. Identificación" />
+                        </div>
+                    </div>
+                            
+                    <div class="input-group mb-3">
+                        <div class="col">
+                            <label class="control-label bg-info d-flex justify-content-center align-items-left">CUIT</label>
+                            <input type="text" name="cuit" value="<?php echo ($this->input->post('cuit') ? $this->input->post('cuit') : $formulariofyc['cuit']); ?>"
+                                class="form-control" id="cuit" placeholder="CUIT" />
                         </div>
                     </div>
 
@@ -197,7 +205,7 @@
                         <div class="col">
                             <label class="control-label bg-info d-flex justify-content-center align-items-left">Situación IIBB</label>
                             <select name="situacioniibb" id="situacioniibb" class="form-control">
-                                <option value="0">Seleccionar Situación IIBB</option>
+
                                 <?php 
 						$situacioniibb_values = array(
 							'CONTRIBUYENTE LOCAL'=>'CONTRIBUYENTE LOCAL',
@@ -425,9 +433,21 @@
                 <div class="col-md-9">
                     <div class="input-group mb-3">
                         <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">I.V.A.</label>
-                            <input type="text" name="agentepercepcioniva" value="<?php echo ($this->input->post('agentepercepcioniva') ? $this->input->post('agentepercepcioniva') : $formulariofyc['agentepercepcioniva']); ?>"
-                                class="form-control" id="agentepercepcioniva" placeholder="I.V.A." />
+                            <label class="control-label bg-info d-flex justify-content-center align-items-left">I.V.A.</label>
+                                <select name="agentepercepcioniva" class="form-control">
+                                <option value="NO">NO</option>
+                                <?php 
+								$opciones_values = array(
+									'SI'=>'SI'
+								);
+
+								foreach($opciones_values as $value => $display_text)
+								{
+									$selected = ($value == $formulariofyc['agentepercepcioniva']) ? ' selected="selected"' : "";
+									echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+								} 
+							?>
+                            </select>
                         </div>
                         <div class="col-md-4">
                         <label class="control-label bg-info d-flex justify-content-center align-items-left">Resolución Número</label>
@@ -444,8 +464,20 @@
                     <div class="input-group mb-3">
                         <div class="col-md-4">
                         <label class="control-label bg-info d-flex justify-content-center align-items-left">IIBB</label>
-                            <input type="text" name="agentepercepcioniibb1" value="<?php echo ($this->input->post('agentepercepcioniibb1') ? $this->input->post('agentepercepcioniibb1') : $formulariofyc['agentepercepcioniibb1']); ?>"
-                                class="form-control" id="agentepercepcioniibb1" placeholder="IIBB" />
+                                <select name="agentepercepcioniibb1" class="form-control">
+                                <option value="NO">NO</option>
+                                <?php 
+								$opciones_values = array(
+									'SI'=>'SI'
+								);
+
+								foreach($opciones_values as $value => $display_text)
+								{
+									$selected = ($value == $formulariofyc['agentepercepcioniibb1']) ? ' selected="selected"' : "";
+									echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+								} 
+							?>
+                            </select>
                         </div>
                         <div class="col-md-4">
                         <label class="control-label bg-info d-flex justify-content-center align-items-left">Provincia</label>
@@ -462,8 +494,20 @@
                     <div class="input-group mb-3">
                         <div class="col-md-4">
                         <label class="control-label bg-info d-flex justify-content-center align-items-left">IIBB</label>
-                            <input type="text" name="agentepercepcioniibb2" value="<?php echo ($this->input->post('agentepercepcioniibb2') ? $this->input->post('agentepercepcioniibb2') : $formulariofyc['agentepercepcioniibb2']); ?>"
-                                class="form-control" id="agentepercepcioniibb2" placeholder="IIBB" />
+                            <select name="agentepercepcioniibb2" class="form-control">
+                                <option value="NO">NO</option>
+                                <?php 
+								$opciones_values = array(
+									'SI'=>'SI'
+								);
+
+								foreach($opciones_values as $value => $display_text)
+								{
+									$selected = ($value == $formulariofyc['agentepercepcioniibb2']) ? ' selected="selected"' : "";
+									echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+								} 
+							    ?>
+                            </select>
                         </div>
                         <div class="col-md-4">
                         <label class="control-label bg-info d-flex justify-content-center align-items-left">Provincia</label>
@@ -480,8 +524,20 @@
                     <div class="input-group mb-3">
                         <div class="col-md-4">
                         <label class="control-label bg-info d-flex justify-content-center align-items-left">IIBB</label>
-                            <input type="text" name="agentepercepcioniibb3" value="<?php echo ($this->input->post('agentepercepcioniibb3') ? $this->input->post('agentepercepcioniibb3') : $formulariofyc['agentepercepcioniibb3']); ?>"
-                                class="form-control" id="agentepercepcioniibb3" placeholder="IIBB" />
+                            <select name="agentepercepcioniibb3" class="form-control">
+                                <option value="NO">NO</option>
+                                <?php 
+								$opciones_values = array(
+									'SI'=>'SI'
+								);
+
+								foreach($opciones_values as $value => $display_text)
+								{
+									$selected = ($value == $formulariofyc['agentepercepcioniibb3']) ? ' selected="selected"' : "";
+									echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+								} 
+							    ?>
+                            </select>
                         </div>
                         <div class="col-md-4">
                         <label class="control-label bg-info d-flex justify-content-center align-items-left">Provincia</label>
@@ -650,24 +706,40 @@
                 </div>
                 <div class="col-md-9">
                     <div class="input-group mb-3">
-                        <div class="col">
+                        <div class="col-md-6">
                         <label class="control-label bg-info d-flex justify-content-center align-items-left">Facturación Ultimo Cierre</label>
                             <input type="text" name="factultimocierre" value="<?php echo ($this->input->post('factultimocierre') ? $this->input->post('factultimocierre') : $formulariofyc['factultimocierre']); ?>"
                                 class="form-control" id="factultimocierre" placeholder="Facturación ultimo cierre" />
                         </div>
+                        <div class="col-md-6">
+                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Año Ultimo Cierre</label>
+                            <input type="text" name="factultimocierreanio" value="<?php echo ($this->input->post('factultimocierreanio') ? $this->input->post('factultimocierreanio') : $formulariofyc['factultimocierreanio']); ?>"
+                                class="form-control" id="factultimocierreanio" placeholder="Año ultimo cierre" />
+                        </div>
                     </div>
                     <div class="input-group mb-3">
-                        <div class="col">
+                        <div class="col-md-6">
                         <label class="control-label bg-info d-flex justify-content-center align-items-left">Facturación anteultimo cierre</label>
                             <input type="text" name="factanteultimocierre" value="<?php echo ($this->input->post('factanteultimocierre') ? $this->input->post('factanteultimocierre') : $formulariofyc['factanteultimocierre']); ?>"
                                 class="form-control" id="factanteultimocierre" placeholder="Facturación anteultimo cierre" />
                         </div>
+                        <div class="col-md-6">
+                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Facturación anteultimo cierre</label>
+                            <input type="text" name="factanteultimocierreanio" value="<?php echo ($this->input->post('factanteultimocierreanio') ? $this->input->post('factanteultimocierreanio') : $formulariofyc['factanteultimocierreanio']); ?>"
+                                class="form-control" id="factanteultimocierreanio" placeholder="Año anteultimo cierre" />
+                        </div>
                     </div>
-                    <div class="input-group mb-3">
+                    <div class="input-group mb-3-md-6">
                         <div class="col">
                         <label class="control-label bg-info d-flex justify-content-center align-items-left">Facturación antepenultimo cierre</label>
                             <input type="text" name="factantepenultimocierre" value="<?php echo ($this->input->post('factantepenultimocierre') ? $this->input->post('factantepenultimocierre') : $formulariofyc['factantepenultimocierre']); ?>"
                                 class="form-control" id="factantepenultimocierre" placeholder="Facturación antepenultimo cierre"
+                            />
+                        </div>
+                        <div class="col">
+                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Año antepenultimo cierre</label>
+                            <input type="text" name="factantepenultimocierreanio" value="<?php echo ($this->input->post('factantepenultimocierreanio') ? $this->input->post('factantepenultimocierreanio') : $formulariofyc['factantepenultimocierreanio']); ?>"
+                                class="form-control" id="factantepenultimocierreanio" placeholder="Año antepenultimo cierre"
                             />
                         </div>
                     </div>
@@ -687,17 +759,17 @@
                 <div class="col-md-9">
                     <div class="input-group mb-3">
                         <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Empresa 1</label>
+                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Empresa</label>
                             <input type="text" name="refcom1" value="<?php echo ($this->input->post('refcom1') ? $this->input->post('refcom1') : $formulariofyc['refcom1']); ?>"
-                                class="form-control" id="refcom1" placeholder="Empresa 1" />
+                                class="form-control" id="refcom1" placeholder="Empresa" />
                         </div>
                         <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Contacto 1</label>
+                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Contacto</label>
                             <input type="text" name="refcom1contacto" value="<?php echo ($this->input->post('refcom1contacto') ? $this->input->post('refcom1contacto') : $formulariofyc['refcom1contacto']); ?>"
-                                class="form-control" id="refcom1contacto" placeholder="Contacto 1" />
+                                class="form-control" id="refcom1contacto" placeholder="Contacto" />
                         </div>
                         <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Teléfono 1</label>
+                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Teléfono</label>
                             <input type="text" name="refcom1tel" value="<?php echo ($this->input->post('refcom1tel') ? $this->input->post('refcom1tel') : $formulariofyc['refcom1tel']); ?>"
                                 class="form-control" id="refcom1tel" placeholder="Tel" />
                         </div>
@@ -705,17 +777,17 @@
 
                     <div class="input-group mb-3">
                         <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Empresa 2</label>
+                        
                             <input type="text" name="refcom2" value="<?php echo ($this->input->post('refcom2') ? $this->input->post('refcom2') : $formulariofyc['refcom2']); ?>"
-                                class="form-control" id="refcom2" placeholder="Empresa 2" />
+                                class="form-control" id="refcom2" placeholder="Empresa" />
                         </div>
                         <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">COntacto 2</label>
+                        
                             <input type="text" name="refcom2contacto" value="<?php echo ($this->input->post('refcom2contacto') ? $this->input->post('refcom2contacto') : $formulariofyc['refcom2contacto']); ?>"
-                                class="form-control" id="refcom2contacto" placeholder="Contacto 2" />
+                                class="form-control" id="refcom2contacto" placeholder="Contacto" />
                         </div>
                         <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Teléfono 2</label>
+                        
                             <input type="text" name="refcom2tel" value="<?php echo ($this->input->post('refcom2tel') ? $this->input->post('refcom2tel') : $formulariofyc['refcom2tel']); ?>"
                                 class="form-control" id="refcom2tel" placeholder="Tel" />
                         </div>
@@ -723,17 +795,17 @@
 
                     <div class="input-group mb-3">
                         <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Empresa 3</label>
+                        
                             <input type="text" name="refcom3" value="<?php echo ($this->input->post('refcom3') ? $this->input->post('refcom3') : $formulariofyc['refcom3']); ?>"
-                                class="form-control" id="refcom3" placeholder="Empresa 3" />
+                                class="form-control" id="refcom3" placeholder="Empresa" />
                         </div>
                         <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Contacto 3</label>
+                        
                             <input type="text" name="refcom3contacto" value="<?php echo ($this->input->post('refcom3contacto') ? $this->input->post('refcom3contacto') : $formulariofyc['refcom3contacto']); ?>"
-                                class="form-control" id="refcom3contacto" placeholder="Contacto 3" />
+                                class="form-control" id="refcom3contacto" placeholder="Contacto" />
                         </div>
                         <div class="col-md-4">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Teléfono 3</label>
+                        
                             <input type="text" name="refcom3tel" value="<?php echo ($this->input->post('refcom3tel') ? $this->input->post('refcom3tel') : $formulariofyc['refcom3tel']); ?>"
                                 class="form-control" id="refcom3tel" placeholder="Tel" />
                         </div>

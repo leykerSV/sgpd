@@ -16,21 +16,22 @@ class Proveedor extends CI_Controller{
      */
     function add()
     {   
-        $this->load->library('form_validation');
+		$this->load->library('form_validation');
+		$data['subrubros'] = $this->Proveedore_model->get_all_subrubros();
 
 		$this->form_validation->set_rules('empresa','Empresa','required');
-		$this->form_validation->set_rules('apellidos','Apellidos','required');
-		$this->form_validation->set_rules('nombres','Nombres','required');
-		$this->form_validation->set_rules('mail','Mail','valid_email|required');
-		$this->form_validation->set_rules('subrubro','Subrubro','required');
-		$this->form_validation->set_rules('rubro','Rubro','required');
-		$this->form_validation->set_rules('telefono','Telefono','required');
-		$this->form_validation->set_rules('ciudad','Ciudad','required');
 		$this->form_validation->set_rules('contacto','Contacto','required');
 		$this->form_validation->set_rules('pass','Pass','required');
 		
 		if($this->form_validation->run())     
         {   
+			if (null!==$this->input->post('subrubrocmb')){
+				foreach ($this->input->post('subrubrocmb') as $seleccion){
+					$subr = $subr.$seleccion.' , ';
+				}
+			}else{
+				$subr = $this->input->post('subrubro');	
+			}
             $params = array(
 				'rubro' => $this->input->post('rubro'),
 				'pass' => MD5($this->input->post('pass')),
@@ -38,9 +39,11 @@ class Proveedor extends CI_Controller{
 				'usuario' => $this->input->post('usuario'),
 				'apellidos' => $this->input->post('apellidos'),
 				'nombres' => $this->input->post('nombres'),
+				'direccion' => $this->input->post('direccion'),
+				'cargo' => $this->input->post('cargo'),
 				'telefono' => $this->input->post('telefono'),
 				'mail' => $this->input->post('mail'),
-				'subrubro' => $this->input->post('subrubro'),
+				'subrubro' => $subr,
 				'ciudad' => $this->input->post('ciudad'),
 				'web' => $this->input->post('web'),
 				'observaciones' => $this->input->post('observaciones'),
@@ -84,14 +87,6 @@ class Proveedor extends CI_Controller{
             $this->load->library('form_validation');
 
 			$this->form_validation->set_rules('empresa','Empresa','required');
-			$this->form_validation->set_rules('apellidos','Apellidos','required');
-			$this->form_validation->set_rules('nombres','Nombres','required');
-			$this->form_validation->set_rules('mail','Mail','valid_email|required');
-			$this->form_validation->set_rules('subrubro','Subrubro','required');
-			$this->form_validation->set_rules('rubro','Rubro','required');
-			$this->form_validation->set_rules('telefono','Telefono','required');
-			$this->form_validation->set_rules('ciudad','Ciudad','required');
-			$this->form_validation->set_rules('web','Web','required');
 			$this->form_validation->set_rules('contacto','Contacto','required');
 			$this->form_validation->set_rules('pass','Pass','required');
 		
@@ -103,15 +98,17 @@ class Proveedor extends CI_Controller{
 					'empresa' => $this->input->post('empresa'),
 					'apellidos' => $this->input->post('apellidos'),
 					'nombres' => $this->input->post('nombres'),
+					'direccion' => $this->input->post('direccion'),
 					'telefono' => $this->input->post('telefono'),
 					'mail' => $this->input->post('mail'),
 					'subrubro' => $this->input->post('subrubro'),
 					'ciudad' => $this->input->post('ciudad'),
+					'cargo' => $this->input->post('cargo'),
 					'web' => $this->input->post('web'),
 					'observaciones' => $this->input->post('observaciones'),
 					'contacto' => $this->input->post('contacto'),
 					'activo' => $this->input->post('activo'),
-					'categoria' => $this->input->post('categoria'),
+					'categoria' => $this->input->post('categoria')
                 );
 
                 $this->Proveedore_model->update_proveedor($idproveedor,$params);            

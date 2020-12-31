@@ -1,4 +1,4 @@
-<?php echo form_open_multipart('docpagos/edit/'.$docpagos['idproveedor'],array("class"=>"form-horizontal")); ?>
+<?php echo form_open_multipart('backoffice/docparacobranza/'.$docpagos['idproveedor'],array("class"=>"form-horizontal")); ?>
 
 <style>
     .bg-info {
@@ -152,7 +152,8 @@
 			<input type="text" name="idproveedor" value="<?php echo ($this->input->post('idproveedor') ? $this->input->post('idproveedor') : $docpagos['idproveedor']); ?>" class="form-control" id="idproveedor" />
 		</div>
 	</div>
-    
+
+	
     <div class="text-white mb-3">
         <div class="card-body">
             <div class="row">
@@ -167,7 +168,7 @@
                             <input type="checkbox" name="completado" value="1" checked class="form-control bg-info " id="completado"></input>
                             </div>
                         <?php }else{ ?>
-                                <div class="form-group col-md-4" >
+                            <div class="form-group col-md-4" >
                             <label class="control-label bg-info d-flex justify-content-center align-items-left">COMPLETO</label>  
                             <input type="checkbox" name="completado" value="0" class="form-control bg-info " id="completado"></input>
                             </div>
@@ -175,12 +176,12 @@
                         <?php if ($docpagos['aprobado']==1){ ?>
                             <div class="form-group col-md-4" >
                             <label class="control-label bg-info d-flex justify-content-center align-items-left">APROBADO</label>  
-                            <input type="checkbox" name="aprobado" value="1" checked class="form-control bg-info " id="aprobado" onclick="return false;"></input>
+                            <input type="checkbox" name="aprobado" value="1" checked class="form-control bg-info " id="aprobado" ></input>
                             </div>
                         <?php }else{ ?>
                             <div class="form-group col-md-4" >
                             <label class="control-label bg-info d-flex justify-content-center align-items-left">APROBADO</label>  
-                            <input type="checkbox" name="aprobado" value="0" class="form-control bg-info " id="aprobado" onclick="return false;"></input>
+                            <input type="checkbox" name="aprobado" value="0" class="form-control bg-info " id="aprobado" ></input>
                             </div>
                         <?php } ?>
                     </div>
