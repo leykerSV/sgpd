@@ -41,6 +41,18 @@ Class Proveedordb extends CI_Model
         }
     }
 
+    public function exporta($consulta){
+        date_default_timezone_set('America/Argentina/Cordoba');
+        $this->load->database(); 
+        $fecha = date_create();
+        $extra=date_timestamp_get($fecha);
+        $fila="'/home/leyker/Descargass/".$extra."exportacion.csv'";
+        $fila1="'/var/lib/mysql-files/".$extra."exportacion.csv'";
+        $cadena=$consulta.$fila1;
+        $this->db->query($cadena);
+        return $extra."exportacion.csv";
+    }
+
     function formulariofyc($idproveedor){
         date_default_timezone_set('America/Argentina/Cordoba');
         $this->load->database();    

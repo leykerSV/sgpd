@@ -9,18 +9,19 @@
           <thead  class="thead-dark">
 		  	Primer icono: Completo -- 
 			Segundo Icono: Aprobado
-
+			<?php echo form_open('backoffice/busquedaproveedor/',array("class"=>"form-horizontal")); ?>
 			<div class="text-white mb-3">
         	<div class="card-body">
 			<div class="row">
         		<div class="form-group col">
 					<div class="col-md-4">
 						<span class="label other">Buscar Proveedor</span>
-						<input type="text" accept=".pdf" name="pago1_1" value="" class="form-control" id="pago1_1" />
-						<button type="submit" class="btn bg-info text-white">Buscar</button>
+						<input type="text" name="filtro" value="" class="form-control" id="filtro" /><button type="submit" class="btn bg-info text-white">Buscar</button>
+						
 					</div>
 				</div>
 			</div>
+			<?php echo form_close(); ?>
 			</div>
 			</div>
           	<tr>
@@ -415,5 +416,28 @@
   </nav>
 
 	<?php } ?>
+
+	<?php echo form_open('backoffice/exportacion/',array("class"=>"form-horizontal")); ?>
+			<div class="text-white mb-3">
+        	<div class="card-body">
+			<div class="row">
+        		<div class="form-group col">
+					<div class="col-md-4">		
+						<button type="submit" class="btn bg-info text-white">Generar Excel</button>
+					</div>
+				</div>
+			</div>
+			<?php echo form_close(); ?>
+			<?php
+				if($linkdescarga!=NULL){
+					$linkdescarga=str_replace("'", "", $linkdescarga);
+					//echo '<a href="'.$linkdescarga.'" download="Descarga_datos.csv" >BAJAR</a>';
+					//echo '<a href="" download="/home/leyker/Descargas/Prueba.txt" >BAJAR</a>';
+					echo $linkdescarga;
+				}
+
+			?>
+			</div>
+			</div>
 
 </small>

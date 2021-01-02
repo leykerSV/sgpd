@@ -36,7 +36,7 @@ class Backoffice extends CI_Controller {
     {
         if($this->check_database() == TRUE)
         {
-          $this->menu_backoffice();
+          $this->menu_backoffice('');
         }else{
           $this->session->set_flashdata('error_msg', 'Error al loguearse. Verifique los datos.');
           redirect(base_url(), 'refresh');
@@ -79,19 +79,30 @@ class Backoffice extends CI_Controller {
       }
     }
 
+	public function busquedaproveedor (){
+		$filtro=$_POST['filtro'];
 
-    public function menu_backoffice()
+		$this->menu_backoffice(NULL,$filtro);
+	}
+
+    public function menu_backoffice($linkdescarga=NULL,$filtro=NULL)
     {
       $this->check_log();
       $data['titulacion']="Listado de Proveedores";
-      $this->load->model('proveedore_model');        
-      $data['proveedor'] = $this->proveedore_model->get_all_proveedores_backoffice();
+	  $this->load->model('proveedore_model');    
+	  if ($filtro==NULL){    
+		  	$data['proveedor'] = $this->proveedore_model->get_all_proveedores_backoffice();
+		} else {
+			$data['proveedor'] = $this->proveedore_model->get_all_proveedores_filtrado($filtro);	
+		}
       //$this->load->model('formulariofyc_model');   
 			//$data['formfyc'] = $this->formulariofyc_model->get_formulariofyc_completo_aprobado();
-      $data['mensaje'] = '';
+	  $data['mensaje'] = '';
+	  $data['linkdescarga']=$linkdescarga;
       $data['_view'] = 'backoffice/menu_backoffice';
       $this->load->view('template/header',$data);
-      $this->load->view('layouts/main');
+	  $this->load->view('layouts/main');
+	  
     }
    
     function formulariofyc($idproveedor)
@@ -1111,6 +1122,19 @@ class Backoffice extends CI_Controller {
         }
         else
             show_error('Error!');
-    }
+	}
+	
+	public function exportacion(){
+		$this->check_log();
+		$this->load->model('Proveedordb');
+		$cadena="Select * from cocyar_sgpd.proveedores
+		inner join cocyar_sgpd.formulariofyc fyc on cocyar_sgpd.proveedores.idproveedor = fyc.idproveedor 
+		inner join cocyar_sgpd.formulariot t on proveedores.idproveedor = t.idproveedor INTO OUTFILE ";
+
+		$archivo = $this->Proveedordb->exporta($cadena);
+		$descarga='/var/lib/mysql-files/'.$archivo;
+		$linkdescarga='<a class="" title="Descargar Archivo" href="'. $descarga .'" download="'.$descarga.'" >Descargar Excel</a>';
+		$this->menu_backoffice($linkdescarga);	
+	}
 
 }
