@@ -95,6 +95,7 @@ class Backoffice extends CI_Controller {
 		} else {
 			$data['proveedor'] = $this->proveedore_model->get_all_proveedores_filtrado($filtro);	
 		}
+
       //$this->load->model('formulariofyc_model');   
 			//$data['formfyc'] = $this->formulariofyc_model->get_formulariofyc_completo_aprobado();
 	  $data['mensaje'] = '';
@@ -103,9 +104,25 @@ class Backoffice extends CI_Controller {
       $this->load->view('template/header',$data);
 	  $this->load->view('layouts/main');
 	  
-    }
+	}
+	
+	public function categorizar($idproveedor,$proveedor){
+		$data['mensaje'] = '';
+		$data['titulacion']="Categorizar Proveedores";
+		$data['idproveedor']=$idproveedor;
+		$data['proveedor']=$proveedor;
+      	$data['_view'] = 'backoffice/categorizar';
+      	$this->load->view('template/header',$data);
+	  	$this->load->view('layouts/main');
+	}
+
+	public function categorizar_guarda($idproveedor){
+		$this->load->model('Proveedordb');
+		$this->Proveedordb->actualiza_categoria($idproveedor,$_POST['categoria']);
+		$this->menu_backoffice('');
+	}
    
-    function formulariofyc($idproveedor)
+    public function formulariofyc($idproveedor)
     {   
       $this->check_log();  
       $this->load->model('Formulariofyc_model');

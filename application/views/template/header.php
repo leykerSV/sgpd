@@ -9,6 +9,7 @@
     <title>SGPD Cocyar</title>
 
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/popup.css'); ?>">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     
     <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>

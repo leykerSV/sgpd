@@ -74,6 +74,11 @@ Class Proveedordb extends CI_Model
         }    
     }
 
+    function actualiza_categoria($idproveedor,$categoria){
+        $cad="update proveedores set categoria='".$categoria."' where idproveedor=".$idproveedor;
+        $this->db->query($cad);
+    }
+
     function formulariot($idproveedor){
         date_default_timezone_set('America/Argentina/Cordoba');
         $this->load->database();    
