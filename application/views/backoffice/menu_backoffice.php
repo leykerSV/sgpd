@@ -31,7 +31,7 @@
 				<th scope="col">Contacto</th>
 				<th scope="col">Fiscal y Comercial</th>
 				<th scope="col">Técnico</th>
-				<th scope="col">Doc Comercial</th>
+				<th scope="col">Doc Comercial y Fiscal</th>
 				<th scope="col">Doc Ingreso Obra</th>
 				<th scope="col">Doc Para Pagos</th>
         	</tr>

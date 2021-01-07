@@ -48,53 +48,6 @@
                     </div>
                     <div class="input-group mb-3">
                         <div class="col">
-						<label class="control-label bg-info d-flex justify-content-center align-items-left">RUBRO</label>
-							<select name="rubro" class="form-control">
-								<?php 
-								$rubro_values = array(
-									'CIVILES E INFRAESTRUCTURA'=>'CIVILES E INFRAESTRUCTURA',
-									'ELECTROMECANICO'=>'ELECTROMECANICO'
-								);
-
-								foreach($rubro_values as $value => $display_text)
-								{
-									$selected = ($value == $this->input->post('rubro')) ? ' selected="selected"' : "";
-
-									echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
-								} 
-								?>
-							</select>
-							<span class="text-danger"><?php echo form_error('rubro');?></span>
-							</p></p>
-							
-							<label class="control-label bg-info d-flex justify-content-center align-items-left">subrubros</label>
-                            <select name="subrubrocmb[]" class="form-control" multiple>
-                                <?php 
-                                    foreach($subrubros as $valor)
-                                    {
-                                        echo '<option value="'.$valor['subrubro'].'">'.$valor['subrubro'].'</option>';
-                                    } 
-                            ?>
-                            </select>
-							<p></p>
-							<input type="text" name="subrubro" hidden value="<?php echo $this->input->post('subrubro'); ?>" class="form-control" id="subrubro" placeholder="Sub Rubro" />
-							<span class="text-danger"><?php echo form_error('subrubro');?></span> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="text-white mb-3">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
-                    <h4>INFORMACION</h4>
-                </div>
-                <div class="col-md-9">
-                    <div class="input-group mb-3">
-                        <div class="col">
 						<label class="control-label bg-info d-flex justify-content-center align-items-left">CONDICION FRENTE AL IVA</label>
 							<select name="condicion" class="form-control">
 								<?php 
@@ -136,18 +89,66 @@
 							<span class="text-danger"><?php echo form_error('empleador');?></span>
                         </div>
                     </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-white mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
+                    <h4>INFORMACION</h4>
+                </div>
+                <div class="col-md-9">
+                <div class="input-group mb-3">
+                        <div class="col">
+						<label class="control-label bg-info d-flex justify-content-center align-items-left">RUBRO</label>
+							<select name="rubro" class="form-control">
+								<?php 
+								$rubro_values = array(
+									'CIVILES E INFRAESTRUCTURA'=>'CIVILES E INFRAESTRUCTURA',
+									'ELECTROMECANICO'=>'ELECTROMECANICO'
+								);
+
+								foreach($rubro_values as $value => $display_text)
+								{
+									$selected = ($value == $this->input->post('rubro')) ? ' selected="selected"' : "";
+
+									echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
+								} 
+								?>
+							</select>
+							<span class="text-danger"><?php echo form_error('rubro');?></span>
+							</p></p>
+							
+							<label class="control-label bg-info d-flex justify-content-center align-items-left">SUBRUBROS</label>
+                            <select name="subrubrocmb[]" class="form-control" multiple>
+                                <?php 
+                                    foreach($subrubros as $valor)
+                                    {
+                                        echo '<option value="'.$valor['subrubro'].'">'.$valor['subrubro'].'</option>';
+                                    } 
+                            ?>
+                            </select>
+							<p></p>
+							<input type="text" name="subrubro" hidden value="<?php echo $this->input->post('subrubro'); ?>" class="form-control" id="subrubro" placeholder="Sub Rubro" />
+							<span class="text-danger"><?php echo form_error('subrubro');?></span> 
+                        </div>
+                    </div>
+                    
                 
 				<div class="input-group mb-3">
                         <div class="col">
-						<label class="control-label bg-info d-flex justify-content-center align-items-left">TIPO EMPRESA</label>
+						<label class="control-label bg-info d-flex justify-content-center align-items-left">TIPO PROVEEDOR</label>
 							<select name="tipo" class="form-control">
 								<?php 
 								$tipo_values = array(
-									'Empresa Contratista' => 'Empresa Contratista',
-									'Proveedor de Materiales' => 'Proveedor de Materiales',
-									'Profesional' => 'Profesional', 
-									'Consultora' => 'Consultora',
-									'Provisión de Servicios (Mano de Obra y/o Materiales)' => 'Provisión de Servicios (Mano de Obra y/o Materiales)'
+									'Contratista' => 'Contratista',
+									'Proveedor de Sercivios (Seguridad, Agua, Chofer, etc.)' => 'Proveedor de Sercivios (Seguridad, Agua, Chofer, etc.)',
+									'Proveedor de Materiales' => 'Proveedor de Materiales', 
+									'Servicios Profesionales / Consultoría' => 'Servicios Profesionales / Consultoría'
 								);
 
 								foreach($tipo_values as $value => $display_text)

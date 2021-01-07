@@ -292,7 +292,9 @@ class Formulariofyc extends CI_Controller{
             {
 				$data['titulacion']="Formulario Fiscal y Comercial.";
 				$data['mensaje']="";
-				$data['esproveedor'] = 'SI';
+				$data['esproveedor'] = 'SI';		
+				$data['volver']="si";
+				$data['aprove']="si";
 				$data['_view'] = 'formulariofyc/edit_fyc';
 				$this->load->view('template/header',$data);
                 $this->load->view('layouts/main');

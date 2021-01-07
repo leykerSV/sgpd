@@ -205,7 +205,7 @@
                         <div class="col">
                             <label class="control-label bg-info d-flex justify-content-center align-items-left">Situación IIBB</label>
                             <select name="situacioniibb" id="situacioniibb" class="form-control">
-                                <option value="0">Seleccionar Situación IIBB</option>
+
                                 <?php 
 						$situacioniibb_values = array(
 							'CONTRIBUYENTE LOCAL'=>'CONTRIBUYENTE LOCAL',
@@ -674,7 +674,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-3 bg-info d-flex justify-content-center align-items-center p-3">
-                    <h4>FACTURACION ANUAL</h4>
+                    <h4>FACTURACION ANUAL (Según balance, indicar los últimos tres)</h4>
                     <input hidden type="checkbox" id="factnoaplica" name="factnoaplica" value="No Aplica"></input>
                     <script type="text/javascript"> 
                         $(document).ready(function () {
@@ -707,37 +707,33 @@
                 <div class="col-md-9">
                     <div class="input-group mb-3">
                         <div class="col-md-6">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Facturación Ultimo Cierre</label>
+                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Monto</label>
                             <input type="text" name="factultimocierre" value="<?php echo ($this->input->post('factultimocierre') ? $this->input->post('factultimocierre') : $formulariofyc['factultimocierre']); ?>"
                                 class="form-control" id="factultimocierre" placeholder="Facturación ultimo cierre" />
                         </div>
                         <div class="col-md-6">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Año Ultimo Cierre</label>
+                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Año</label>
                             <input type="text" name="factultimocierreanio" value="<?php echo ($this->input->post('factultimocierreanio') ? $this->input->post('factultimocierreanio') : $formulariofyc['factultimocierreanio']); ?>"
                                 class="form-control" id="factultimocierreanio" placeholder="Año ultimo cierre" />
                         </div>
                     </div>
                     <div class="input-group mb-3">
                         <div class="col-md-6">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Facturación anteultimo cierre</label>
                             <input type="text" name="factanteultimocierre" value="<?php echo ($this->input->post('factanteultimocierre') ? $this->input->post('factanteultimocierre') : $formulariofyc['factanteultimocierre']); ?>"
                                 class="form-control" id="factanteultimocierre" placeholder="Facturación anteultimo cierre" />
                         </div>
                         <div class="col-md-6">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Facturación anteultimo cierre</label>
                             <input type="text" name="factanteultimocierreanio" value="<?php echo ($this->input->post('factanteultimocierreanio') ? $this->input->post('factanteultimocierreanio') : $formulariofyc['factanteultimocierreanio']); ?>"
                                 class="form-control" id="factanteultimocierreanio" placeholder="Año anteultimo cierre" />
                         </div>
                     </div>
                     <div class="input-group mb-3-md-6">
                         <div class="col">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Facturación antepenultimo cierre</label>
                             <input type="text" name="factantepenultimocierre" value="<?php echo ($this->input->post('factantepenultimocierre') ? $this->input->post('factantepenultimocierre') : $formulariofyc['factantepenultimocierre']); ?>"
                                 class="form-control" id="factantepenultimocierre" placeholder="Facturación antepenultimo cierre"
                             />
                         </div>
                         <div class="col">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Año antepenultimo cierre</label>
                             <input type="text" name="factantepenultimocierreanio" value="<?php echo ($this->input->post('factantepenultimocierreanio') ? $this->input->post('factantepenultimocierreanio') : $formulariofyc['factantepenultimocierreanio']); ?>"
                                 class="form-control" id="factantepenultimocierreanio" placeholder="Año antepenultimo cierre"
                             />

@@ -362,7 +362,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <div class="col">
-                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Flota de Vehículos Tripulados</label>
+                        <label class="control-label bg-info d-flex justify-content-center align-items-left">Equipos autopropulsados</label>
                             <input type="text" name="flotavehiculostripulados"
                                 value="<?php echo ($this->input->post('flotavehiculostripulados') ? $this->input->post('flotavehiculostripulados') : $formulariot['flotavehiculostripulados']); ?>"
                                 class="form-control" id="flotavehiculostripulados"

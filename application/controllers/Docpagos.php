@@ -326,6 +326,8 @@ class Docpagos extends CI_Controller{
             {
                 $data['_view'] = 'docpagos/edit';
                 $data['titulacion'] = 'Documentación Para Pagos';
+                $data['volver']="si";
+				$data['aprove']="si";
                 $data['mensaje']="La documentacion debe ser en PDF y pesar menos de 2 mb cada archivo";
                 $this->load->view('template/header',$data);
                 $this->load->view('layouts/main');

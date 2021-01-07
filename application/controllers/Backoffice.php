@@ -216,6 +216,7 @@ class Backoffice extends CI_Controller {
 				$data['titulacion']="Formulario Fiscal y Comercial.";
 				$data['mensaje']="";
 				$data['esproveedor'] = 'NO';
+				$data['volver']='si';
 				$data['_view'] = 'backoffice/edit_fyc_bo';
 				$this->load->view('template/header',$data);
                 $this->load->view('layouts/main');
@@ -310,6 +311,7 @@ class Backoffice extends CI_Controller {
 		  {
 			  $data['titulacion']="Formulario Técnico";
 			  $data['mensaje']="";
+			  $data['volver']='si';
 			  $data['_view'] = 'backoffice/edit_t_bo';
 			  $this->load->view('template/header',$data);
 			  $this->load->view('layouts/main');
@@ -446,7 +448,8 @@ class Backoffice extends CI_Controller {
             else
             {
                 $data['_view'] = 'backoffice/edit_doccom_bo';
-                $data['titulacion'] = 'Documentación Comercial';
+				$data['titulacion'] = 'Documentación Comercial';
+				$data['volver']='si';
                 $data['mensaje']="La documentacion debe ser en PDF y pesar menos de 2 mb cada archivo";
                 $this->load->view('template/header',$data);
                 $this->load->view('layouts/main');
@@ -858,6 +861,7 @@ class Backoffice extends CI_Controller {
 		  else
 		  {
 			  $data['_view'] = 'backoffice/edit_io_bo';
+			  $data['volver']='si';
 			  $data['titulacion'] = 'Documentación Ingreso a Obra';
 			  $data['mensaje']="La documentacion debe ser en PDF y pesar menos de 2 mb cada archivo";
 			  $this->load->view('template/header',$data);
@@ -1131,7 +1135,8 @@ class Backoffice extends CI_Controller {
             else
             {
                 $data['_view'] = 'backoffice/edit_dc_bo';
-                $data['titulacion'] = 'Documentación Para Pagos';
+				$data['titulacion'] = 'Documentación Para Pagos';
+				$data['volver']='si';
                 $data['mensaje']="La documentacion debe ser en PDF y pesar menos de 2 mb cada archivo";
                 $this->load->view('template/header',$data);
                 $this->load->view('layouts/main');

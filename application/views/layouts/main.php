@@ -7,9 +7,24 @@
 				window.close(); 
 				} 
 			</script>
-			<div class="col-md-2">
-				<a href="<?php echo base_url('/index.php/inicio/logout'); ?>">Salir del Sistema</a>	
-			</div>
+			<?php
+				if (isset($volver)){
+					if (isset($aprove)){ ?>
+						<div class="col-md-2">
+							<a href="<?php echo base_url('/index.php/inicio/menu'); ?>">Volver a Menú Proveedores</a>	
+						</div>
+					<?php } else { ?>
+						<div class="col-md-2">
+							<a href="<?php echo base_url('/index.php/backoffice/menu_backoffice'); ?>">Volver a Menú backoffice</a>	
+						</div>
+					<?php }
+				} else { ?>
+					<div class="col-md-2">
+						<a href="<?php echo base_url('/index.php/inicio/logout'); ?>">Salir del Sistema</a>	
+					</div>
+				<?php } ?>
+
+		
 			<div class="col-md-8" align="center">
 				<img src="<?php echo base_url('assets/imagenes/cabeza.png'); ?>" alt="" >
 			</div>
