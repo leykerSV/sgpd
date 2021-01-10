@@ -41,7 +41,26 @@ class Backoffice extends CI_Controller {
           $this->session->set_flashdata('error_msg', 'Error al loguearse. Verifique los datos.');
           redirect(base_url(), 'refresh');
         }
-    }
+	}
+	
+	function notificarViaMail($destinatario, $cuerpomail, $asunto) {
+           
+		$this->load->library('email','','correo');
+
+		$this->correo->from($this->config->item('emailsistema'), $this->config->item('nombresistema'));
+		$this->correo->to($destinatario);
+		$this->correo->subject($asunto);
+		$this->correo->message($cuerpomail);
+		if($this->correo->send())
+		{
+			   
+		}
+
+		else
+		{
+			show_error($this->correo->print_debugger());
+		}
+	}
 	
 	function check_database()
     {
@@ -209,7 +228,17 @@ class Backoffice extends CI_Controller {
                 );
 
                 $this->Formulariofyc_model->update_formulariofyc($data['formulariofyc']['idformulariofyc'],$params);            
-                redirect('backoffice/menu_backoffice', 'refresh');
+				if (isset($_POST['completado']) or isset($_POST['aprobado'])){			
+					$htmlContent = '<h4>SISTEMA SGPd</h4>';
+					$htmlContent .= '<p>Estimado Proveedor,</p>';
+					$htmlContent .= '<p>Se ha modificado el estado del Formulario Fiscal y Comercial</p>';
+					$htmlContent .= 'Por favor, verifique';
+					$htmlContent .= '<p>Modulo Proveedores, SGPd</p>';
+					$this->load->model('Proveedordb');
+					$a=$this->Proveedordb->emailproveedor($this->input->post('idproveedor'));
+					$this->notificarViaMail($a,$htmlContent,'Actualización Formulario Fiscal y Comercial');
+				}
+				redirect('backoffice/menu_backoffice', 'refresh');
             }
             else
             {
@@ -305,6 +334,17 @@ class Backoffice extends CI_Controller {
 			  );
 
 			  $this->Formulariot_model->update_formulariot($data['formulariot']['idformularioT'],$params);            
+		
+				if (isset($_POST['completado']) or isset($_POST['aprobado'])){			
+					$htmlContent = '<h4>SISTEMA SGPd</h4>';
+					$htmlContent .= '<p>Estimado Proveedor,</p>';
+					$htmlContent .= '<p>Se ha modificado el estado del Formulario Técnico</p>';
+					$htmlContent .= 'Por favor, verifique';
+					$htmlContent .= '<p>Modulo Proveedores, SGPd</p>';
+					$this->load->model('Proveedordb');
+					$a=$this->Proveedordb->emailproveedor($this->input->post('idproveedor'));
+					$this->notificarViaMail($a,$htmlContent,'Actualización Formulario Técnico');
+				}
 			  redirect('backoffice/menu_backoffice', 'refresh');
 		  }
 		  else
@@ -443,7 +483,17 @@ class Backoffice extends CI_Controller {
                     'aprobado' => $aprobado
                 );
                 $this->Doccomercial_model->update_doccomercial($data['doccomercial']['iddoccomercial'],$params);            
-                redirect('backoffice/menu_backoffice', 'refresh');
+				if (isset($_POST['completado']) or isset($_POST['aprobado'])){			
+					$htmlContent = '<h4>SISTEMA SGPd</h4>';
+					$htmlContent .= '<p>Estimado Proveedor,</p>';
+					$htmlContent .= '<p>Se ha modificado el estado del Formulario Doc. Comercial y Fiscal</p>';
+					$htmlContent .= 'Por favor, verifique';
+					$htmlContent .= '<p>Modulo Proveedores, SGPd</p>';
+					$this->load->model('Proveedordb');
+					$a=$this->Proveedordb->emailproveedor($this->input->post('idproveedor'));
+					$this->notificarViaMail($a,$htmlContent,'Actualización Formulario Doc. Comercial y Fiscal');
+				}
+				redirect('backoffice/menu_backoffice', 'refresh');
             }
             else
             {
@@ -855,7 +905,17 @@ class Backoffice extends CI_Controller {
 				  'aprobado' => $aprobado
 
 			  );
-			  $this->Docingresoobra_model->update_docingresoobra($iddocingresoobra,$params);            
+			  $this->Docingresoobra_model->update_docingresoobra($iddocingresoobra,$params);   
+			  if (isset($_POST['completado']) or isset($_POST['aprobado'])){			
+				$htmlContent = '<h4>SISTEMA SGPd</h4>';
+				$htmlContent .= '<p>Estimado Proveedor,</p>';
+				$htmlContent .= '<p>Se ha modificado el estado del Doc. de Ingreso a Obra</p>';
+				$htmlContent .= 'Por favor, verifique';
+				$htmlContent .= '<p>Modulo Proveedores, SGPd</p>';
+				$this->load->model('Proveedordb');
+				$a=$this->Proveedordb->emailproveedor($this->input->post('idproveedor'));
+				$this->notificarViaMail($a,$htmlContent,'Actualización Doc. Ingreso a Obra');
+			}         
 			  redirect('backoffice/menu_backoffice', 'refresh');
 		  }
 		  else
@@ -1129,7 +1189,19 @@ class Backoffice extends CI_Controller {
                     'aprobado' => $aprobado,
                     'completo' => $completado
                 );
+				$this->Docpagos_model->update_Docpagos($indiceguarda,$params);       
                 $this->Docpagos_model->update_Docpagos($indiceguarda,$params);            
+				$this->Docpagos_model->update_Docpagos($indiceguarda,$params);       
+				if (isset($_POST['completado']) or isset($_POST['aprobado'])){			
+					$htmlContent = '<h4>SISTEMA SGPd</h4>';
+					$htmlContent .= '<p>Estimado Proveedor,</p>';
+					$htmlContent .= '<p>Se ha modificado el estado del Doc. Para Pagos</p>';
+					$htmlContent .= 'Por favor, verifique';
+					$htmlContent .= '<p>Modulo Proveedores, SGPd</p>';
+					$this->load->model('Proveedordb');
+					$a=$this->Proveedordb->emailproveedor($this->input->post('idproveedor'));
+					$this->notificarViaMail($a,$htmlContent,'Actualización Doc. Para Pagos');
+				}     
                 redirect('backoffice/menu_backoffice', 'refresh');
             }
             else

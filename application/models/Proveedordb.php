@@ -79,6 +79,12 @@ Class Proveedordb extends CI_Model
         $this->db->query($cad);
     }
 
+    function emailproveedor($idproveedor){
+        $email = $this->db->get_where('proveedores',array('idproveedor'=>$idproveedor))->row_array();
+        return $email['mail'];
+        die;
+    }
+
     function formulariot($idproveedor){
         date_default_timezone_set('America/Argentina/Cordoba');
         $this->load->database();    

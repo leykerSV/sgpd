@@ -108,6 +108,7 @@
 							<select name="rubro" class="form-control">
 								<?php 
 								$rubro_values = array(
+                                    'ARQUITECTURA'=>'ARQUITECTURA',
 									'CIVILES E INFRAESTRUCTURA'=>'CIVILES E INFRAESTRUCTURA',
 									'ELECTROMECANICO'=>'ELECTROMECANICO'
 								);

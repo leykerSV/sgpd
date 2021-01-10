@@ -271,7 +271,14 @@ class Docpagos extends CI_Controller{
                     'aprobado' => 0,
                     'completo' => $completado
                 );
-                $this->Docpagos_model->update_Docpagos($indiceguarda,$params);            
+                $this->Docpagos_model->update_Docpagos($indiceguarda,$params);  
+                if (isset($_POST['completado'])){			
+                    $htmlContent = '<h4>SISTEMA SGPd</h4>';
+                    $htmlContent .= '<p>Se ha completado el Formulario Documentación para Pagos</p>';
+                    $htmlContent .= 'Proveedor: '.$this->session->userdata('empresa');
+                    $htmlContent .= '<p>Modulo Proveedores, SGPd</p>';
+                    $this->notificarViaMail($this->config->item('emailbackoffice'),$htmlContent,'Formulario Doc. Para Pagos Completado');
+                }          
                 redirect('proveedores', 'refresh');
             }
             else
@@ -285,6 +292,25 @@ class Docpagos extends CI_Controller{
         }
         else
             show_error('Error!');
+    }
+
+    function notificarViaMail($destinatario, $cuerpomail, $asunto) {
+           
+        $this->load->library('email','','correo');
+
+        $this->correo->from($this->config->item('emailsistema'), $this->config->item('nombresistema'));
+        $this->correo->to($destinatario);
+        $this->correo->subject($asunto);
+        $this->correo->message($cuerpomail);
+        if($this->correo->send())
+        {
+               
+        }
+
+        else
+        {
+            show_error($this->correo->print_debugger());
+        }
     }
 
     function edit_prov($idproveedor)

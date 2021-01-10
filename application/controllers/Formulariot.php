@@ -91,6 +91,7 @@ class Formulariot extends CI_Controller{
         if(isset($data['formulariot']['idformularioT']))
         {
 			$pcias='';
+			$cert='';
             if(isset($_POST) && count($_POST) > 0)    
             {   
 				if (null!==$this->input->post('provinciasalcanzadascmb')){
@@ -100,8 +101,15 @@ class Formulariot extends CI_Controller{
 				}else{
 					$pcias = $this->input->post('provinciasalcanzadas');	
 				}
-				
-				 
+
+				if (null!==$this->input->post('certificacionescmb')){
+					foreach ($this->input->post('certificacionescmb') as $seleccion){
+						$cert = $cert.$seleccion.' , ';
+					}
+				}else{
+					$cert = $this->input->post('certificaciones');	
+				}
+
 				if(isset($_POST['completado'])){
 					$completado=1;
 				} else {
@@ -126,7 +134,7 @@ class Formulariot extends CI_Controller{
 					'cantpersonaladmin' => $this->input->post('cantpersonaladmin'),
 					'cantpersonalprof' => $this->input->post('cantpersonalprof'),
 					'cantpersonalobra' => $this->input->post('cantpersonalobra'),
-					'certificaciones' => $this->input->post('certificaciones'),
+					'certificaciones' => $cert,
 					'obras1' => $this->input->post('obras1'),
 					'obras1empresa' => $this->input->post('obras1empresa'),
 					'obras1contacto' => $this->input->post('obras1contacto'),
@@ -155,7 +163,14 @@ class Formulariot extends CI_Controller{
 					'fortalezas' => $this->input->post('fortalezas'),
 					'certificadosdocumento' => $this->input->post('certificadosdocumento'),
                 );
-                $this->Formulariot_model->update_formulariot($idformularioT,$params);            
+				$this->Formulariot_model->update_formulariot($idformularioT,$params);  
+				if (isset($_POST['completado'])){			
+					$htmlContent = '<h4>SISTEMA SGPd</h4>';
+					$htmlContent .= '<p>Se ha completado el Formulario Técnico</p>';
+					$htmlContent .= 'Proveedor: '.$this->session->userdata('empresa');
+					$htmlContent .= '<p>Modulo Proveedores, SGPd</p>';
+					$this->notificarViaMail($this->config->item('emailbackoffice'),$htmlContent,'Formulario Técnico Completado');
+				}          
                 redirect('proveedores', 'refresh');
             }
             else
@@ -261,5 +276,24 @@ class Formulariot extends CI_Controller{
 		else
 		
             show_error('Error en el Formulario');
-    }
+	}
+	
+	function notificarViaMail($destinatario, $cuerpomail, $asunto) {
+           
+		$this->load->library('email','','correo');
+
+		$this->correo->from($this->config->item('emailsistema'), $this->config->item('nombresistema'));
+		$this->correo->to($destinatario);
+		$this->correo->subject($asunto);
+		$this->correo->message($cuerpomail);
+		if($this->correo->send())
+		{
+			   
+		}
+
+		else
+		{
+			show_error($this->correo->print_debugger());
+		}
+	}
 }

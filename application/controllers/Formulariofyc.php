@@ -182,7 +182,14 @@ class Formulariofyc extends CI_Controller{
 					'completo' => $completado
                 );
 
-                $this->Formulariofyc_model->update_formulariofyc($idformulariofyc,$params);            
+				$this->Formulariofyc_model->update_formulariofyc($idformulariofyc,$params);      
+				if (isset($_POST['completado'])){			
+					$htmlContent = '<h4>SISTEMA SGPd</h4>';
+					$htmlContent .= '<p>Se ha completado el Formulario Fiscal y Comercial</p>';
+					$htmlContent .= 'Proveedor: '.$this->session->userdata('empresa');
+					$htmlContent .= '<p>Modulo Proveedores, SGPd</p>';
+					$this->notificarViaMail($this->config->item('emailbackoffice'),$htmlContent,'Formulario FyC Completado');
+				}        
                 redirect('proveedores', 'refresh');
             }
             else
@@ -196,6 +203,25 @@ class Formulariofyc extends CI_Controller{
         }
         else
             show_error('The formulariofyc you are trying to edit does not exist.');
+	}
+
+	function notificarViaMail($destinatario, $cuerpomail, $asunto) {
+           
+		$this->load->library('email','','correo');
+
+		$this->correo->from($this->config->item('emailsistema'), $this->config->item('nombresistema'));
+		$this->correo->to($destinatario);
+		$this->correo->subject($asunto);
+		$this->correo->message($cuerpomail);
+		if($this->correo->send())
+		{
+			   
+		}
+
+		else
+		{
+			show_error($this->correo->print_debugger());
+		}
 	}
 
 	/*
@@ -285,7 +311,8 @@ class Formulariofyc extends CI_Controller{
 					'completo' => $this->input->post('completo'),
                 );
 
-                $this->Formulariofyc_model->update_formulariofyc($idformulariofyc,$params);            
+				$this->Formulariofyc_model->update_formulariofyc($idformulariofyc,$params);      
+				    
                 redirect('proveedores', 'refresh');
             }
             else

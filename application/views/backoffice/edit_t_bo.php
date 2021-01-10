@@ -124,24 +124,16 @@
                     <div class="input-group mb-3">
                         <div class="col">
                             <label class="control-label bg-info d-flex justify-content-center align-items-left">Certificaciones</label>
-                            <select name="certificaciones" class="form-control">
-                                <option value="">Certificados</option>
-                                <?php 
-								$certificados_values = array(
-									'ISO 9001'=>'ISO 9001',
-									'ISO 14001'=>'ISO 14001',
-                                    'ISO 45001'=>'ISO 45001',
-                                    'OTRO'=>'OTRO',
-                                    'NINGUNO'=>'NINGUNO'
-								);
-
-								foreach($certificados_values as $value => $display_text)
-								{
-									$selected = ($value == $formulariot['certificaciones']) ? ' selected="selected"' : "";
-									echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
-								} 
-							?>
+                            <select name="certificacionescmb[]" id="certificacionescmb[]" multiple class="form-control">
+                                <option value="ISO 9001">ISO 9001</option>
+                                <option value="ISO 14001">ISO 14001</option>
+                                <option value="ISO 45001">ISO 45001</option>
+                                <option value="OTRO">OTRO</option>
+                                <option value="NINGUNO">NINGUNO</option>
                             </select>
+                            <label class="control-label bg-info d-flex justify-content-center align-items-left">Mantenga presionado Ctrl para multiple selección</label>
+                            <p></p> 
+                            <input type="text" name="certificaciones" value="<?php echo ($this->input->post('certificaciones') ? $this->input->post('certificaciones') : $formulariot['certificaciones']); ?>" class="form-control" id="certificaciones" />
                         </div>
                             
                             
