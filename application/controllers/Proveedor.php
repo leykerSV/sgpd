@@ -22,9 +22,12 @@ class Proveedor extends CI_Controller{
 		$this->form_validation->set_rules('empresa','Empresa','required');
 		$this->form_validation->set_rules('contacto','Contacto','required');
 		$this->form_validation->set_rules('pass','Pass','required');
+		$this->form_validation->set_rules('usuario','Usuario','required');
+		$this->form_validation->set_rules('mail','Mail','required');
 		
 		if($this->form_validation->run())     
         {   
+			$subr ="";
 			if (null!==$this->input->post('subrubrocmb')){
 				foreach ($this->input->post('subrubrocmb') as $seleccion){
 					$subr = $subr.$seleccion.' , ';
@@ -60,7 +63,12 @@ class Proveedor extends CI_Controller{
 			if ($proveedor_id=!NULL){
 				$formulariossale = $this->Proveedore_model->add_formularios($vv);
 			}
-			
+			$htmlContent = '<h4>SISTEMA SGPd</h4>';
+            $htmlContent .= '<p>Usted se ha dado de alta como Proveedor de Cocyar S.A.</p>';
+			$htmlContent .= 'Por favor, recuerde completar los formularios correspondientes';
+			$htmlContent .= ' y realizar la carga de los documentos adecuados.';
+            $htmlContent .= '<p>Modulo Proveedores, SGPd</p>';
+            $this->notificarViaMail($this->input->post('mail'),$htmlContent,'Alta Proveedor. SGPd - Cocyar S.A.');
 
             redirect('login');
         }
@@ -73,6 +81,25 @@ class Proveedor extends CI_Controller{
             $this->load->view('layouts/main');
         }
     }  
+
+	function notificarViaMail($destinatario, $cuerpomail, $asunto) {
+           
+        $this->load->library('email','','correo');
+
+        $this->correo->from($this->config->item('emailsistema'), $this->config->item('nombresistema'));
+        $this->correo->to($destinatario);
+        $this->correo->subject($asunto);
+        $this->correo->message($cuerpomail);
+        if($this->correo->send())
+        {
+               
+        }
+
+        else
+        {
+            show_error($this->correo->print_debugger());
+        }
+    }
 
     /*
      * Editing a proveedor
