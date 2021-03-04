@@ -1231,4 +1231,35 @@ class Backoffice extends CI_Controller {
 		$this->menu_backoffice($linkdescarga);	
 	}
 
+	public function exportacion2(){
+		$conexion = mysqli_connect ("localhost", "cocyar_sgpd", "SgPd#1708");
+		mysqli_select_db ($conexion, "cocyar_sgpd");
+		$sql = "SELECT * FROM proveedores";
+		$cadena="Select * from cocyar_sgpd.proveedores
+		inner join cocyar_sgpd.formulariofyc fyc on cocyar_sgpd.proveedores.idproveedor = fyc.idproveedor 
+		inner join cocyar_sgpd.formulariot t on proveedores.idproveedor = t.idproveedor";
+		$resultado = mysqli_query ($conexion, $cadena) or die ();
+		$proveedoresExcel = array();
+		while($rows = mysqli_fetch_assoc($resultado) ) {
+			$proveedoresExcel[] = $rows;
+		}
+		mysqli_close($conexion);
+
+		if(!empty($proveedoresExcel)){
+			$filename="proveedores.xls";
+			header("Content-Type: application/vnd.ms-excel");
+			header("Content-Disposition: attachment; filename=".$filename);
+			$mostrar_columnas=false;
+			foreach($proveedoresExcel as $libro){
+				if(!$mostrar_columnas){
+					echo implode("\t",array_keys($libro))."\n";$mostrar_columnas=true;
+				}
+				echo implode("\t",array_values($libro))."\n";
+			}
+		}else{
+			echo'No hay datos a exportar';
+		}
+		exit;
+	}
+
 }

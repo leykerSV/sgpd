@@ -417,7 +417,7 @@
 
 	<?php } ?>
 
-	<?php echo form_open('backoffice/exportacion/',array("class"=>"form-horizontal")); ?>
+	<?php echo form_open('backoffice/exportacion2/',array("class"=>"form-horizontal")); ?>
 			<div class="text-white mb-3">
         	<div class="card-body">
 			<div class="row">
