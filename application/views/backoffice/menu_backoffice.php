@@ -3,9 +3,9 @@
 
 ?>
 	
-  	<nav aria-label="Page navigation example">
-    <div class="table-responsive">
-          <table class="table table-striped">
+
+    <div class="table-responsive" height="70%" >
+          <table class="table table-striped" height="70%">
           <thead  class="thead-dark">
 		  	Primer icono: Completo -- 
 			Segundo Icono: Aprobado
@@ -413,7 +413,7 @@
       </table>
       
     </div>
-  </nav>
+
 
 	<?php } ?>
 
